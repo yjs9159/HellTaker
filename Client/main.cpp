@@ -147,6 +147,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+    case WM_LBUTTONDOWN:
+    {
+        int a = 0;
+    }
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
