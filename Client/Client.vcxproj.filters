@@ -19,6 +19,9 @@
     <Filter Include="Engine\Common">
       <UniqueIdentifier>{6d9de797-0de6-41be-a518-0ad92d20657f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Input">
+      <UniqueIdentifier>{337e01a5-9e95-4932-94e4-701d021194c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -42,6 +45,9 @@
     <ClInclude Include="yaMath.h">
       <Filter>Engine\Common</Filter>
     </ClInclude>
+    <ClInclude Include="yaInput.h">
+      <Filter>Engine\Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -60,6 +66,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="yaApplication.cpp">
       <Filter>Engine\High Level Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="yaInput.cpp">
+      <Filter>Engine\Input</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 #include "yaApplication.h"
 //#include <imgui>
 //#include "imgui.h"
+#include "yaInput.h"
 
 namespace ya
 {
@@ -18,6 +19,8 @@ namespace ya
 	{
 		mHwnd = hwnd;
 		mHdc = GetDC(mHwnd);
+
+		Input::Initialize();
 	}
 
 	void Application::Run()
@@ -28,25 +31,7 @@ namespace ya
 
 	void Application::Update()
 	{
-		if (GetAsyncKeyState(VK_LEFT) & 0x8000)
-		{
-			mPlayerPos.x -= 0.01f;
-		}
-
-		if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
-		{
-			mPlayerPos.x += 0.01f;
-		}
-
-		if (GetAsyncKeyState(VK_UP) & 0x8000)
-		{
-			mPlayerPos.y -= 0.01f;
-		}
-
-		if (GetAsyncKeyState(VK_DOWN) & 0x8000)
-		{
-			mPlayerPos.y += 0.01f;
-		}
+		Input::Update();
 	}
 
 	void Application::Render()
