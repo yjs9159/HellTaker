@@ -32,6 +32,23 @@ namespace ya
 	void Application::Update()
 	{
 		Input::Update();
+
+		if (Input::GetKey(eKeyCode::W))
+		{
+			mPlayerPos.y -= 0.01f;
+		}
+		if (Input::GetKey(eKeyCode::A))
+		{
+			mPlayerPos.x -= 0.01f;
+		}
+		if (Input::GetKey(eKeyCode::S))
+		{
+			mPlayerPos.y += 0.01f;
+		}
+		if (Input::GetKey(eKeyCode::D))
+		{
+			mPlayerPos.x += 0.01f;
+		}
 	}
 
 	void Application::Render()
