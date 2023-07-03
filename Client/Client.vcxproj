@@ -140,11 +140,13 @@
     <ClInclude Include="yaApplication.h" />
     <ClInclude Include="yaInput.h" />
     <ClInclude Include="yaMath.h" />
+    <ClInclude Include="yaTime.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="yaApplication.cpp" />
     <ClCompile Include="yaInput.cpp" />
+    <ClCompile Include="yaTime.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc" />

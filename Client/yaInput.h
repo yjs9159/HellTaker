@@ -33,10 +33,18 @@ namespace ya
 		static void Initialize();
 		static void	Update();
 
-		static bool GetKeyDown(eKeyCode code) { return mKeys[(int)code].State == eKeyState::Down; }
-		static bool GetKeyUp(eKeyCode code) { return mKeys[(int)code].State == eKeyState::Up; }
-		static bool GetKey(eKeyCode code) { return mKeys[(int)code].State == eKeyState::Pressed; }
-
+		__forceinline static bool GetKeyDown(eKeyCode code)
+		{
+			return mKeys[(int)code].State == eKeyState::Down; 
+		}
+		__forceinline inline static bool GetKeyUp(eKeyCode code) 
+		{ 
+			return mKeys[(int)code].State == eKeyState::Up; 
+		}
+		__forceinline inline static bool GetKey(eKeyCode code) 
+		{ 
+			return mKeys[(int)code].State == eKeyState::Pressed; 
+		}
 
 	private:
 		static std::vector<Key> mKeys;

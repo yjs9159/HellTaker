@@ -22,6 +22,9 @@
     <Filter Include="Engine\Input">
       <UniqueIdentifier>{337e01a5-9e95-4932-94e4-701d021194c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Time">
+      <UniqueIdentifier>{1ef17518-7513-47d4-930a-d91e0bf6605b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -48,6 +51,9 @@
     <ClInclude Include="yaInput.h">
       <Filter>Engine\Input</Filter>
     </ClInclude>
+    <ClInclude Include="yaTime.h">
+      <Filter>Engine\Time</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -69,6 +75,9 @@
     </ClCompile>
     <ClCompile Include="yaInput.cpp">
       <Filter>Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="yaTime.cpp">
+      <Filter>Engine\Time</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
