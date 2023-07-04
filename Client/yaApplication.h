@@ -21,6 +21,8 @@ namespace ya
 		HDC mHdc;
 
 		Vector2 mPlayerPos;
+
+		int mRandom;
 	};
 }
 

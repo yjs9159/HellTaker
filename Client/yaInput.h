@@ -1,6 +1,7 @@
 #pragma once
 #include "CommonInclude.h"
 
+
 namespace ya
 {
 	enum class eKeyCode
