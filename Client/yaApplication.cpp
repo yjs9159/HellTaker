@@ -3,13 +3,16 @@
 //#include "imgui.h"
 #include "yaInput.h"
 #include "yaTime.h"
-#include <time.h>
 
 namespace ya
 {
 	Application::Application()
 		: mHwnd(NULL)
 		, mHdc(NULL)
+		, mWidth(0)
+		, mHeight(0)
+		, mBackBuffer(NULL)
+		, mBackHdc(NULL)
 	{
 	}
 
@@ -21,6 +24,29 @@ namespace ya
 	{
 		mHwnd = hwnd;
 		mHdc = GetDC(mHwnd);
+
+		mWidth = 1600;
+		mHeight = 900;
+
+		RECT rect = { 0, 0, mWidth, mHeight };
+		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+		SetWindowPos(mHwnd
+			, nullptr, 0, 0
+			, rect.right - rect.left
+			, rect.bottom - rect.top
+			, 0);
+		ShowWindow(mHwnd, true);
+
+		// 윈도우 해상도 동일한 비트맵 생성
+		mBackBuffer = CreateCompatibleBitmap(mHdc, mWidth, mHeight);
+
+		// 새로 생성한 비트맵을 가리키는 DC 생성
+		mBackHdc = CreateCompatibleDC(mHdc);
+
+		// 새로 생성한 비트맵과 DC를 서로 연결
+		HBITMAP defaultBitmap = (HBITMAP)SelectObject(mBackHdc, mBackBuffer);
+		DeleteObject(defaultBitmap);
 
 		Time::Initialize();
 		Input::Initialize();
@@ -37,122 +63,35 @@ namespace ya
 		Time::Update();
 		Input::Update();
 
-		//if (Input::GetKey(eKeyCode::W))
-		//{
-		//	mPlayerPos.y -= 300.0f * Time::Deltatime();
-		//}
-		//if (Input::GetKey(eKeyCode::A))
-		//{
-		//	mPlayerPos.x -= 300.0f * Time::Deltatime();
-		//}
-		//if (Input::GetKey(eKeyCode::S))
-		//{
-		//	mPlayerPos.y += 300.0f * Time::Deltatime();
-		//}
-		//if (Input::GetKey(eKeyCode::D))
-		//{
-		//	mPlayerPos.x += 300.0f * Time::Deltatime();
-		//}
-
-		srand(static_cast<unsigned int>(time(0)));
-		mRandom = rand() % 8;
-
-		if (mRandom == 0) // 위
+		if (Input::GetKey(eKeyCode::W))
 		{
-			// x, y가 150, 150
-			// 윈도우 크기는 1600, 900
-
 			mPlayerPos.y -= 300.0f * Time::Deltatime();
-
-			if (mPlayerPos.y <= 150)
-			{
-				mRandom = rand() % 8;
-			}
 		}
-
-		else if (mRandom == 1) // 오른쪽 위 대각선
-		{
-			mPlayerPos.x += 300.0f * Time::Deltatime();
-			mPlayerPos.y -= 300.0f * Time::Deltatime();
-
-			if (mPlayerPos.x >= 1550 || mPlayerPos.y <= 150)
-			{
-				mRandom = rand() % 8;
-			}
-		}
-
-		else if (mRandom == 2) // 오른쪽
-		{
-			mPlayerPos.x += 300.0f * Time::Deltatime();
-
-			if (mPlayerPos.x >= 1450)
-			{
-				mRandom = rand() % 8;
-			}
-		}
-
-		else if (mRandom == 3) // 오른쪽 아래 대각선
-		{
-			mPlayerPos.x += 300.0f * Time::Deltatime();
-			mPlayerPos.y += 300.0f * Time::Deltatime();
-
-			if (mPlayerPos.x >= 1550 || mPlayerPos.y >= 750)
-			{
-				mRandom = rand() % 8;
-			}
-		}
-
-		else if (mRandom == 4) // 아래
-		{
-			mPlayerPos.y += 300.0f * Time::Deltatime();
-
-			if (mPlayerPos.y >= 750)
-			{
-				mRandom = rand() % 8;
-			}
-		}
-
-		else if (mRandom == 5) // 왼쪽 아래 대각선
+		if (Input::GetKey(eKeyCode::A))
 		{
 			mPlayerPos.x -= 300.0f * Time::Deltatime();
+		}
+		if (Input::GetKey(eKeyCode::S))
+		{
 			mPlayerPos.y += 300.0f * Time::Deltatime();
-
-			if (mPlayerPos.x <= 150 || mPlayerPos.y >= 750)
-			{
-				mRandom = rand() % 8;
-			}
 		}
-
-		else if (mRandom == 6) // 왼쪽
+		if (Input::GetKey(eKeyCode::D))
 		{
-			mPlayerPos.x -= 300.0f * Time::Deltatime();
-
-			if (mPlayerPos.x <= 150)
-			{
-				mRandom = rand() % 8;
-			}
+			mPlayerPos.x += 300.0f * Time::Deltatime();
 		}
-
-		else if (mRandom == 7) // 왼쪽 위 대각선
-		{
-			mPlayerPos.x -= 300.0f * Time::Deltatime();
-			mPlayerPos.y -= 300.0f * Time::Deltatime();
-
-			if (mPlayerPos.x <= 150 || mPlayerPos.y >= 150)
-			{
-				mRandom = rand() % 8;
-			}
-		}
-
-		
-		
 	}
 
 	void Application::Render()
 	{
-		Time::Render(mHdc);
+		Time::Render(mBackHdc);
+
+		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);
+
 		//Rectangle(mHdc, 100, 100, 200, 200);
-		Ellipse(mHdc, 100 + mPlayerPos.x, 100 + mPlayerPos.y
+		Ellipse(mBackHdc, 100 + mPlayerPos.x, 100 + mPlayerPos.y
 			, 200 + mPlayerPos.x, 200 + mPlayerPos.y);
+
+		BitBlt(mHdc, 0, 0, mWidth, mHeight
+			, mBackHdc, 0, 0, SRCCOPY);
 	}
 }

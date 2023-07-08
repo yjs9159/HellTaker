@@ -19,10 +19,13 @@ namespace ya
 	private:
 		HWND mHwnd;
 		HDC mHdc;
+		UINT mWidth;
+		UINT mHeight;
+
+		HDC mBackHdc;
+		HBITMAP mBackBuffer;	
 
 		Vector2 mPlayerPos;
-
-		int mRandom;
 	};
 }
 

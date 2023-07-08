@@ -22,8 +22,26 @@
     <Filter Include="Engine\Input">
       <UniqueIdentifier>{337e01a5-9e95-4932-94e4-701d021194c9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Time">
+    <Filter Include="Contents">
+      <UniqueIdentifier>{f1c4f47b-e256-411f-a83c-5717b4c604f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject">
+      <UniqueIdentifier>{bfd94b17-5b83-489c-bce4-be784a538f90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene">
+      <UniqueIdentifier>{d371985a-36c1-4793-b973-75d4579bc1ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene">
+      <UniqueIdentifier>{db874507-52e7-4f7e-a8ce-54c7d15a16d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Entity">
+      <UniqueIdentifier>{342d4424-7dc0-494e-9fd1-3b16b27735d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Common\Time">
       <UniqueIdentifier>{1ef17518-7513-47d4-930a-d91e0bf6605b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer">
+      <UniqueIdentifier>{cd38af9f-d01e-4176-bf75-8cb96b3cc81c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -52,7 +70,13 @@
       <Filter>Engine\Input</Filter>
     </ClInclude>
     <ClInclude Include="yaTime.h">
-      <Filter>Engine\Time</Filter>
+      <Filter>Engine\Common\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaEntity.h">
+      <Filter>Engine\Entity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -77,7 +101,13 @@
       <Filter>Engine\Input</Filter>
     </ClCompile>
     <ClCompile Include="yaTime.cpp">
-      <Filter>Engine\Time</Filter>
+      <Filter>Engine\Common\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaEntity.cpp">
+      <Filter>Engine\Entity</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
