@@ -50,6 +50,9 @@ namespace ya
 
 		Time::Initialize();
 		Input::Initialize();
+
+		mScene = new Scene();
+		mScene->Initialize();
 	}
 
 	void Application::Run()
@@ -63,35 +66,38 @@ namespace ya
 		Time::Update();
 		Input::Update();
 
-		if (Input::GetKey(eKeyCode::W))
-		{
-			mPlayerPos.y -= 300.0f * Time::Deltatime();
-		}
-		if (Input::GetKey(eKeyCode::A))
-		{
-			mPlayerPos.x -= 300.0f * Time::Deltatime();
-		}
-		if (Input::GetKey(eKeyCode::S))
-		{
-			mPlayerPos.y += 300.0f * Time::Deltatime();
-		}
-		if (Input::GetKey(eKeyCode::D))
-		{
-			mPlayerPos.x += 300.0f * Time::Deltatime();
-		}
+		mScene->Update();
+
+		//if (Input::GetKey(eKeyCode::W))
+		//{
+		//	mPlayerPos.y -= 300.0f * Time::Deltatime();
+		//}
+		//if (Input::GetKey(eKeyCode::A))
+		//{
+		//	mPlayerPos.x -= 300.0f * Time::Deltatime();
+		//}
+		//if (Input::GetKey(eKeyCode::S))
+		//{
+		//	mPlayerPos.y += 300.0f * Time::Deltatime();
+		//}
+		//if (Input::GetKey(eKeyCode::D))
+		//{
+		//	mPlayerPos.x += 300.0f * Time::Deltatime();
+		//}
 	}
 
 	void Application::Render()
 	{
+		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);
 		Time::Render(mBackHdc);
 
-		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);
+		mScene->Render(mBackHdc);
 
 		//Rectangle(mHdc, 100, 100, 200, 200);
-		Ellipse(mBackHdc, 100 + mPlayerPos.x, 100 + mPlayerPos.y
-			, 200 + mPlayerPos.x, 200 + mPlayerPos.y);
+		//Ellipse(mBackHdc, 100 + mPlayerPos.x, 100 + mPlayerPos.y
+		//	, 200 + mPlayerPos.x, 200 + mPlayerPos.y);
 
-		BitBlt(mHdc, 0, 0, mWidth, mHeight
+		BitBlt(mHdc, 0, 0, mWidth, mHeight	
 			, mBackHdc, 0, 0, SRCCOPY);
 	}
 }
