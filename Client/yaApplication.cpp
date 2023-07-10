@@ -1,8 +1,8 @@
 #include "yaApplication.h"
-//#include <imgui>
-//#include "imgui.h"
 #include "yaInput.h"
 #include "yaTime.h"
+#include "yaTitleScene.h"
+#include "yaSceneManager.h"
 
 namespace ya
 {
@@ -14,6 +14,7 @@ namespace ya
 		, mBackBuffer(NULL)
 		, mBackHdc(NULL)
 	{
+
 	}
 
 	Application::~Application()
@@ -51,8 +52,7 @@ namespace ya
 		Time::Initialize();
 		Input::Initialize();
 
-		mScene = new Scene();
-		mScene->Initialize();
+		SceneManager::Initialize();
 	}
 
 	void Application::Run()
@@ -66,7 +66,7 @@ namespace ya
 		Time::Update();
 		Input::Update();
 
-		mScene->Update();
+		SceneManager::Update();
 
 		//if (Input::GetKey(eKeyCode::W))
 		//{
@@ -91,7 +91,7 @@ namespace ya
 		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);
 		Time::Render(mBackHdc);
 
-		mScene->Render(mBackHdc);
+		SceneManager::Render(mBackHdc);
 
 		//Rectangle(mHdc, 100, 100, 200, 200);
 		//Ellipse(mBackHdc, 100 + mPlayerPos.x, 100 + mPlayerPos.y

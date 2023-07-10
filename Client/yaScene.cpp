@@ -1,5 +1,6 @@
-#include "Scene.h"
-
+#include "yaScene.h"
+#include "yaPlayer.h"
+#include "yaSpriteRenderer.h"
 
 namespace ya
 {
@@ -7,16 +8,13 @@ namespace ya
 	{
 		mLayers.resize((int)eLayerType::End);
 	}
-
 	Scene::~Scene()
 	{
 	}
-
 	void Scene::Initialize()
 	{
-		mLayers[(int)eLayerType::Player].AddGameObject();
-	}
 
+	}
 	void Scene::Update()
 	{
 		for (Layer& layer : mLayers)
@@ -24,7 +22,6 @@ namespace ya
 			layer.Update();
 		}
 	}
-
 	void Scene::Render(HDC hdc)
 	{
 		for (Layer& layer : mLayers)
@@ -32,5 +29,4 @@ namespace ya
 			layer.Render(hdc);
 		}
 	}
-
 }

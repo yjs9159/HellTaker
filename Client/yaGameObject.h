@@ -30,6 +30,16 @@ namespace ya
 			return comp;
 		}
 
+		template <typename T>
+		T* AddComponent()
+		{
+			T* comp = new T();
+			mComponents.push_back(comp);
+			comp->SetOwner(this);
+
+			return comp;
+		}
+
 	private:
 		std::vector<Component*> mComponents;
 	};

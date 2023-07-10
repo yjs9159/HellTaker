@@ -3,6 +3,7 @@
 #include "yaLayer.h"
 
 
+
 namespace ya
 {
 	using namespace ya::enums;
@@ -17,8 +18,12 @@ namespace ya
 		virtual void Update();
 		virtual void Render(HDC hdc);
 
+		void AddGameObject(eLayerType type, GameObject* gameObj)
+		{
+			mLayers[(int)type].AddGameObject(gameObj);
+		}
+
 	private:
-		std::vector<Layer>mLayers;
+		std::vector<Layer> mLayers;
 	};
 }
-

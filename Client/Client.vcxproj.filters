@@ -49,6 +49,12 @@
     <Filter Include="Engine\Component\Transform">
       <UniqueIdentifier>{3a5ba094-ecf1-46e3-86da-cfa65daf6365}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\Player">
+      <UniqueIdentifier>{7acaf49c-1c3b-4868-9f9b-9fab65508880}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\GameObject">
+      <UniqueIdentifier>{aa9a2365-5810-4e69-a6e6-3290aefd84c6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -78,9 +84,6 @@
     <ClInclude Include="yaTime.h">
       <Filter>Engine\Common\Time</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Engine\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="yaEntity.h">
       <Filter>Engine\Entity</Filter>
     </ClInclude>
@@ -98,6 +101,17 @@
     </ClInclude>
     <ClInclude Include="yaSpriteRenderer.h">
       <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="yaScene.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaPlayer.h">
+      <Filter>Contents\GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="yaSceneManager.h" />
+    <ClInclude Include="yaTitleScene.h" />
+    <ClInclude Include="yaObject.h">
+      <Filter>Engine\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -124,9 +138,6 @@
     <ClCompile Include="yaTime.cpp">
       <Filter>Engine\Common\Time</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Engine\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="yaEntity.cpp">
       <Filter>Engine\Entity</Filter>
     </ClCompile>
@@ -145,5 +156,13 @@
     <ClCompile Include="yaSpriteRenderer.cpp">
       <Filter>Engine\Component</Filter>
     </ClCompile>
+    <ClCompile Include="yaScene.cpp">
+      <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaPlayer.cpp">
+      <Filter>Contents\GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="yaSceneManager.cpp" />
+    <ClCompile Include="yaTitleScene.cpp" />
   </ItemGroup>
 </Project>
