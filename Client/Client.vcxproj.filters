@@ -55,6 +55,12 @@
     <Filter Include="Engine\GameObject">
       <UniqueIdentifier>{aa9a2365-5810-4e69-a6e6-3290aefd84c6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Resource">
+      <UniqueIdentifier>{d86a15ef-9e3b-4721-8f23-af7af1a6667b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resource\Image">
+      <UniqueIdentifier>{619fac9e-909e-4111-b7ae-23454c9af514}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -108,11 +114,28 @@
     <ClInclude Include="yaPlayer.h">
       <Filter>Contents\GameObject\Player</Filter>
     </ClInclude>
-    <ClInclude Include="yaSceneManager.h" />
-    <ClInclude Include="yaTitleScene.h" />
     <ClInclude Include="yaObject.h">
       <Filter>Engine\GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="yaTitleScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaSceneManager.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaHomeScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaEndingScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaResources.h">
+      <Filter>Engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="yaResource.h">
+      <Filter>Engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="yaImage.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -162,7 +185,24 @@
     <ClCompile Include="yaPlayer.cpp">
       <Filter>Contents\GameObject\Player</Filter>
     </ClCompile>
-    <ClCompile Include="yaSceneManager.cpp" />
-    <ClCompile Include="yaTitleScene.cpp" />
+    <ClCompile Include="yaTitleScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaSceneManager.cpp">
+      <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaHomeScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaEndingScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaResource.cpp">
+      <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="yaResources.cpp">
+      <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="yaImage.cpp" />
   </ItemGroup>
 </Project>

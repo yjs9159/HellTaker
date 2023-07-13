@@ -1,6 +1,6 @@
 #pragma once
 #include "yaComponent.h"
-
+#include "yaImage.h"
 
 namespace ya
 {
@@ -14,10 +14,10 @@ namespace ya
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-
+		void SetImage(Image* image) { mImage = image; }
 
 	private:
-
+		Image* mImage;
 	};
 }
 

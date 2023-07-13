@@ -1,6 +1,7 @@
 #pragma once
 #include "yaScene.h"
 
+
 namespace ya
 {
 	class SceneManager
@@ -26,6 +27,7 @@ namespace ya
 		static Scene* GetActiveScene() { return mActiveScene; }
 
 	private:
+		// 트리 자료구조
 		static std::map<std::wstring, Scene*> mScenes;
 		static Scene* mActiveScene;
 		// key value 구조
@@ -33,4 +35,3 @@ namespace ya
 		// value는 실제 우리가 써야할 데이터
 	};
 }
-

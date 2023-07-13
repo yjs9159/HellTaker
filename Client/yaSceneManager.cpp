@@ -1,15 +1,18 @@
 #include "yaSceneManager.h"
 #include "yaTitleScene.h"
+#include "yaHomeScene.h"
+#include "yaEndingScene.h"
 
 namespace ya
 {
-	std::map<std::wstring, Scene*> SceneManager::mScenes;
+	std::map<std::wstring, Scene*> SceneManager::mScenes = {};
 	Scene* SceneManager::mActiveScene = nullptr;
-
 
 	void SceneManager::Initialize()
 	{
-		CreateScene<TitleScene>(L"TitleScne");
+		CreateScene<TitleScene>(L"TitleScene");
+		CreateScene<HomeScene>(L"HomeScene");
+		CreateScene<EndingScene>(L"EndingScene");
 
 		LoadScene(L"TitleScene");
 	}
@@ -31,7 +34,7 @@ namespace ya
 
 		if (iter == mScenes.end())
 			return nullptr;
-		
+
 		mActiveScene = iter->second;
 		return iter->second;
 	}
