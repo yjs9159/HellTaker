@@ -1,6 +1,7 @@
 #pragma once
 #include "yaComponent.h"
 
+
 namespace ya
 {
 	using namespace math;
@@ -21,6 +22,5 @@ namespace ya
 	private:
 		Vector2 mPosition;
 	};
-
 }
 

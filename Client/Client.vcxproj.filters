@@ -61,6 +61,9 @@
     <Filter Include="Engine\Resource\Image">
       <UniqueIdentifier>{619fac9e-909e-4111-b7ae-23454c9af514}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\BackGround">
+      <UniqueIdentifier>{aea9b27a-4739-4e73-8974-412a2cf9fe6c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -135,7 +138,12 @@
     <ClInclude Include="yaResource.h">
       <Filter>Engine\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="yaImage.h" />
+    <ClInclude Include="yaBackGround.h">
+      <Filter>Contents\GameObject\BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="yaTexture.h">
+      <Filter>Engine\Resource\Image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -203,6 +211,14 @@
     <ClCompile Include="yaResources.cpp">
       <Filter>Engine\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="yaImage.cpp" />
+    <ClCompile Include="yaBackGround.cpp">
+      <Filter>Contents\GameObject\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="yaMath.cpp">
+      <Filter>Engine\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="yaTexture.cpp">
+      <Filter>Engine\Resource\Image</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

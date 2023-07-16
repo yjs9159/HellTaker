@@ -1,9 +1,11 @@
 #pragma once
 #include "yaComponent.h"
-#include "yaImage.h"
+#include "yaTexture.h"
+
 
 namespace ya
 {
+	using namespace math;
 	class SpriteRenderer : public Component
 	{
 	public:
@@ -14,10 +16,13 @@ namespace ya
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		void SetImage(Image* image) { mImage = image; }
+		void SetImage(Texture* image) { mTexture = image; }
+		void SetScale(Vector2 scale) { mScale = scale; }
 
 	private:
-		Image* mImage;
+		// Gdiplus::Image* mImage;
+		Texture* mTexture;
+		Vector2 mScale;
 	};
 }
 

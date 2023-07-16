@@ -3,27 +3,42 @@
 #include "yaSpriteRenderer.h"
 #include "yaObject.h"
 #include "yaInput.h"
-#include "yaImage.h"
+#include "yaTexture.h"
 #include "yaResources.h"
+#include "yaBackGround.h"
+
 
 namespace ya
 {
 	TitleScene::TitleScene()
 	{
 	}
-
 	TitleScene::~TitleScene()
 	{
 	}
-
 	void TitleScene::Initialize()
 	{
-		Image* image = Resources::Load<Image>(L"TitleBackGroundImage"
-						, L"..\\Resources\\Image\\Fighter.bmp");
+		Texture* image = Resources::Load<Texture>(L"TitleBackGroundImage"
+						, L"..\\Resources\\Image\\Home.png");
 		
+		//Player* player = Object::Instantiate<Player>(eLayerType::Player);
+		//SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
+		//sr->SetImage(image);
+
+		BackGround* bg = Object::Instantiate<BackGround>(eLayerType::BackGround);
+		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
+		bgsr->SetImage(image);
+		bgsr->SetScale(Vector2(0.75f, 0.75f));
+
+		image = Resources::Load<Texture>(L"Smile"
+			, L"..\\Resources\\Image\\Smile.png");
+
 		Player* player = Object::Instantiate<Player>(eLayerType::Player);
 		SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
 		sr->SetImage(image);
+		sr->SetScale(Vector2(0.2f, 0.2f));
+
+		// std::wstring name = player->GetName();
 
 		// mLayers[(int)eLayerType::Player].AddGameObject(player);
 	}

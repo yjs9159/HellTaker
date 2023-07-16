@@ -5,14 +5,11 @@
 #include <set>	// 
 #include <functional>	// 함수포인터
 #include <string>
-//#include <gdiplus.h>
-//
-//#pragma comment(lib, "Gdiplus.lib")
-#pragma comment(lib, "Msimg32.lib")
 
 #include "framework.h"	
 #include "yaMath.h"
 
+#pragma comment(lib, "Msimg32.lib")
 
 namespace ya::enums
 {

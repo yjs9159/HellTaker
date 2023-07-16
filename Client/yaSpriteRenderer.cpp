@@ -6,6 +6,7 @@ namespace ya
 {
 	SpriteRenderer::SpriteRenderer()
 		: Component(eComponentType::Spriterenderer)
+		, mScale(Vector2::One)
 	{
 	}
 	SpriteRenderer::~SpriteRenderer()
@@ -19,11 +20,24 @@ namespace ya
 	}
 	void SpriteRenderer::Render(HDC hdc)
 	{
+		if (mTexture == nullptr)
+			return;
+
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 
-		TransparentBlt(hdc, (int)pos.x, (int)pos.y
-			, mImage->GetWidth(), mImage->GetHeight()
-			, mImage->GetHdc(), 0, 0, mImage->GetWidth(), mImage->GetHeight(), RGB(255, 0, 255));
+		if (mTexture->GetType() == eTextureType::Bmp)
+		{
+			TransparentBlt(hdc, (int)pos.x, (int)pos.y
+				, mTexture->GetWidth() * mScale.x, mTexture->GetHeight() * mScale.y
+				, mTexture->GetHdc(), 0, 0, mTexture->GetWidth(), mTexture->GetHeight(), RGB(255, 0, 255));
+		}
+		else if (mTexture->GetType() == eTextureType::Png)
+		{
+			Gdiplus::Graphics graphics(hdc);
+			graphics.DrawImage(mTexture->GetImage(), (int)pos.x, (int)pos.y
+				, (int)(mTexture->GetWidth() * mScale.x)
+				, (int)(mTexture->GetHeight() * mScale.y));
+		}
 	}
 }
