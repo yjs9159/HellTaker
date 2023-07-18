@@ -64,6 +64,9 @@
     <Filter Include="Contents\GameObject\BackGround">
       <UniqueIdentifier>{aea9b27a-4739-4e73-8974-412a2cf9fe6c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Camera">
+      <UniqueIdentifier>{62ad44b5-5431-4bb6-a891-50824611481f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -144,6 +147,9 @@
     <ClInclude Include="yaTexture.h">
       <Filter>Engine\Resource\Image</Filter>
     </ClInclude>
+    <ClInclude Include="yaCamera.h">
+      <Filter>Engine\Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -219,6 +225,9 @@
     </ClCompile>
     <ClCompile Include="yaTexture.cpp">
       <Filter>Engine\Resource\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="yaCamera.cpp">
+      <Filter>Engine\Camera</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

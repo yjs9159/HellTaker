@@ -5,7 +5,7 @@ namespace ya::math
 {
 	struct Vector2
 	{
-		static Vector2 zero;
+		static Vector2 Zero;
 		static Vector2 One;
 		static Vector2 Right;
 		static Vector2 Up;
@@ -25,6 +25,22 @@ namespace ya::math
 			, y(_y)
 		{
 
+		}
+
+		Vector2 operator-(const Vector2 other)
+		{
+			Vector2 temp;
+			temp.x = x - other.x;
+			temp.y = y - other.y;
+			return temp;
+		}
+
+		Vector2 operator/(const float value)
+		{
+			Vector2 temp;
+			temp.x = x / value;
+			temp.y = y / value;
+			return temp;
 		}
 	};
 }

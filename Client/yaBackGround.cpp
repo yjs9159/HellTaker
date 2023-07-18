@@ -2,7 +2,7 @@
 #include "yaTransform.h"
 #include "yaInput.h"
 #include "yaTime.h"
-
+#include "yaSpriteRenderer.h"
 
 namespace ya
 {
@@ -21,6 +21,12 @@ namespace ya
 	void BackGround::Update()
 	{
 		GameObject::Update();
+
+		SpriteRenderer* sr = GetComponent<SpriteRenderer>();
+		
+		float alpha = sr->GetAlpha();
+		alpha -= 0.2f * Time::Deltatime();
+		sr->SetAlpha(alpha);
 	}
 
 	void BackGround::Render(HDC hdc)

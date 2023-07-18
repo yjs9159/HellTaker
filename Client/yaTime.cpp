@@ -24,6 +24,7 @@ namespace ya
 		float differenceFrequency
 			= static_cast<float>(mCurFrequency.QuadPart - mPrevFrequency.QuadPart);
 		// c++ 스타일의 형변환
+
 		mDeltaTime = differenceFrequency / static_cast<float>(mCpuFrequency.QuadPart);
 		mPrevFrequency.QuadPart = mCurFrequency.QuadPart;
 	}
@@ -40,12 +41,8 @@ namespace ya
 
 			swprintf_s(szFloat, 50, L"fps : %f", fps);
 			int strLen = wcsnlen_s(szFloat, 50);
-
 			TextOut(hdc, 10, 10, szFloat, strLen);
-
 			timeCheck = 0.0f;
 		}
-
-
 	}
 }

@@ -3,6 +3,7 @@
 #include "yaTime.h"
 #include "yaTitleScene.h"
 #include "yaSceneManager.h"
+#include "yaCamera.h"
 
 namespace ya
 {
@@ -51,6 +52,7 @@ namespace ya
 
 		Time::Initialize();
 		Input::Initialize();
+		Camera::Initialize();
 
 		SceneManager::Initialize();
 	}
@@ -65,6 +67,7 @@ namespace ya
 	{
 		Time::Update();
 		Input::Update();
+		Camera::Update();
 
 		SceneManager::Update();
 

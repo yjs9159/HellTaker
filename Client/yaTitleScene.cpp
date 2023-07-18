@@ -4,9 +4,10 @@
 #include "yaObject.h"
 #include "yaInput.h"
 #include "yaTexture.h"
+#include "yaTransform.h"
 #include "yaResources.h"
 #include "yaBackGround.h"
-
+#include "yaCamera.h"
 
 namespace ya
 {
@@ -19,16 +20,15 @@ namespace ya
 	void TitleScene::Initialize()
 	{
 		Texture* image = Resources::Load<Texture>(L"TitleBackGroundImage"
-						, L"..\\Resources\\Image\\Home.png");
-		
-		//Player* player = Object::Instantiate<Player>(eLayerType::Player);
-		//SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
-		//sr->SetImage(image);
+						, L"..\\Resources\\Image\\Home.bmp");
 
 		BackGround* bg = Object::Instantiate<BackGround>(eLayerType::BackGround);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
-		bgsr->SetScale(Vector2(0.75f, 0.75f));
+		bgsr->SetScale(Vector2(0.85f, 0.9f));
+		bgsr->SetAffectCamera(false);
+		// bgsr->SetAlpha(0.2f);
+		bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));
 
 		image = Resources::Load<Texture>(L"Smile"
 			, L"..\\Resources\\Image\\Smile.png");
@@ -38,9 +38,7 @@ namespace ya
 		sr->SetImage(image);
 		sr->SetScale(Vector2(0.2f, 0.2f));
 
-		// std::wstring name = player->GetName();
-
-		// mLayers[(int)eLayerType::Player].AddGameObject(player);
+		Camera::SetTarget(player);
 	}
 
 	void TitleScene::Update()

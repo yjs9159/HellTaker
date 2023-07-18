@@ -2,7 +2,6 @@
 #include "yaComponent.h"
 #include "yaTexture.h"
 
-
 namespace ya
 {
 	using namespace math;
@@ -18,11 +17,15 @@ namespace ya
 
 		void SetImage(Texture* image) { mTexture = image; }
 		void SetScale(Vector2 scale) { mScale = scale; }
+		void SetAffectCamera(bool enable) { mbAffectCamera = enable; }
+		float GetAlpha() { return mAlpha; }
+		void SetAlpha(float alpha) { mAlpha = alpha; }
 
 	private:
-		// Gdiplus::Image* mImage;
+		bool mbAffectCamera;
 		Texture* mTexture;
 		Vector2 mScale;
+		float mAlpha;
 	};
 }
 
