@@ -3,7 +3,8 @@
 #include "yaGameObject.h"
 #include "yaSceneManager.h"
 
-namespace ya :: Object
+
+namespace ya::object
 {
 	template <typename T>
 	static __forceinline T* Instantiate(eLayerType type)
@@ -14,4 +15,6 @@ namespace ya :: Object
 
 		return gameObject;
 	}
+
+
 }

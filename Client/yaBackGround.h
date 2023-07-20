@@ -1,6 +1,7 @@
 #pragma once
 #include "yaGameObject.h"
 
+
 namespace ya
 {
 	class BackGround : public GameObject
@@ -17,4 +18,3 @@ namespace ya
 
 	};
 }
-

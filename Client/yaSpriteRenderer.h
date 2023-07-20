@@ -2,6 +2,7 @@
 #include "yaComponent.h"
 #include "yaTexture.h"
 
+
 namespace ya
 {
 	using namespace math;
@@ -28,4 +29,3 @@ namespace ya
 		float mAlpha;
 	};
 }
-

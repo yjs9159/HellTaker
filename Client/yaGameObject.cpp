@@ -8,12 +8,15 @@ namespace ya
 	{
 		AddComponent<Transform>();
 	}
+
 	GameObject::~GameObject()
 	{
 	}
+
 	void GameObject::Initialize()
 	{
 	}
+
 	void GameObject::Update()
 	{
 		for (Component* comp : mComponents)
@@ -21,6 +24,7 @@ namespace ya
 			comp->Update();
 		}
 	}
+
 	void GameObject::Render(HDC hdc)
 	{
 		for (Component* comp : mComponents)

@@ -8,6 +8,6 @@ namespace ya
 	{
 	}
 	Entity::~Entity()
-	{	
+	{
 	}
 }

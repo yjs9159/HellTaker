@@ -1,11 +1,13 @@
 #pragma once
 #include "yaResource.h"
 
+
 namespace ya
 {
 	enum class eTextureType
 	{
 		Bmp,
+		AlphaBmp,
 		Png,
 		None,
 	};
@@ -33,6 +35,4 @@ namespace ya
 		UINT mWidth;
 		UINT mHeight;
 	};
-
 }
-

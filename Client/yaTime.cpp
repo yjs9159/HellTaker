@@ -3,6 +3,8 @@
 
 namespace ya
 {
+
+
 	LARGE_INTEGER Time::mCpuFrequency = {};
 	LARGE_INTEGER Time::mPrevFrequency = {};
 	LARGE_INTEGER Time::mCurFrequency = {};
@@ -10,10 +12,10 @@ namespace ya
 
 	void Time::Initialize()
 	{
-		// Cpu의 고유 진동수를 가져온다
+		// CPU 고유 진동수를 가져온다.
 		QueryPerformanceFrequency(&mCpuFrequency);
 
-		// 프로그램이 시작 됬을 때 진동수를 가져온다
+		// 프로그램이 시작됬을때 진동수를 가져온다.
 		QueryPerformanceCounter(&mPrevFrequency);
 	}
 
@@ -23,7 +25,6 @@ namespace ya
 
 		float differenceFrequency
 			= static_cast<float>(mCurFrequency.QuadPart - mPrevFrequency.QuadPart);
-		// c++ 스타일의 형변환
 
 		mDeltaTime = differenceFrequency / static_cast<float>(mCpuFrequency.QuadPart);
 		mPrevFrequency.QuadPart = mCurFrequency.QuadPart;
@@ -45,4 +46,5 @@ namespace ya
 			timeCheck = 0.0f;
 		}
 	}
+
 }

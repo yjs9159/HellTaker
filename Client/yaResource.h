@@ -9,7 +9,7 @@ namespace ya
 		Resource();
 		virtual ~Resource();
 
-		virtual HRESULT Load(const std::wstring& path) = 0; 
+		virtual HRESULT Load(const std::wstring& path) = 0;
 		// 순수가상함수 => 이 클래스는 추상클래스가 된다
 		// 자식 클래스는 무조건 이 함수를 override받는다
 

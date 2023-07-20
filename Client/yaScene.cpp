@@ -17,6 +17,11 @@ namespace ya
 	}
 	void Scene::Update()
 	{
+		//for (size_t i = 0; i < mLayers.size(); i++)
+		//{
+
+		//}
+
 		for (Layer& layer : mLayers)
 		{
 			layer.Update();

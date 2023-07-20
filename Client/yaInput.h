@@ -1,24 +1,22 @@
 #pragma once
 #include "CommonInclude.h"
 
-
 namespace ya
 {
 	enum class eKeyCode
 	{
 		Q, W, E, R, T, Y, U, I, O, P,
-		A, S, D, F, G, H, J, K, L, 
+		A, S, D, F, G, H, J, K, L,
 		Z, X, C, V, B, N, M,
-		END,
+		Up, Down, Left, Right,
+		End,
 	};
-
-	// 키의 상태
-	enum class eKeyState // enum은 숫자를 문자로 바꿀수 있는 문법
+	enum class eKeyState
 	{
-		Down,	// 0
-		Up,		// 1
-		Pressed,// 2
-		None,	// 3
+		Down,
+		Up,
+		Pressed,
+		None,
 	};
 
 	class Input
@@ -27,28 +25,27 @@ namespace ya
 		struct Key
 		{
 			eKeyCode code;
-			eKeyState State;
+			eKeyState state;
 			bool bPressed;
 		};
 
-		static void Initialize();
-		static void	Update();
+		static void Initailize();
+		static void Update();
 
 		__forceinline static bool GetKeyDown(eKeyCode code)
 		{
-			return mKeys[(int)code].State == eKeyState::Down; 
+			return mKeys[(int)code].state == eKeyState::Down;
 		}
-		__forceinline inline static bool GetKeyUp(eKeyCode code) 
-		{ 
-			return mKeys[(int)code].State == eKeyState::Up; 
+		__forceinline static bool GetKeyUp(eKeyCode code)
+		{
+			return mKeys[(int)code].state == eKeyState::Up;
 		}
-		__forceinline inline static bool GetKey(eKeyCode code) 
-		{ 
-			return mKeys[(int)code].State == eKeyState::Pressed; 
+		__forceinline static bool GetKey(eKeyCode code)
+		{
+			return mKeys[(int)code].state == eKeyState::Pressed;
 		}
 
 	private:
 		static std::vector<Key> mKeys;
 	};
 }
-

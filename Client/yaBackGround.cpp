@@ -4,16 +4,15 @@
 #include "yaTime.h"
 #include "yaSpriteRenderer.h"
 
+
 namespace ya
 {
 	BackGround::BackGround()
 	{
 	}
-
 	BackGround::~BackGround()
 	{
 	}
-
 	void BackGround::Initialize()
 	{
 	}
@@ -23,9 +22,9 @@ namespace ya
 		GameObject::Update();
 
 		SpriteRenderer* sr = GetComponent<SpriteRenderer>();
-		
+
 		float alpha = sr->GetAlpha();
-		alpha -= 0.2f * Time::Deltatime();
+		alpha -= 0.2f * Time::DeltaTime();
 		sr->SetAlpha(alpha);
 	}
 
@@ -33,5 +32,4 @@ namespace ya
 	{
 		GameObject::Render(hdc);
 	}
-
 }

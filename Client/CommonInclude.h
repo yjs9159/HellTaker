@@ -27,6 +27,8 @@ namespace ya::enums
 	{
 		Transform,
 		Spriterenderer,
+		Animation,
+		Animator,
 		End,
 	};
 }

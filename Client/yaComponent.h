@@ -4,7 +4,6 @@
 namespace ya
 {
 	using namespace enums;
-	
 	class Component : public Entity
 	{
 	public:
@@ -22,6 +21,4 @@ namespace ya
 		const eComponentType mType;
 		class GameObject* mOwner;
 	};
-
 }
-

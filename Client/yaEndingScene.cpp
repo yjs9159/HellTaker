@@ -10,19 +10,16 @@ namespace ya
 	EndingScene::EndingScene()
 	{
 	}
-
 	EndingScene::~EndingScene()
 	{
 	}
-
 	void EndingScene::Initialize()
 	{
-		Player* player = Object::Instantiate<Player>(eLayerType::Player);
+		Player* player = object::Instantiate<Player>(eLayerType::Player);
 		player->AddComponent<SpriteRenderer>();
 
-		// mLayers[(int)eLayerType::Player].AddGameObject(player);
+		//mLayers[(int)eLayerType::Player].AddGameObject(player);
 	}
-
 	void EndingScene::Update()
 	{
 		Scene::Update();
@@ -31,21 +28,17 @@ namespace ya
 		{
 			SceneManager::LoadScene(L"HomeScene");
 		}
-
 		if (Input::GetKeyDown(eKeyCode::T))
 		{
 			SceneManager::LoadScene(L"TitleScene");
 		}
-
 		if (Input::GetKeyDown(eKeyCode::E))
 		{
 			SceneManager::LoadScene(L"EndingScene");
 		}
 	}
-
 	void EndingScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
 	}
-
 }

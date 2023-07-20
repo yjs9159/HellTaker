@@ -27,8 +27,9 @@ namespace ya
 		mHwnd = hwnd;
 		mHdc = GetDC(mHwnd);
 
-		mWidth = 1600;
-		mHeight = 900;
+		mWidth = 1280;
+		mHeight = 720;
+
 
 		RECT rect = { 0, 0, mWidth, mHeight };
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
@@ -47,14 +48,16 @@ namespace ya
 		mBackHdc = CreateCompatibleDC(mHdc);
 
 		// 새로 생성한 비트맵과 DC를 서로 연결
-		HBITMAP defaultBitmap = (HBITMAP)SelectObject(mBackHdc, mBackBuffer);
+		HBITMAP defaultBitmap
+			= (HBITMAP)SelectObject(mBackHdc, mBackBuffer);
 		DeleteObject(defaultBitmap);
 
 		Time::Initialize();
-		Input::Initialize();
+		Input::Initailize();
 		Camera::Initialize();
 
 		SceneManager::Initialize();
+
 	}
 
 	void Application::Run()
@@ -71,36 +74,21 @@ namespace ya
 
 		SceneManager::Update();
 
-		//if (Input::GetKey(eKeyCode::W))
-		//{
-		//	mPlayerPos.y -= 300.0f * Time::Deltatime();
-		//}
-		//if (Input::GetKey(eKeyCode::A))
-		//{
-		//	mPlayerPos.x -= 300.0f * Time::Deltatime();
-		//}
-		//if (Input::GetKey(eKeyCode::S))
-		//{
-		//	mPlayerPos.y += 300.0f * Time::Deltatime();
-		//}
-		//if (Input::GetKey(eKeyCode::D))
-		//{
-		//	mPlayerPos.x += 300.0f * Time::Deltatime();
-		//}
 	}
 
 	void Application::Render()
 	{
+		HBRUSH brush = CreateSolidBrush(RGB(125, 125, 125));
+		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHdc, brush);
 		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);
+		SelectObject(mBackHdc, oldBrush);
+		DeleteObject(brush);
+
 		Time::Render(mBackHdc);
 
 		SceneManager::Render(mBackHdc);
 
-		//Rectangle(mHdc, 100, 100, 200, 200);
-		//Ellipse(mBackHdc, 100 + mPlayerPos.x, 100 + mPlayerPos.y
-		//	, 200 + mPlayerPos.x, 200 + mPlayerPos.y);
-
-		BitBlt(mHdc, 0, 0, mWidth, mHeight	
+		BitBlt(mHdc, 0, 0, mWidth, mHeight
 			, mBackHdc, 0, 0, SRCCOPY);
 	}
 }

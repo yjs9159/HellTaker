@@ -15,7 +15,7 @@ namespace ya
 
 			return dynamic_cast<T*>(iter->second);
 		}
-		// 리소스 로드하는 함수
+
 		template <typename T>
 		static T* Load(const std::wstring& name, const std::wstring& path)
 		{
@@ -39,7 +39,14 @@ namespace ya
 			return resource;
 		}
 
+		template <typename T>
+		static void Insert(const std::wstring& name, T* resource)
+		{
+			resource->SetName(name);
+			mResources.insert(std::make_pair(name, resource));
+		}
+
 	private:
-		static std::map<std::wstring /*키*/, Resource* /*실제 데이터*/> mResources;
+		static std::map<std::wstring, Resource*> mResources;
 	};
 }

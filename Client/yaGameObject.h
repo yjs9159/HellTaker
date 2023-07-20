@@ -21,7 +21,7 @@ namespace ya
 			for (Component* c : mComponents)
 			{
 				// 자식타입과 T타입이 일치한다면
-				// 주소를 반환 그렇지 않다면 nullptr 반환
+				// 주소를 반환 그렇지않다면 nullptr 반환
 				comp = dynamic_cast<T*>(c);
 				if (comp != nullptr)
 					return comp;
@@ -44,4 +44,3 @@ namespace ya
 		std::vector<Component*> mComponents;
 	};
 }
-

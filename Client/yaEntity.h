@@ -16,4 +16,3 @@ namespace ya
 		std::wstring mName;
 	};
 }
-

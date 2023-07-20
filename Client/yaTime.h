@@ -1,6 +1,7 @@
 #pragma once
 #include "CommonInclude.h"
 
+
 namespace ya
 {
 	class Time
@@ -9,8 +10,8 @@ namespace ya
 		static void Initialize();
 		static void Update();
 		static void Render(HDC hdc);
-		
-		__forceinline static float Deltatime() { return mDeltaTime; };
+
+		__forceinline static float DeltaTime() { return mDeltaTime; }
 
 	private:
 		static LARGE_INTEGER mCpuFrequency;

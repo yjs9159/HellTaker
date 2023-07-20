@@ -40,9 +40,6 @@
     <Filter Include="Engine\Common\Time">
       <UniqueIdentifier>{1ef17518-7513-47d4-930a-d91e0bf6605b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Layer">
-      <UniqueIdentifier>{cd38af9f-d01e-4176-bf75-8cb96b3cc81c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Component">
       <UniqueIdentifier>{9e0967c6-8bcb-4082-950e-e3de48bd2ea9}</UniqueIdentifier>
     </Filter>
@@ -66,6 +63,15 @@
     </Filter>
     <Filter Include="Engine\Camera">
       <UniqueIdentifier>{62ad44b5-5431-4bb6-a891-50824611481f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Animator">
+      <UniqueIdentifier>{1a97fba1-b7e8-467c-8f31-15b1a86cf5e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resource\Animation">
+      <UniqueIdentifier>{509b9b39-45c7-403c-ac6b-6083b73359d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Layer">
+      <UniqueIdentifier>{6fe24f98-385d-459a-a693-7eb4e197442a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -98,9 +104,6 @@
     </ClInclude>
     <ClInclude Include="yaEntity.h">
       <Filter>Engine\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="yaLayer.h">
-      <Filter>Layer</Filter>
     </ClInclude>
     <ClInclude Include="yaGameObject.h">
       <Filter>Engine</Filter>
@@ -150,6 +153,15 @@
     <ClInclude Include="yaCamera.h">
       <Filter>Engine\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="yaAnimator.h">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="yaAnimation.h">
+      <Filter>Engine\Resource\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="yaLayer.h">
+      <Filter>Engine\Layer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -177,9 +189,6 @@
     </ClCompile>
     <ClCompile Include="yaEntity.cpp">
       <Filter>Engine\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="yaLayer.cpp">
-      <Filter>Layer</Filter>
     </ClCompile>
     <ClCompile Include="yaGameObject.cpp">
       <Filter>Engine</Filter>
@@ -228,6 +237,15 @@
     </ClCompile>
     <ClCompile Include="yaCamera.cpp">
       <Filter>Engine\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="yaAnimator.cpp">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="yaAnimation.cpp">
+      <Filter>Engine\Resource\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="yaLayer.cpp">
+      <Filter>Engine\Layer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

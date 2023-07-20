@@ -27,8 +27,7 @@ namespace ya
 		UINT mHeight;
 
 		HDC mBackHdc;
-		HBITMAP mBackBuffer;	
-
+		HBITMAP mBackBuffer;
 	};
 }
 

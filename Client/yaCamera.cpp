@@ -13,6 +13,7 @@ namespace ya
 	Vector2 Camera::mDistance = Vector2::Zero;
 	GameObject* Camera::mTarget = nullptr;
 
+
 	void Camera::Initialize()
 	{
 		mResolution.x = application.GetWidth();
@@ -22,22 +23,23 @@ namespace ya
 
 	void Camera::Update()
 	{
-		//if (Input::GetKey(eKeyCode::W))
-		//{
-		//	mLookPosition.y -= 300.0f * Time::Deltatime();
-		//}
-		//if (Input::GetKey(eKeyCode::A))
-		//{
-		//	mLookPosition.x -= 300.0f * Time::Deltatime();
-		//}
-		//if (Input::GetKey(eKeyCode::S))
-		//{
-		//	mLookPosition.y += 300.0f * Time::Deltatime();
-		//}
-		//if (Input::GetKey(eKeyCode::D))
-		//{
-		//	mLookPosition.x += 300.0f * Time::Deltatime();
-		//}
+		if (Input::GetKey(eKeyCode::Up))
+		{
+			mLookPosition.y -= 300.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(eKeyCode::Left))
+		{
+			mLookPosition.x -= 300.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(eKeyCode::Down))
+		{
+			mLookPosition.y += 300.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(eKeyCode::Right))
+		{
+			mLookPosition.x += 300.0f * Time::DeltaTime();
+		}
+
 
 		if (mTarget)
 		{
@@ -46,6 +48,5 @@ namespace ya
 		}
 
 		mDistance = mLookPosition - (mResolution / 2.0f);
-
 	}
 }

@@ -43,5 +43,7 @@ namespace ya::math
 			return temp;
 		}
 	};
+
+
 }
 

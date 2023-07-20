@@ -1,6 +1,7 @@
 #pragma once
 #include "yaGameObject.h"
 
+
 namespace ya
 {
 	using namespace math;
@@ -14,6 +15,7 @@ namespace ya
 
 		static GameObject* GetTarget() { return mTarget; }
 		static void SetTarget(GameObject* target) { mTarget = target; }
+
 
 	private:
 		static Vector2 mResolution;		// 화면 해상도
