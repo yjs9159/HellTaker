@@ -60,8 +60,9 @@ namespace ya
 			alpha = 0;
 		func.SourceConstantAlpha = alpha; // 0 ~ 255
 
-		AlphaBlend(hdc, (int)pos.x - (mSpriteSheet[mIndex].size.x / 2.0f)
-			, (int)pos.y - (mSpriteSheet[mIndex].size.y / 2.0f)
+
+		AlphaBlend(hdc, (int)pos.x - (mSpriteSheet[mIndex].size.x / 2.0f) + mSpriteSheet[mIndex].offset.x
+			, (int)pos.y - (mSpriteSheet[mIndex].size.y / 2.0f) + mSpriteSheet[mIndex].offset.y
 			, mSpriteSheet[mIndex].size.x
 			, mSpriteSheet[mIndex].size.y
 			, mTexture->GetHdc()

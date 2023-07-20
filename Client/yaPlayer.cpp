@@ -2,6 +2,7 @@
 #include "yaTransform.h"
 #include "yaInput.h"
 #include "yaTime.h"
+#include "yaAnimator.h"
 
 namespace ya
 {
@@ -20,6 +21,8 @@ namespace ya
 
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
+		Animator* anim = GetComponent<Animator>();
+
 
 		if (Input::GetKey(eKeyCode::W))
 		{
@@ -27,6 +30,8 @@ namespace ya
 		}
 		if (Input::GetKey(eKeyCode::A))
 		{
+			
+
 			pos.x -= 300.0f * Time::DeltaTime();
 		}
 		if (Input::GetKey(eKeyCode::S))
@@ -35,8 +40,12 @@ namespace ya
 		}
 		if (Input::GetKey(eKeyCode::D))
 		{
+			anim->PlayAnimation(L"FarmerRight", true);
+
 			pos.x += 300.0f * Time::DeltaTime();
 		}
+
+
 		tr->SetPosition(pos);
 
 	}

@@ -5,6 +5,7 @@
 #include <set>	// 
 #include <functional>	// 함수포인터
 #include <string>
+#include <filesystem>
 
 #include "framework.h"	
 #include "yaMath.h"
