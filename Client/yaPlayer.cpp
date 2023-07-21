@@ -40,7 +40,7 @@ namespace ya
 		}
 		if (Input::GetKey(eKeyCode::D))
 		{
-			anim->PlayAnimation(L"FarmerRight", true);
+			anim->PlayAnimation(L"player_run", true);
 
 			pos.x += 300.0f * Time::DeltaTime();
 		}

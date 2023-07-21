@@ -24,24 +24,6 @@ namespace ya
 	}
 	void HomeScene::Initialize()
 	{
-		/*Texture* image = Resources::Load<Texture>(L"Smile"
-			, L"..\\Resources\\Image\\Sprite\\HeroSprite\\farmer-girl-base.bmp");
-
-		Player* player = object::Instantiate<Player>(eLayerType::Player);
-		Transform* tr = player->GetComponent<Transform>();
-
-		tr->SetPosition(Vector2(400.0f, 400.0f));
-		
-		image = Resources::Load<Texture>(L"Smile"
-			, L"..\\Resources\\Image\\Sprite\\HeroSprite\\Player");
-
-		Animator* at = player->AddComponent<Animator>();
-		at->CreateAnimation(L"FarmerIdle", image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 6);
-		at->CreateAnimation(L"FarmerRight", image, Vector2(0.0f, 32.0f), Vector2(16.0f, 32.0f), 6);
-		at->CreateAnimationFolder(L"Test", L"..\\Resources\\Image\\Sprite\\HeroSprite\\Player");
-		at->PlayAnimation(L"Test", true);
-		at->SetAffectedCamera(true);*/
-
 		Texture* image = Resources::Load<Texture>(L"Hero"
 			, L"..\\Resources\\Image\\Sprite\\HeroSprite\\Hero.bmp");
 
@@ -57,8 +39,9 @@ namespace ya
 		Animator* at = player->AddComponent<Animator>();
 		at->CreateAnimation(L"HeroIdle", image, Vector2(0.0f, 0.0f), Vector2(100.0f, 194.4f), 12);
 		at->CreateAnimation(L"HeroRight", image, Vector2(0.0f, 388.8f), Vector2(100.0f, 194.4f), 6);
-		at->CreateAnimationFolder(L"Test", L"..\\Resources\\Texture\\player\\player_idle");
-		at->PlayAnimation(L"Test", true);
+		at->CreateAnimationFolder(L"player_idle", L"..\\Resources\\Texture\\player\\player_idle");
+		at->CreateAnimationFolder(L"player_run", L"..\\Resources\\Texture\\player\\player_run");
+		at->PlayAnimation(L"player_idle", true);
 		at->SetAffectedCamera(true);
 
 		// Camera::SetTarget(player);
