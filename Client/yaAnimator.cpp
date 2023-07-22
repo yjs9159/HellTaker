@@ -35,7 +35,7 @@ namespace ya
 			mActiveAnimation->Render(hdc);
 	}
 
-	void Animator::CreateAnimation(const std::wstring& name
+	Animation* Animator::CreateAnimation(const std::wstring& name
 		, Texture* texture
 		, Vector2 leftTop, Vector2 size
 		, UINT spriteLength, Vector2 offset
@@ -44,7 +44,7 @@ namespace ya
 		Animation* animation = nullptr;
 		animation = Resources::Find<Animation>(name);
 		if (animation != nullptr)
-			return;
+			return animation;
 
 		animation = new Animation();
 		animation->Create(name, texture
