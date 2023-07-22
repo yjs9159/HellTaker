@@ -1,6 +1,9 @@
 #include "yaTexture.h"
 #include "yaApplication.h"
 #include "yaResources.h"
+#include "yaGameObject.h"
+#include "yaTransform.h"
+#include "yaCamera.h"
 
 extern ya::Application application;
 
@@ -13,6 +16,7 @@ namespace ya
 		, mWidth(0)
 		, mHeight(0)
 		, mType(eTextureType::None)
+		, mbAffectCamera(true)
 	{
 	}
 	Texture::~Texture()
@@ -43,6 +47,7 @@ namespace ya
 		DeleteObject(defaultBitmap);
 
 		image->SetName(name);
+		image->SetType(eTextureType::AlphaBmp);
 		Resources::Insert<Texture>(name, image);
 
 		return image;
@@ -90,6 +95,78 @@ namespace ya
 		}
 
 		return S_OK;
+	}
+
+	void Texture::Render(HDC hdc
+		, Vector2 pos
+		, Vector2 size
+		, Vector2 leftTop
+		, Vector2 rightBottom
+		, Vector2 offset
+		, Vector2 scale
+		, float alpha)
+	{
+		if (mBitmap == nullptr && mImage == nullptr)
+			return;
+
+		if (mbAffectCamera)
+			pos = Camera::CalculatePosition(pos);
+
+		if (mType == eTextureType::Bmp)
+		{
+			TransparentBlt(hdc, (int)pos.x - (size.x * scale.x / 2.0f) + offset.x
+				, (int)pos.y - (size.y * scale.y / 2.0f) + offset.y
+				, size.x * scale.x
+				, size.y * scale.y
+				, mHdc
+				, leftTop.x, leftTop.y, rightBottom.x, rightBottom.y
+				, RGB(255, 0, 255));
+		}
+		else if (mType == eTextureType::AlphaBmp)
+		{
+			BLENDFUNCTION func = {};
+			func.BlendOp = AC_SRC_OVER;
+			func.BlendFlags = 0;
+			func.AlphaFormat = AC_SRC_ALPHA;
+			// 0.0f ~ 1.0f -> 0 ~ 255
+			int alpha = 1.0f;
+			alpha = (int)(alpha * 255.0f);
+
+			if (alpha <= 0)
+				alpha = 0;
+			func.SourceConstantAlpha = alpha; // 0 ~ 255
+
+			AlphaBlend(hdc, (int)pos.x - (size.x * scale.x / 2.0f) + offset.x
+				, (int)pos.y - (size.y * scale.y / 2.0f) + offset.y
+				, size.x * scale.x
+				, size.y * scale.y
+				, mHdc
+				, leftTop.x, leftTop.y
+				, rightBottom.x, rightBottom.y
+				, func);
+		}
+		else if (mType == eTextureType::Png)
+		{
+			//// 내가 원하는 픽셀을 투명화 시킬떄
+			Gdiplus::ImageAttributes imageAtt = {};
+			//// 투명화 시킬 픽셀 색 범위
+			imageAtt.SetColorKey(Gdiplus::Color(100, 100, 100)
+				, Gdiplus::Color(255, 255, 255));
+
+			Gdiplus::Graphics graphics(hdc);
+			graphics.DrawImage(mImage
+				, Gdiplus::Rect
+				(
+					(int)(pos.x - (size.x * scale.x / 2.0f) + offset.x)
+					, (int)(pos.y - (size.y * scale.y / 2.0f) + offset.y)
+					, (int)(size.x * scale.x)
+					, (int)(size.y * scale.y)
+				)
+				, leftTop.x, leftTop.y
+				, rightBottom.x, rightBottom.y
+				, Gdiplus::UnitPixel
+				, nullptr);
+		}
 	}
 }
 

@@ -23,9 +23,9 @@ namespace ya
 
 		SpriteRenderer* sr = GetComponent<SpriteRenderer>();
 
-		float alpha = sr->GetAlpha();
-		alpha -= 0.2f * Time::DeltaTime();
-		sr->SetAlpha(alpha);
+		//float alpha = sr->GetAlpha();
+		//alpha -= 0.2f * Time::DeltaTime();
+		//sr->SetAlpha(alpha);
 	}
 
 	void BackGround::Render(HDC hdc)

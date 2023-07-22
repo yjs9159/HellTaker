@@ -30,7 +30,7 @@ namespace ya
 		Player* player = object::Instantiate<Player>(eLayerType::Player);
 		Transform* tr = player->GetComponent<Transform>();
 
-		tr->SetPosition(Vector2(400.0f, 400.0f));
+		tr->SetPosition(Vector2(640.0f, 360.0f));
 
 		image = Resources::Load<Texture>(L"Smile"
 			, L"..\\Resources\\Image\\Sprite\\Player");
@@ -39,13 +39,14 @@ namespace ya
 		Animator* at = player->AddComponent<Animator>();
 		at->CreateAnimation(L"HeroIdle", image, Vector2(0.0f, 0.0f), Vector2(100.0f, 194.4f), 12);
 		at->CreateAnimation(L"HeroRight", image, Vector2(0.0f, 388.8f), Vector2(100.0f, 194.4f), 6);
-		at->CreateAnimationFolder(L"player_idle", L"..\\Resources\\Texture\\player\\player_idle");
-		at->CreateAnimationFolder(L"player_run", L"..\\Resources\\Texture\\player\\player_run");
+		at->CreateAnimationFolder(L"player_idle", L"..\\Resources\\Texture\\player\\player_idle", Vector2(0.0f, 100.0f));
+		at->CreateAnimationFolder(L"player_run", L"..\\Resources\\Texture\\player\\player_run", Vector2(0.0f, 100.0f));
 		at->PlayAnimation(L"player_idle", true);
 		at->SetAffectedCamera(true);
 
-		// Camera::SetTarget(player);
+		at->SetScale(Vector2(2.0f, 2.0f));
 	}
+
 	void HomeScene::Update()
 	{
 		Scene::Update();
