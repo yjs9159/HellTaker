@@ -22,6 +22,7 @@ namespace ya
 	HomeScene::~HomeScene()
 	{
 	}
+
 	void HomeScene::Initialize()
 	{
 		Texture* image = Resources::Load<Texture>(L"Hero"

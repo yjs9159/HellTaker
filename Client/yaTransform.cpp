@@ -6,6 +6,7 @@ namespace ya
 {
 	Transform::Transform()
 		: Component(eComponentType::Transform)
+		, mRotation(0.0f)
 	{
 	}
 	Transform::~Transform()
@@ -20,5 +21,8 @@ namespace ya
 	}
 	void Transform::Render(HDC hdc)
 	{
+		//Rectangle(hdc
+		//	, mPosition.x, mPosition.y
+		//	, mPosition.x + 10, mPosition.y + 10);
 	}
 }

@@ -19,16 +19,28 @@ namespace ya
 	}
 	void TitleScene::Initialize()
 	{
-		Texture* image = Resources::Load<Texture>(L"TitleBackGroundImage"
-			, L"..\\Resources\\Image\\Sprite\\Map\\chapterBG0001.bmp");
+		//Texture* image = Resources::Load<Texture>(L"TitleBackGroundImage"
+		//	, L"..\\Resources\\Image\\Sprite\\Map\\chapterBG0001.bmp");
+
+
+		//BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
+		//SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
+		//bgsr->SetImage(image);
+		//bgsr->SetScale(Vector2(0.7f, 0.7f));
+		//bgsr->SetAffectCamera(false);
+		////bgsr->SetAlpha(0.2f);
+		//bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));
+
+		// 이미지 회전
+		Texture* image = Resources::Load<Texture>(L"TitleBackGroundImgae"
+			, L"..\\Resources\\Texture\\Bulidings\\coop.png");
 
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
+		bg->GetComponent<Transform>()->SetPosition(Vector2(600.0f, 320.0f));
+		bg->GetComponent<Transform>()->SetRotation(45);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
-		bgsr->SetScale(Vector2(0.7f, 0.7f));
 		bgsr->SetAffectCamera(false);
-		//bgsr->SetAlpha(0.2f);
-		bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));
 
 
 	}

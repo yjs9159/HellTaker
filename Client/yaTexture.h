@@ -30,7 +30,8 @@ namespace ya
 			, Vector2 rightBottom
 			, Vector2 offset = Vector2::Zero
 			, Vector2 scale = Vector2::One
-			, float alpha = 1.0f);
+			, float alpha = 1.0f
+			, float rotate = 0.0f);
 
 		UINT GetWidth() { return mWidth; }
 		void SetWidth(UINT width) { mWidth = width; }
@@ -53,5 +54,6 @@ namespace ya
 		UINT mWidth;
 		UINT mHeight;
 		bool mbAffectCamera;
+		//float mRotate;
 	};
 }
