@@ -42,7 +42,7 @@ namespace ya
 		, float duration)
 	{
 		Animation* animation = nullptr;
-		animation = Resources::Find<Animation>(name);
+		animation = FindAnimation(name);
 		if (animation != nullptr)
 			return animation;
 
