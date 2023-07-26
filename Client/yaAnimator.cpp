@@ -54,6 +54,8 @@ namespace ya
 
 		mAnimations.insert(std::make_pair(name, animation));
 		Resources::Insert<Animation>(name, animation);
+		
+		return animation;
 	}
 
 	void Animator::CreateAnimationFolder(const std::wstring& name
@@ -85,7 +87,9 @@ namespace ya
 		std::wstring spriteSheetName = name + L"SpriteSheet";
 		Texture* spriteSheet
 			= Texture::Create(spriteSheetName, width * fileCout, height);
-		spriteSheet->SetType(eTextureType::Bmp);
+		
+		
+		spriteSheet->SetType(eTextureType::AlphaBmp);
 
 		int idx = 0;
 		for (Texture* image : images)

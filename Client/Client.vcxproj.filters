@@ -73,6 +73,12 @@
     <Filter Include="Engine\Layer">
       <UniqueIdentifier>{6fe24f98-385d-459a-a693-7eb4e197442a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Collision">
+      <UniqueIdentifier>{1d7ebea5-b25c-419a-80e6-4f8244558e51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Collider">
+      <UniqueIdentifier>{b751290f-4e44-4201-b9a5-3a6b2fd2171e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -162,6 +168,12 @@
     <ClInclude Include="yaLayer.h">
       <Filter>Engine\Layer</Filter>
     </ClInclude>
+    <ClInclude Include="yaCollisionManager.h">
+      <Filter>Engine\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="yaCollider.h">
+      <Filter>Engine\Component\Collider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -246,6 +258,12 @@
     </ClCompile>
     <ClCompile Include="yaLayer.cpp">
       <Filter>Engine\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="yaCollisionManager.cpp">
+      <Filter>Engine\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="yaCollider.cpp">
+      <Filter>Engine\Component\Collider</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -7,6 +7,15 @@ namespace ya
 	class Player : public GameObject
 	{
 	public:
+		enum class eState
+		{
+			Idle,
+			Move,
+			Attack,
+			Death,
+			End,
+		};
+
 		Player();
 		virtual ~Player();
 
@@ -14,7 +23,13 @@ namespace ya
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-	private:
+		void Idle();
+		void Move();
+		void Attack();
+		void Dead();
+		void Success();
 
+	private:
+		eState mState;
 	};
 }

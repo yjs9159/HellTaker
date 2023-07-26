@@ -4,9 +4,11 @@
 #include "yaTime.h"
 #include "yaAnimator.h"
 
+
 namespace ya
 {
 	Player::Player()
+		: mState(eState::Idle)
 	{
 	}
 	Player::~Player()
@@ -19,39 +21,136 @@ namespace ya
 	{
 		GameObject::Update();
 
-		Transform* tr = GetComponent<Transform>();
-		Vector2 pos = tr->GetPosition();
-		Animator* anim = GetComponent<Animator>();
-
-
-		if (Input::GetKey(eKeyCode::W))
+		switch (mState)
 		{
-			pos.y -= 300.0f * Time::DeltaTime();
+		case ya::Player::eState::Idle:
+			Idle();
+			break;
+		case ya::Player::eState::Move:
+			Move();
+			break;
+		case ya::Player::eState::Attack:
+			Attack();
+			break;
+		case ya::Player::eState::Death:
+			Dead();
+			break;
+		case ya::Player::eState::End:
+			break;
+		default:
+			break;
 		}
-		if (Input::GetKey(eKeyCode::A))
-		{
-			
-
-			pos.x -= 300.0f * Time::DeltaTime();
-		}
-		if (Input::GetKey(eKeyCode::S))
-		{
-			pos.y += 300.0f * Time::DeltaTime();
-		}
-		if (Input::GetKey(eKeyCode::D))
-		{
-			anim->PlayAnimation(L"player_run", true);
-
-			pos.x += 300.0f * Time::DeltaTime();
-		}
-
-
-		tr->SetPosition(pos);
-
 	}
 
 	void Player::Render(HDC hdc)
 	{
 		GameObject::Render(hdc);
 	}
+
+	void Player::Idle()
+	{
+		Animator* animator = GetComponent<Animator>();
+
+		if (Input::GetKey(eKeyCode::W))
+		{
+			animator->PlayAnimation(L"PlayerUpMove", true);
+			mState = eState::Move;
+		}
+		if (Input::GetKey(eKeyCode::A))
+		{
+			animator->PlayAnimation(L"player_leftrun", true);
+			mState = eState::Move;
+		}
+		if (Input::GetKey(eKeyCode::S))
+		{
+			animator->PlayAnimation(L"PlayerDownMove", true);
+			mState = eState::Move;
+		}
+		if (Input::GetKey(eKeyCode::D))
+		{
+			animator->PlayAnimation(L"player_rightrun", true);
+			mState = eState::Move;
+		}
+
+		if (Input::GetKey(eKeyCode::MouseLeft))
+		{
+			animator->PlayAnimation(L"player_rightattack", false);
+			mState = eState::Attack;
+		}
+
+		if (Input::GetKey(eKeyCode::F))
+		{
+			animator->PlayAnimation(L"player_rightsuccess", false);
+			mState = eState::Attack;
+		}
+	}
+
+	void Player::Move()
+	{
+		Transform* tr = GetComponent<Transform>();
+		Vector2 pos = tr->GetPosition();
+		if (Input::GetKey(eKeyCode::W))
+		{
+			pos.y -= 100.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(eKeyCode::A))
+		{
+			pos.x -= 100.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(eKeyCode::S))
+		{
+			pos.y += 100.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(eKeyCode::D))
+		{
+			pos.x += 100.0f * Time::DeltaTime();
+		}
+		tr->SetPosition(pos);
+
+		if (Input::GetKeyUp(eKeyCode::W)
+			|| Input::GetKeyUp(eKeyCode::S)
+			|| Input::GetKeyUp(eKeyCode::D))
+		{
+			Animator* animator = GetComponent<Animator>();
+			animator->PlayAnimation(L"player_rightidle", true);
+			mState = eState::Idle;
+		}
+			
+		if (Input::GetKeyUp(eKeyCode::A))
+		{
+			Animator* animator = GetComponent<Animator>();
+				animator->PlayAnimation(L"player_leftidle", true);
+				mState = eState::Idle;
+		}
+	}
+
+
+	void Player::Attack()
+	{
+		// 농작물에 물을 주는 로직이 추가가된다.(나한텐 attack)
+		Animator* animator = GetComponent<Animator>();
+
+		if (animator->IsActiveAnimationComplete())
+		{
+			animator->PlayAnimation(L"player_rightidle", true);
+			mState = eState::Idle;
+		}
+	}
+
+	void Player::Success()
+	{
+
+		Animator* animator = GetComponent<Animator>();
+
+		if (animator->IsActiveAnimationComplete())
+		{
+			animator->PlayAnimation(L"player_rightidle", true);
+			mState = eState::Idle;
+		}
+	}
+
+	void Player::Dead()
+	{
+	}
+
 }

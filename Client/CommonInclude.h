@@ -6,6 +6,7 @@
 #include <functional>	// 함수포인터
 #include <string>
 #include <filesystem>
+#include <bitset>
 
 #include "framework.h"	
 #include "yaMath.h"
@@ -30,6 +31,7 @@ namespace ya::enums
 		Spriterenderer,
 		Animation,
 		Animator,
+		Collider,
 		End,
 	};
 }
