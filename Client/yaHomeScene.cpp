@@ -14,6 +14,8 @@
 #include "yaCamera.h"
 #include "yaAnimator.h"
 #include "yaCollider.h"
+#include "yaMonster.h"
+#include "yaCollisionManager.h"
 
 namespace ya
 {
@@ -68,6 +70,17 @@ namespace ya
 		Collider* col = player->AddComponent<Collider>();
 		col->SetSize(Vector2(100.0f, 140.0f));
 		col->SetOffset(Vector2(0.0f, 50.0f));
+
+
+		Monster* monster = object::Instantiate<Monster>(eLayerType::Monster);
+		col = monster->AddComponent<Collider>();
+		col->SetSize(Vector2(100.0f, 100.0f));
+		//col->SetOffset(Vector2(10.0f, 10.0f));
+		tr = monster->GetComponent<Transform>();
+
+		tr->SetPosition(Vector2(940.0f, 360.0f));
+
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 	}
 
 	void HomeScene::Update()

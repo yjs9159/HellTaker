@@ -4,6 +4,7 @@
 #include "yaTitleScene.h"
 #include "yaSceneManager.h"
 #include "yaCamera.h"
+#include "yaCollisionManager.h"
 
 namespace ya
 {
@@ -55,7 +56,8 @@ namespace ya
 		Time::Initialize();
 		Input::Initailize();
 		Camera::Initialize();
-
+		
+		CollisionManager::Initialize();
 		SceneManager::Initialize();
 
 	}
@@ -72,6 +74,7 @@ namespace ya
 		Input::Update();
 		Camera::Update();
 
+		CollisionManager::Update();
 		SceneManager::Update();
 
 	}
@@ -86,6 +89,7 @@ namespace ya
 
 		Time::Render(mBackHdc);
 
+		CollisionManager::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 
 		BitBlt(mHdc, 0, 0, mWidth, mHeight
