@@ -16,6 +16,7 @@
 #include "yaCollider.h"
 #include "yaMonster.h"
 #include "yaCollisionManager.h"
+#include "yaRigidBody.h"
 
 namespace ya
 {
@@ -55,21 +56,21 @@ namespace ya
 		Animator* at = player->AddComponent<Animator>();
 		//at->CreateAnimation(L"HeroIdle", image, Vector2(0.0f, 0.0f), Vector2(100.0f, 194.4f), 12);
 		//at->CreateAnimation(L"HeroRight", image, Vector2(0.0f, 388.8f), Vector2(100.0f, 194.4f), 6);
-		at->CreateAnimationFolder(L"player_rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 100.0f));
-		at->CreateAnimationFolder(L"player_leftidle", L"..\\Resources\\Texture\\player\\player_idle\\left_idle", Vector2(0.0f, 100.0f));
-		at->CreateAnimationFolder(L"player_rightrun", L"..\\Resources\\Texture\\player\\player_run\\right_run", Vector2(0.0f, 100.0f));
-		at->CreateAnimationFolder(L"player_leftrun", L"..\\Resources\\Texture\\player\\player_run\\left_run", Vector2(0.0f, 100.0f));
-		at->CreateAnimationFolder(L"player_rightattack", L"..\\Resources\\Texture\\player\\player_attack\\right_attack", Vector2(0.0f, 100.0f));
-		at->CreateAnimationFolder(L"player_leftattack", L"..\\Resources\\Texture\\player\\player_attack\\left_attack", Vector2(0.0f, 100.0f));
-		at->CreateAnimationFolder(L"player_rightsuccess", L"..\\Resources\\Texture\\player\\player_success\\right_success", Vector2(0.0f, 100.0f));
-		at->CreateAnimationFolder(L"player_leftsuccess", L"..\\Resources\\Texture\\player\\player_success\\left_success", Vector2(0.0f, 100.0f));
+		at->CreateAnimationFolder(L"player_rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"player_leftidle", L"..\\Resources\\Texture\\player\\player_idle\\left_idle", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"player_rightrun", L"..\\Resources\\Texture\\player\\player_run\\right_run", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"player_leftrun", L"..\\Resources\\Texture\\player\\player_run\\left_run", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"player_rightattack", L"..\\Resources\\Texture\\player\\player_attack\\right_attack", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"player_leftattack", L"..\\Resources\\Texture\\player\\player_attack\\left_attack", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"player_rightsuccess", L"..\\Resources\\Texture\\player\\player_success\\right_success", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"player_leftsuccess", L"..\\Resources\\Texture\\player\\player_success\\left_success", Vector2(0.0f, 0.0f));
 		
 		at->PlayAnimation(L"player_rightidle", true);
 		at->SetAffectedCamera(true);
 
 		Collider* col = player->AddComponent<Collider>();
-		col->SetSize(Vector2(100.0f, 140.0f));
-		col->SetOffset(Vector2(0.0f, 50.0f));
+		col->SetSize(Vector2(100.0f, 110.0f));
+		col->SetOffset(Vector2(0.0f, -30.0f));
 
 
 		Monster* monster = object::Instantiate<Monster>(eLayerType::Monster);
@@ -79,6 +80,8 @@ namespace ya
 		tr = monster->GetComponent<Transform>();
 
 		tr->SetPosition(Vector2(940.0f, 360.0f));
+
+		player->AddComponent<Rigidbody>();
 
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 	}

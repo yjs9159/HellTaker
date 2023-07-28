@@ -32,6 +32,7 @@ namespace ya::enums
 		Animation,
 		Animator,
 		Collider,
+		Rigidbody,
 		End,
 	};
 }

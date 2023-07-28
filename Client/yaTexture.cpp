@@ -186,9 +186,9 @@ namespace ya
 				, nullptr);
 		}
 
-		Rectangle(hdc
-			, pos.x, pos.y
-			, pos.x + 10, pos.y + 10);
+ 		//Rectangle(hdc
+			//, pos.x, pos.y
+			//, pos.x + 10, pos.y + 10);
 	}
 }
 

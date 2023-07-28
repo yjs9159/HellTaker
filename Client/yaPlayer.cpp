@@ -3,6 +3,7 @@
 #include "yaInput.h"
 #include "yaTime.h"
 #include "yaAnimator.h"
+#include "yaRigidBody.h"
 
 
 namespace ya
@@ -96,24 +97,28 @@ namespace ya
 	void Player::Move()
 	{
 		Transform* tr = GetComponent<Transform>();
-		Vector2 pos = tr->GetPosition();
+		// Vector2 pos = tr->GetPosition();
 		if (Input::GetKey(eKeyCode::W))
 		{
-			pos.y -= 100.0f * Time::DeltaTime();
+			GetComponent<Rigidbody>()->AddForce(Vector2(0.0f, -200.0f));
+			//pos.y -= 100.0f * Time::DeltaTime();
 		}
 		if (Input::GetKey(eKeyCode::A))
 		{
-			pos.x -= 100.0f * Time::DeltaTime();
+			//pos.x -= 100.0f * Time::DeltaTime();
+			GetComponent<Rigidbody>()->AddForce(Vector2(-200.0f, 0.0f));
 		}
 		if (Input::GetKey(eKeyCode::S))
 		{
-			pos.y += 100.0f * Time::DeltaTime();
+			//pos.y += 100.0f * Time::DeltaTime();
+			GetComponent<Rigidbody>()->AddForce(Vector2(0.0f, 200.0f));
 		}
 		if (Input::GetKey(eKeyCode::D))
 		{
-			pos.x += 100.0f * Time::DeltaTime();
+			//pos.x += 100.0f * Time::DeltaTime();
+			GetComponent<Rigidbody>()->AddForce(Vector2(200.0f, 0.0f));
 		}
-		tr->SetPosition(pos);
+		// tr->SetPosition(pos);
 
 		if (Input::GetKeyUp(eKeyCode::W)
 			|| Input::GetKeyUp(eKeyCode::S)

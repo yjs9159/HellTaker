@@ -175,6 +175,7 @@
       <Filter>Engine\Component\Collider</Filter>
     </ClInclude>
     <ClInclude Include="yaMonster.h" />
+    <ClInclude Include="yaRigidBody.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -267,5 +268,6 @@
       <Filter>Engine\Component\Collider</Filter>
     </ClCompile>
     <ClCompile Include="yaMonster.cpp" />
+    <ClCompile Include="yaRigidBody.cpp" />
   </ItemGroup>
 </Project>
