@@ -60,10 +60,16 @@ namespace ya
 	{
 		Animator* animator = GetComponent<Animator>();
 
-		if (Input::GetKey(eKeyCode::W))
+		if (Input::GetKeyDown(eKeyCode::W))
 		{
-			animator->PlayAnimation(L"PlayerUpMove", true);
-			mState = eState::Move;
+			Rigidbody* rb = GetComponent<Rigidbody>();
+			Vector2 velocity = rb->GetVelocity();
+			velocity.y = -500.0f;
+			rb->SetVelocity(velocity);
+			rb->SetGround(false);
+
+			//GetComponent<Rigidbody>()->AddForce(Vector2(0.0f, -200.0f));
+			//pos.y -= 100.0f * Time::DeltaTime();
 		}
 		if (Input::GetKey(eKeyCode::A))
 		{
@@ -92,15 +98,23 @@ namespace ya
 			animator->PlayAnimation(L"player_rightsuccess", false);
 			mState = eState::Attack;
 		}
+
+
 	}
 
 	void Player::Move()
 	{
 		Transform* tr = GetComponent<Transform>();
 		// Vector2 pos = tr->GetPosition();
-		if (Input::GetKey(eKeyCode::W))
+		if (Input::GetKeyDown(eKeyCode::W))
 		{
-			GetComponent<Rigidbody>()->AddForce(Vector2(0.0f, -200.0f));
+			//Rigidbody* rb = GetComponent<Rigidbody>();
+			//Vector2 velocity = rb->GetVelocity();
+			//velocity.y -= 500.0f;
+			//rb->SetVelocity(velocity);
+			//rb->SetGround(false);
+
+			//GetComponent<Rigidbody>()->AddForce(Vector2(0.0f, -200.0f));
 			//pos.y -= 100.0f * Time::DeltaTime();
 		}
 		if (Input::GetKey(eKeyCode::A))

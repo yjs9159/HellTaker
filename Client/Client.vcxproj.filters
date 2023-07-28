@@ -79,6 +79,12 @@
     <Filter Include="Engine\Component\Collider">
       <UniqueIdentifier>{b751290f-4e44-4201-b9a5-3a6b2fd2171e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Component\Rigidbody">
+      <UniqueIdentifier>{d9c286bd-6e8a-47ef-945a-5da5db28138f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Floor">
+      <UniqueIdentifier>{77bf6a87-cdf3-4784-927b-eca81e1753ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -174,8 +180,15 @@
     <ClInclude Include="yaCollider.h">
       <Filter>Engine\Component\Collider</Filter>
     </ClInclude>
-    <ClInclude Include="yaMonster.h" />
-    <ClInclude Include="yaRigidBody.h" />
+    <ClInclude Include="yaMonster.h">
+      <Filter>Contents\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="yaRigidBody.h">
+      <Filter>Engine\Component\Rigidbody</Filter>
+    </ClInclude>
+    <ClInclude Include="yaFloor.h">
+      <Filter>Contents\GameObject\Floor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -267,7 +280,14 @@
     <ClCompile Include="yaCollider.cpp">
       <Filter>Engine\Component\Collider</Filter>
     </ClCompile>
-    <ClCompile Include="yaMonster.cpp" />
-    <ClCompile Include="yaRigidBody.cpp" />
+    <ClCompile Include="yaMonster.cpp">
+      <Filter>Contents\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="yaRigidBody.cpp">
+      <Filter>Engine\Component\Rigidbody</Filter>
+    </ClCompile>
+    <ClCompile Include="yaFloor.cpp">
+      <Filter>Contents\GameObject\Floor</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

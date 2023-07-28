@@ -18,6 +18,7 @@ namespace ya::enums
 	enum class eLayerType
 	{
 		BackGround,
+		Floor,
 		Player,
 		Monster,
 		Effect,
