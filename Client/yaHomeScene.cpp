@@ -30,7 +30,7 @@ namespace ya
 
 	void HomeScene::Initialize()
 	{
-		Texture* image1 = Resources::Load<Texture>(L"TitleBackGroundImage"
+		Texture* image1 = Resources::Load<Texture>(L"chapter1"
 			, L"..\\Resources\\Image\\Sprite\\Map\\chapterBG0001.bmp");
 
 
@@ -75,12 +75,18 @@ namespace ya
 
 
 		Monster* monster = object::Instantiate<Monster>(eLayerType::Monster);
+		
+		Animator* Skeleton_at = monster->AddComponent<Animator>();
+		Skeleton_at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, 0.0f));
+		Skeleton_at->CreateAnimationFolder(L"Monster_LeftIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\left_idle", Vector2(0.0f, 0.0f));
+		Skeleton_at->PlayAnimation(L"Monster_RightIdle", true);
+
 		col = monster->AddComponent<Collider>();
 		col->SetSize(Vector2(100.0f, 100.0f));
 		//col->SetOffset(Vector2(10.0f, 10.0f));
 		tr = monster->GetComponent<Transform>();
 
-		tr->SetPosition(Vector2(940.0f, 360.0f));
+		tr->SetPosition(Vector2(240.0f, 360.0f));
 
 		player->AddComponent<Rigidbody>();
 

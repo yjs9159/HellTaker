@@ -89,7 +89,6 @@ namespace ya
 			}
 		}
 
-
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 		pos = pos + mVelocity * Time::DeltaTime();

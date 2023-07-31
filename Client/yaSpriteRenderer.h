@@ -5,6 +5,9 @@
 
 namespace ya
 {
+#define TILE_WIDTH 16
+#define TILE_HEIGHT 16
+
 	using namespace math;
 	class SpriteRenderer : public Component
 	{
@@ -21,9 +24,15 @@ namespace ya
 		void SetAffectCamera(bool enable) { mbAffectCamera = enable; }
 		float GetAlpha() { return mAlpha; }
 		void SetAlpha(float alpha) { mAlpha = alpha; }
+		void SetTile(int x, int y) { mbTile = true; mTileIndexX = x; mTileIndexY = y; }
 
 	private:
 		bool mbAffectCamera;
+
+		bool mbTile;
+		int mTileIndexX;
+		int mTileIndexY;
+
 		Texture* mTexture;
 		Vector2 mScale;
 		float mAlpha;

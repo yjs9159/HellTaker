@@ -11,6 +11,7 @@ namespace ya
 		, mbAffectCamera(true)
 		, mTexture(nullptr)
 		, mAlpha(1.0f)
+		, mbTile(false)
 	{
 	}
 	SpriteRenderer::~SpriteRenderer()
@@ -22,6 +23,7 @@ namespace ya
 	void SpriteRenderer::Update()
 	{
 	}
+
 	void SpriteRenderer::Render(HDC hdc)
 	{
 		if (mTexture == nullptr)
@@ -38,5 +40,24 @@ namespace ya
 			, mScale
 			, mAlpha
 			, tr->GetRotation());
+
+		//// 24 (16) // 25 (16)
+		//if (mbTile)
+		//{
+		//	GameObject* gameObj = GetOwner();
+		//	Transform* tr = gameObj->GetComponent<Transform>();
+		//	mTexture->Render(hdc
+		//		, tr->GetPosition()
+		//		, Vector2(TILE_WIDTH, TILE_HEIGHT)
+		//		// cut area
+		//		, Vector2(mTileIndexX * TILE_WIDTH
+		//			, mTileIndexY * TILE_HEIGHT)
+		//		, Vector2(mTileIndexX * TILE_WIDTH + TILE_WIDTH
+		//			, mTileIndexX * TILE_WIDTH + TILE_HEIGHT)
+		//		, Vector2::Zero
+		//		, mScale
+		//		, mAlpha
+		//		, tr->GetRotation());
+		//}
 	}
 }
