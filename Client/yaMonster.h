@@ -7,15 +7,32 @@ namespace ya
 	class Monster : public GameObject
 	{
 	public:
+		enum class eState
+		{
+			Idle,
+			Move,
+			Death,
+			End,
+		};
+
 		Monster();
 		~Monster();
 
-		virtual void Initialize();
-		virtual void Update();
-		virtual void Render(HDC hdc);
+		virtual void Initialize() override;
+		virtual void Update() override;
+		virtual void Render(HDC hdc) override;
 
-		virtual void OnCollisionEnter(class Collider* other);
-		virtual void OnCollisionStay(class Collider* other);
-		virtual void OnCollisionExit(class Collider* other);
+		void Idle();
+		void Hit();
+		void Move();
+		void Dead();
+
+		//virtual void OnCollisionEnter(class Collider* other);
+		//virtual void OnCollisionStay(class Collider* other);
+		//virtual void OnCollisionExit(class Collider* other);
+
+	private:
+		eState mState;
+		int Hp;
 	};
 }

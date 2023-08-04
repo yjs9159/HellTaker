@@ -22,6 +22,7 @@ namespace ya::enums
 		Floor,
 		Player,
 		Monster,
+		Rock,
 		Effect,
 		UI,
 		End,

@@ -3,7 +3,7 @@
 #include "yaGameObject.h"
 #include "yaSceneManager.h"
 #include "yaTransform.h"
-
+#include "yaTransform.h"
 
 namespace ya::object
 {

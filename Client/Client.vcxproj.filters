@@ -85,6 +85,9 @@
     <Filter Include="Contents\GameObject\Floor">
       <UniqueIdentifier>{77bf6a87-cdf3-4784-927b-eca81e1753ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\Obstacle">
+      <UniqueIdentifier>{08bb0b54-01fe-4544-be96-0887b82681ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -189,6 +192,9 @@
     <ClInclude Include="yaFloor.h">
       <Filter>Contents\GameObject\Floor</Filter>
     </ClInclude>
+    <ClInclude Include="yaRock.h">
+      <Filter>Contents\GameObject\Obstacle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -288,6 +294,9 @@
     </ClCompile>
     <ClCompile Include="yaFloor.cpp">
       <Filter>Contents\GameObject\Floor</Filter>
+    </ClCompile>
+    <ClCompile Include="yaRock.cpp">
+      <Filter>Contents\GameObject\Obstacle</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

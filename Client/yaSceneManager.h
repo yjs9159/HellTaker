@@ -35,22 +35,3 @@ namespace ya
 		// value 角力 快府啊 结具且 单捞磐
 	};
 }
-
-
-//class Parent
-//{
-//public:
-//	void Test();
-//};
-//
-//class Child : public Parent
-//{
-//public:
-//	void Howlring()
-//	{
-//
-//	}
-//};
-//
-//Parent* pp = new Child();
-//pp->Test();

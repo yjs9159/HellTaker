@@ -30,13 +30,13 @@ namespace ya
 
 	void HomeScene::Initialize()
 	{
-		Texture* image1 = Resources::Load<Texture>(L"chapter1"
+		Texture* chapter1 = Resources::Load<Texture>(L"chapter1"
 			, L"..\\Resources\\Image\\Sprite\\Map\\chapterBG0001.bmp");
 
 
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
-		bgsr->SetImage(image1);
+		bgsr->SetImage(chapter1);
 		bgsr->SetScale(Vector2(0.7f, 0.7f));
 		bgsr->SetAffectCamera(false);
 		//bgsr->SetAlpha(0.2f);
@@ -79,6 +79,7 @@ namespace ya
 		Animator* Skeleton_at = monster->AddComponent<Animator>();
 		Skeleton_at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, 0.0f));
 		Skeleton_at->CreateAnimationFolder(L"Monster_LeftIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\left_idle", Vector2(0.0f, 0.0f));
+		Skeleton_at->CreateAnimationFolder(L"Monster_RightMove", L"..\\Resources\\Texture\\obstacle\\undead_move\\Right_Move", Vector2(0.0f, 0.0f));
 		Skeleton_at->PlayAnimation(L"Monster_RightIdle", true);
 
 		col = monster->AddComponent<Collider>();
@@ -86,21 +87,9 @@ namespace ya
 		//col->SetOffset(Vector2(10.0f, 10.0f));
 		tr = monster->GetComponent<Transform>();
 
-		tr->SetPosition(Vector2(240.0f, 360.0f));
-
-		player->AddComponent<Rigidbody>();
-
-		Floor* floor = object::Instantiate<Floor>(eLayerType::Floor);
-		col = floor->AddComponent<Collider>();
-		col->SetSize(Vector2(1500.0f, 100.0f));
-		//col->SetOffset(Vector2(10.0f, 10.0f));
-		tr = floor->GetComponent<Transform>();
-
-
-		tr->SetPosition(Vector2(600.0f, 600.0f));
+		tr->SetPosition(Vector2(940.0f, 360.0f));
 
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Floor, true);
 	}
 
 	void HomeScene::Update()

@@ -32,14 +32,15 @@ namespace ya
 		//bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));
 
 		// 이미지 회전
-		Texture* image = Resources::Load<Texture>(L"TitleBackGroundImgae"
-			, L"..\\Resources\\Texture\\Bulidings\\coop.png");
+		Texture* image = Resources::Load<Texture>(L"introTexture"
+			, L"..\\Resources\\Texture\\introTexture.bmp");
 
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
-		bg->GetComponent<Transform>()->SetPosition(Vector2(600.0f, 320.0f));
-		bg->GetComponent<Transform>()->SetRotation(45);
+		bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));
+		// bg->GetComponent<Transform>()->SetRotation(45);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
+		bgsr->SetScale(Vector2(0.67f, 0.67f));
 		bgsr->SetAffectCamera(false);
 
 
