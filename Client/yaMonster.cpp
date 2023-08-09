@@ -9,6 +9,7 @@ namespace ya
 	ya::Monster::Monster()
 		: Hp(10000)
 		, mState(eState::Idle)
+		//, mDeathTime(1.0f)
 	{
 	}
 	Monster::~Monster()
@@ -37,6 +38,17 @@ namespace ya
 		default:
 			break;
 		}
+
+		//Transform* tr = GetComponent<Transform>();
+		//Vector2 pos = tr->GetPosition();
+		//pos.x += 300.0f * Time::DeltaTime();
+		//tr->SetPosition(pos);
+
+		//mDeathTime -= Time::DeltaTime();
+		//if (mDeathTime < 0.0f)
+		//{
+		//	Destroy(this);
+		//}
 	}
 	void Monster::Render(HDC hdc)
 	{
@@ -91,17 +103,18 @@ namespace ya
 		}
 		
 
-		if (animator->IsActiveAnimationComplete())
-		{
-			animator->PlayAnimation(L"Monster_RightIdle", true);
-			mState = eState::Idle;
-		}
+		//if (animator->IsActiveAnimationComplete())
+		//{
+		//	animator->PlayAnimation(L"Monster_RightIdle", true);
+		//	mState = eState::Idle;
+		//}
 	}
 
 	void Monster::Dead()
 	{
 		/*Transform* tr = GetComponent<Transform>();
-		Vector2 pos = tr->GetPosition();
+		Vector2 pos = tr->
+		ition();
 		pos.x -= 100.0f * Time::DeltaTime();
 
 		Animator* at = GetComponent<Animator>();

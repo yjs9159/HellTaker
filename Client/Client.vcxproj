@@ -150,6 +150,14 @@
     <ClInclude Include="yaApplication.h" />
     <ClInclude Include="yaBackGround.h" />
     <ClInclude Include="yaCamera.h" />
+    <ClInclude Include="yaChapter1.h" />
+    <ClInclude Include="yaChapter2.h" />
+    <ClInclude Include="yaChapter3.h" />
+    <ClInclude Include="yaChapter4.h" />
+    <ClInclude Include="yaChapter5.h" />
+    <ClInclude Include="yaChapter6.h" />
+    <ClInclude Include="yaChapter7.h" />
+    <ClInclude Include="yaChapter8.h" />
     <ClInclude Include="yaCollider.h" />
     <ClInclude Include="yaCollisionManager.h" />
     <ClInclude Include="yaComponent.h" />
@@ -172,8 +180,10 @@
     <ClInclude Include="yaScene.h" />
     <ClInclude Include="yaSceneManager.h" />
     <ClInclude Include="yaSpriteRenderer.h" />
+    <ClInclude Include="yaTile.h" />
     <ClInclude Include="yaTime.h" />
     <ClInclude Include="yaTitleScene.h" />
+    <ClInclude Include="yaToolScene.h" />
     <ClInclude Include="yaTransform.h" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +193,14 @@
     <ClCompile Include="yaApplication.cpp" />
     <ClCompile Include="yaBackGround.cpp" />
     <ClCompile Include="yaCamera.cpp" />
+    <ClCompile Include="yaChapter1.cpp" />
+    <ClCompile Include="yaChapter2.cpp" />
+    <ClCompile Include="yaChapter3.cpp" />
+    <ClCompile Include="yaChapter4.cpp" />
+    <ClCompile Include="yaChapter5.cpp" />
+    <ClCompile Include="yaChapter6.cpp" />
+    <ClCompile Include="yaChapter7.cpp" />
+    <ClCompile Include="yaChapter8.cpp" />
     <ClCompile Include="yaCollider.cpp" />
     <ClCompile Include="yaCollisionManager.cpp" />
     <ClCompile Include="yaComponent.cpp" />
@@ -204,8 +222,10 @@
     <ClCompile Include="yaScene.cpp" />
     <ClCompile Include="yaSceneManager.cpp" />
     <ClCompile Include="yaSpriteRenderer.cpp" />
+    <ClCompile Include="yaTile.cpp" />
     <ClCompile Include="yaTime.cpp" />
     <ClCompile Include="yaTitleScene.cpp" />
+    <ClCompile Include="yaToolScene.cpp" />
     <ClCompile Include="yaTransform.cpp" />
   </ItemGroup>
   <ItemGroup>

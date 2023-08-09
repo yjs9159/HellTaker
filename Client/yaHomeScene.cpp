@@ -22,6 +22,7 @@
 namespace ya
 {
 	HomeScene::HomeScene()
+		:LeftTop(Vector2(313.0f + 72/2, 84.0f + 68/2))
 	{
 	}
 	HomeScene::~HomeScene()
@@ -30,13 +31,13 @@ namespace ya
 
 	void HomeScene::Initialize()
 	{
-		Texture* chapter1 = Resources::Load<Texture>(L"chapter1"
+		Texture* HomeScene = Resources::Load<Texture>(L"HomeScene"
 			, L"..\\Resources\\Image\\Sprite\\Map\\chapterBG0001.bmp");
 
 
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
-		bgsr->SetImage(chapter1);
+		bgsr->SetImage(HomeScene);
 		bgsr->SetScale(Vector2(0.7f, 0.7f));
 		bgsr->SetAffectCamera(false);
 		//bgsr->SetAlpha(0.2f);
@@ -48,7 +49,9 @@ namespace ya
 		Player* player = object::Instantiate<Player>(eLayerType::Player);
 		Transform* tr = player->GetComponent<Transform>();
 
-		tr->SetPosition(Vector2(640.0f, 360.0f));
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // 캐릭터 시작위치
+
+		//tr->SetPosition(Vector2(640.0f, 360.0f));
 
 		image = Resources::Load<Texture>(L"PlayerImage"
 			, L"..\\Resources\\Image\\Sprite\\Player");
@@ -108,9 +111,57 @@ namespace ya
 		{
 			SceneManager::LoadScene(L"EndingScene");
 		}
+		if (Input::GetKeyDown(eKeyCode::Chapter1))
+		{
+			SceneManager::LoadScene(L"Chapter1");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter2))
+		{
+			SceneManager::LoadScene(L"Chapter2");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter3))
+		{
+			SceneManager::LoadScene(L"Chapter3");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter4))
+		{
+			SceneManager::LoadScene(L"Chapter4");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter5))
+		{
+			SceneManager::LoadScene(L"Chapter5");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter6))
+		{
+			SceneManager::LoadScene(L"Chapter6");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter7))
+		{
+			SceneManager::LoadScene(L"Chapter7");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter8))
+		{
+			SceneManager::LoadScene(L"Chapter8");
+		}
 	}
 	void HomeScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
+
+		int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
+		for (size_t y = 0; y < maxRow; y++)
+		{
+			MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 + 16, NULL);      //      라인(선) 시작
+			LineTo(hdc, 1280, TILE_HEIGHT * y * 4 + 16);        //          라인(선) 끝
+		}
+
+		int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;
+		for (size_t x = 0; x < maxColumn; x++)
+		{
+			MoveToEx(hdc, TILE_WIDTH * x * 4 + 25, 0, NULL);      //      라인(선) 시작
+			LineTo(hdc, TILE_WIDTH * x * 4 + 25, 720);        //          라인(선) 끝
+		}
+
+		
 	}
 }

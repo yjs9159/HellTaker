@@ -1,6 +1,8 @@
 #pragma once
 #include "yaGameObject.h"
-
+#include "yaTransform.h"
+#include "yaTime.h"
+#include "yaObject.h"
 
 namespace ya
 {
@@ -32,6 +34,7 @@ namespace ya
 		//virtual void OnCollisionExit(class Collider* other);
 
 	private:
+		float mDeathTime;
 		eState mState;
 		int Hp;
 	};

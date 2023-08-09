@@ -5,11 +5,13 @@ namespace ya
 {
 	enum class eKeyCode
 	{
+		Chapter1, Chapter2, Chapter3, Chapter4, Chapter5, Chapter6, Chapter7, Chapter8,
 		Q, W, E, R, T, Y, U, I, O, P,
 		A, S, D, F, G, H, J, K, L,
 		Z, X, C, V, B, N, M,
 		Up, Down, Left, Right,
 		MouseLeft, MouseRight, MouseWheel,
+		Space,
 		End,
 	};
 	enum class eKeyState
@@ -45,8 +47,13 @@ namespace ya
 		{
 			return mKeys[(int)code].state == eKeyState::Pressed;
 		}
+		__forceinline static math::Vector2 GetMousePosition()
+		{
+			return mMousePosition;
+		}
 
 	private:
 		static std::vector<Key> mKeys;
+		static math::Vector2 mMousePosition;
 	};
 }

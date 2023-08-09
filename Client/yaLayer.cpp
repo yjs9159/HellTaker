@@ -18,6 +18,9 @@ namespace ya
 	{
 		for (GameObject* obj : mGameObjects)
 		{
+			if (obj->GetState() == GameObject::eState::Pause)
+				continue;
+
 			obj->Update();
 		}
 	}
@@ -26,7 +29,25 @@ namespace ya
 	{
 		for (GameObject* obj : mGameObjects)
 		{
+			if (obj->GetState() == GameObject::eState::Pause)
+				continue;
+
 			obj->Render(hdc);
+		}
+
+		//std::vector<GameObject*> deathObjs = {};
+		for (std::vector<GameObject*>::iterator iter = mGameObjects.begin()
+			; iter != mGameObjects.end()
+			; )
+		{
+			if ((*iter)->GetState() == GameObject::eState::Dead)
+			{
+				iter = mGameObjects.erase(iter);
+			}
+			else
+			{
+				iter++;
+			}
 		}
 	}
 }

@@ -3,7 +3,6 @@
 #include "yaGameObject.h"
 #include "yaSceneManager.h"
 #include "yaTransform.h"
-#include "yaTransform.h"
 
 namespace ya::object
 {
@@ -30,5 +29,8 @@ namespace ya::object
 		return gameObject;
 	}
 
-
+	//static __forceinline void Destroy(GameObject* gameObject)
+	//{
+	//	gameObject->Death();
+	//}
 }

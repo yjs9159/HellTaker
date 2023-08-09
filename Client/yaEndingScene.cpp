@@ -31,7 +31,7 @@ namespace ya
 
 	void EndingScene::Initialize()
 	{
-		Texture* chapter2 = Resources::Load<Texture>(L"chapter2"
+		Texture* chapter2 = Resources::Load<Texture>(L"EndingScene"
 			, L"..\\Resources\\Image\\Sprite\\Map\\chapterBG0002.bmp");
 
 
@@ -108,6 +108,38 @@ namespace ya
 		if (Input::GetKeyDown(eKeyCode::E))
 		{
 			SceneManager::LoadScene(L"EndingScene");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter1))
+		{
+			SceneManager::LoadScene(L"Chapter1");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter2))
+		{
+			SceneManager::LoadScene(L"Chapter2");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter3))
+		{
+			SceneManager::LoadScene(L"Chapter3");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter4))
+		{
+			SceneManager::LoadScene(L"Chapter4");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter5))
+		{
+			SceneManager::LoadScene(L"Chapter5");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter6))
+		{
+			SceneManager::LoadScene(L"Chapter6");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter7))
+		{
+			SceneManager::LoadScene(L"Chapter7");
+		}
+		if (Input::GetKeyDown(eKeyCode::Chapter8))
+		{
+			SceneManager::LoadScene(L"Chapter8");
 		}
 	}
 	void EndingScene::Render(HDC hdc)

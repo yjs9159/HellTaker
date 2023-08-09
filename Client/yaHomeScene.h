@@ -14,6 +14,6 @@ namespace ya
 		virtual void Render(HDC hdc) override;
 
 	private:
-
+		math::Vector2 LeftTop;
 	};
 }

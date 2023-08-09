@@ -35,5 +35,6 @@ namespace ya
 
 	private:
 		eState mState;
+		// Vector2 mPos;
 	};
 }
