@@ -60,16 +60,16 @@ namespace ya
 		Animator* at = player->AddComponent<Animator>();
 		//at->CreateAnimation(L"HeroIdle", image, Vector2(0.0f, 0.0f), Vector2(100.0f, 194.4f), 12);
 		//at->CreateAnimation(L"HeroRight", image, Vector2(0.0f, 388.8f), Vector2(100.0f, 194.4f), 6);
-		at->CreateAnimationFolder(L"player_rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 0.0f));
-		at->CreateAnimationFolder(L"player_leftidle", L"..\\Resources\\Texture\\player\\player_idle\\left_idle", Vector2(0.0f, 0.0f));
-		at->CreateAnimationFolder(L"player_rightrun", L"..\\Resources\\Texture\\player\\player_run\\right_run", Vector2(0.0f, 0.0f));
-		at->CreateAnimationFolder(L"player_leftrun", L"..\\Resources\\Texture\\player\\player_run\\left_run", Vector2(0.0f, 0.0f));
-		at->CreateAnimationFolder(L"player_rightattack", L"..\\Resources\\Texture\\player\\player_attack\\right_attack", Vector2(0.0f, 0.0f));
-		at->CreateAnimationFolder(L"player_leftattack", L"..\\Resources\\Texture\\player\\player_attack\\left_attack", Vector2(0.0f, 0.0f));
-		at->CreateAnimationFolder(L"player_rightsuccess", L"..\\Resources\\Texture\\player\\player_success\\right_success", Vector2(0.0f, 0.0f));
-		at->CreateAnimationFolder(L"player_leftsuccess", L"..\\Resources\\Texture\\player\\player_success\\left_success", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"Player_Rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"Player_Leftidle", L"..\\Resources\\Texture\\player\\player_idle\\left_idle", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"Player_Rightrun", L"..\\Resources\\Texture\\player\\player_run\\right_run", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"Player_Leftrun", L"..\\Resources\\Texture\\player\\player_run\\left_run", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"Player_Rightattack", L"..\\Resources\\Texture\\player\\player_attack\\right_attack", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"Player_Leftattack", L"..\\Resources\\Texture\\player\\player_attack\\left_attack", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"Player_Rightsuccess", L"..\\Resources\\Texture\\player\\player_success\\right_success", Vector2(0.0f, 0.0f));
+		at->CreateAnimationFolder(L"Player_Leftsuccess", L"..\\Resources\\Texture\\player\\player_success\\left_success", Vector2(0.0f, 0.0f));
 		
-		at->PlayAnimation(L"player_rightidle", true);
+		at->PlayAnimation(L"Player_Rightidle", true);
 		at->SetAffectedCamera(true);
 
 		Collider* col = player->AddComponent<Collider>();
