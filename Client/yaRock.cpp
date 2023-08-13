@@ -6,9 +6,8 @@
 
 namespace ya
 {
-	ya::Rock::Rock()
-		: Hp(2)
-		, mState(eState::Idle)
+	Rock::Rock()
+		: mState(eState::Idle)
 	{
 	}
 	Rock::~Rock()
@@ -23,13 +22,13 @@ namespace ya
 
 		switch (mState)
 		{
-		case ya::Rock::eState::Idle:
+		case Rock::eState::Idle:
 			Idle();
 			break;
-		case ya::Rock::eState::Move:
-			Move();
+		case Rock::eState::Hit:
+			Hit();
 			break;
-		case ya::Rock::eState::End:
+		case Rock::eState::End:
 			break;
 		default:
 			break;
@@ -43,20 +42,9 @@ namespace ya
 	void Rock::Idle()
 	{
 		
-		if (Hp > 0)
-		{
-			//Move();
-			mState = eState::Move;
-		}
 	}
 
 	void Rock::Hit()
-	{
-		Hp -= 1;
-		
-	}
-
-	void Rock::Move()
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
@@ -67,7 +55,7 @@ namespace ya
 			pos.x += 500.0f * Time::DeltaTime();
 			//Animator* animator = GetComponent<Animator>();
 			//animator->PlayAnimation(L"Monster_RightMove", false);
-			mState = eState::Move;
+			mState = eState::Hit;
 		}
 		tr->SetPosition(pos);
 
@@ -77,13 +65,5 @@ namespace ya
 			//animator->PlayAnimation(L"Monster_RightIdle", true);
 			mState = eState::Idle;
 		}
-		
-
-		//if (animator->IsActiveAnimationComplete())
-		//{
-		//	//animator->PlayAnimation(L"Monster_RightIdle", true);
-		//	mState = eState::Idle;
-		//}
 	}
-
 }

@@ -167,6 +167,7 @@
     <ClInclude Include="yaGameObject.h" />
     <ClInclude Include="yaHomeScene.h" />
     <ClInclude Include="yaMonster.h" />
+    <ClInclude Include="yaNpc.h" />
     <ClInclude Include="yaRigidBody.h" />
     <ClInclude Include="yaRock.h" />
     <ClInclude Include="yaTexture.h" />
@@ -210,6 +211,7 @@
     <ClCompile Include="yaGameObject.cpp" />
     <ClCompile Include="yaHomeScene.cpp" />
     <ClCompile Include="yaMonster.cpp" />
+    <ClCompile Include="yaNpc.cpp" />
     <ClCompile Include="yaRigidBody.cpp" />
     <ClCompile Include="yaRock.cpp" />
     <ClCompile Include="yaTexture.cpp" />

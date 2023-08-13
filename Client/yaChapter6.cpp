@@ -11,6 +11,7 @@
 #include "yaAnimator.h"
 #include "yaCollider.h"
 #include "yaMonster.h"
+#include "yaNpc.h"
 
 namespace ya
 {
@@ -80,6 +81,20 @@ namespace ya
 		at_M2->SetScale(Vector2(0.8f, 0.8f));
 
 		col = monster2->AddComponent<Collider>();
+		col->SetSize(Vector2(80.0f, 80.0f));
+
+
+		Npc* azazel = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
+
+		Transform* tr_azazel = azazel->GetComponent<Transform>();
+		tr_azazel->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 8)); // Npc pandemonica 시작위치
+
+		Animator* at_azazel = azazel->AddComponent<Animator>();
+		at_azazel->CreateAnimationFolder(L"azazel ", L"..\\Resources\\Texture\\npc\\azazel", Vector2(0.0f, -10.0f));
+		at_azazel->PlayAnimation(L"azazel ", true);
+		at_azazel->SetScale(Vector2(0.8f, 0.8f));
+
+		col = azazel->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
 	}
 

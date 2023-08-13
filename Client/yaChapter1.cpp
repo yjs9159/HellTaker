@@ -11,6 +11,7 @@
 #include "yaAnimator.h"
 #include "yaCollider.h"
 #include "yaMonster.h"
+#include "yaNpc.h"
 
 namespace ya
 {
@@ -95,6 +96,19 @@ namespace ya
 		at_M3->SetScale(Vector2(0.8f, 0.8f));
 
 		col = monster3->AddComponent<Collider>();
+		col->SetSize(Vector2(80.0f, 80.0f));
+
+		Npc* pandemonica = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
+
+		Transform* tr_Npc = pandemonica->GetComponent<Transform>();
+		tr_Npc->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 6)); // Npc pandemonica 시작위치
+
+		Animator* at_Npc = pandemonica->AddComponent<Animator>();
+		at_Npc->CreateAnimationFolder(L"pandemonica", L"..\\Resources\\Texture\\npc\\pandemonica", Vector2(0.0f, -10.0f));
+		at_Npc->PlayAnimation(L"pandemonica", true);
+		at_Npc->SetScale(Vector2(0.8f, 0.8f));
+
+		col = pandemonica->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
 	}
 

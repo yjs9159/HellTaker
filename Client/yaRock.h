@@ -10,12 +10,12 @@ namespace ya
 		enum class eState
 		{
 			Idle,
-			Move,
+			Hit,
 			End,
 		};
 
 		Rock();
-		~Rock();
+		virtual ~Rock();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -23,10 +23,8 @@ namespace ya
 
 		void Idle();
 		void Hit();
-		void Move();
 
 	private:
 		eState mState;
-		int Hp;
 	};
 }

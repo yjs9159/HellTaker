@@ -11,6 +11,7 @@
 #include "yaAnimator.h"
 #include "yaCollider.h"
 #include "yaMonster.h"
+#include "yaNpc.h"
 
 namespace ya
 {
@@ -79,6 +80,47 @@ namespace ya
 		at_M2->SetScale(Vector2(0.8f, 0.8f));
 
 		col = monster2->AddComponent<Collider>();
+		col->SetSize(Vector2(80.0f, 80.0f));
+
+
+		Npc* cerberus1 = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
+
+		Transform* Npc_1 = cerberus1->GetComponent<Transform>();
+		Npc_1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // Npc pandemonica 시작위치
+
+		Animator* at_Npc1 = cerberus1->AddComponent<Animator>();
+		at_Npc1->CreateAnimationFolder(L"cerberus", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, -10.0f));
+		at_Npc1->PlayAnimation(L"cerberus", true);
+		at_Npc1->SetScale(Vector2(0.8f, 0.8f));
+
+		col = cerberus1->AddComponent<Collider>();
+		col->SetSize(Vector2(80.0f, 80.0f));
+
+		Npc* cerberus2 = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
+
+		Transform* Npc_2 = cerberus2->GetComponent<Transform>();
+		Npc_2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // Npc pandemonica 시작위치
+
+		Animator* at_Npc2 = cerberus2->AddComponent<Animator>();
+		at_Npc2->CreateAnimationFolder(L"cerberus", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, -10.0f));
+		at_Npc2->PlayAnimation(L"cerberus", true);
+		at_Npc2->SetScale(Vector2(0.8f, 0.8f));
+
+		col = cerberus2->AddComponent<Collider>();
+		col->SetSize(Vector2(80.0f, 80.0f));
+
+
+		Npc* cerberus3 = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
+
+		Transform* Npc_3 = cerberus3->GetComponent<Transform>();
+		Npc_3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // Npc pandemonica 시작위치
+
+		Animator* at_Npc3 = cerberus3->AddComponent<Animator>();
+		at_Npc3->CreateAnimationFolder(L"cerberus", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, -10.0f));
+		at_Npc3->PlayAnimation(L"cerberus", true);
+		at_Npc3->SetScale(Vector2(0.8f, 0.8f));
+
+		col = cerberus3->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
 	}
 

@@ -20,8 +20,7 @@ namespace ya
 	}
 	void Player::Initialize()
 	{
-		//Transform* Player = GetComponent<Transform>();
-		//Player->SetPosition(Vector2(313.0f, 84.0f));
+
 	}
 	void Player::Update()
 	{
@@ -122,20 +121,14 @@ namespace ya
 		}
 		if (Input::GetKeyUp(eKeyCode::A))
 		{
-			// pos.x -= 100.0f * Time::DeltaTime();
-			// GetComponent<Rigidbody>()->AddForce(Vector2(-200.0f, 0.0f));
 			tr->SetPosition(Vector2(pos.x - MOVE_TILE_WIDTH, pos.y));
 		}
 		if (Input::GetKeyUp(eKeyCode::S))
 		{
-			// pos.y += 100.0f * Time::DeltaTime();
-			//GetComponent<Rigidbody>()->AddForce(Vector2(0.0f, 200.0f));
 			tr->SetPosition(Vector2(pos.x, pos.y + MOVE_TILE_HEIGHT));
 		}
 		if (Input::GetKeyUp(eKeyCode::D))
 		{
-			//pos.x += 100.0f * Time::DeltaTime();
-			//GetComponent<Rigidbody>()->AddForce(Vector2(200.0f, 0.0f));
 			tr->SetPosition(Vector2(pos.x + MOVE_TILE_WIDTH, pos.y));
 		}
 		//tr->SetPosition(pos);

@@ -228,6 +228,9 @@
     <ClInclude Include="yaChapter1.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="yaNpc.h">
+      <Filter>Contents\GameObject\Obstacle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -360,6 +363,9 @@
     </ClCompile>
     <ClCompile Include="yaChapter1.cpp">
       <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaNpc.cpp">
+      <Filter>Contents\GameObject\Obstacle</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
