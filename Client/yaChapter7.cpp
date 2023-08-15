@@ -12,6 +12,7 @@
 #include "yaCollider.h"
 #include "yaMonster.h"
 #include "yaNpc.h"
+#include "yaRock.h"
 
 namespace ya
 {
@@ -109,6 +110,76 @@ namespace ya
 
 		col = justice->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
+
+
+		// Rock 1 생성 및 이미지 로드
+		Rock* rock1 = object::Instantiate<Rock>(eLayerType::Rock);
+
+		Transform* tr_Rock1 = rock1->GetComponent<Transform>();
+		tr_Rock1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+
+		Texture* Rock1 = Resources::Load<Texture>(L"Rock1_7"
+			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock004.png");
+
+		SpriteRenderer* Rock1sr = rock1->AddComponent<SpriteRenderer>();
+		Rock1sr->SetImage(Rock1);
+		Rock1sr->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// Rock 2 생성 및 이미지 로드
+		Rock* rock2 = object::Instantiate<Rock>(eLayerType::Rock);
+
+		Transform* tr_Rock2 = rock2->GetComponent<Transform>();
+		tr_Rock2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+
+		Texture* Rock2 = Resources::Load<Texture>(L"Rock2_7"
+			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock001.png");
+
+		SpriteRenderer* Rock2sr = rock2->AddComponent<SpriteRenderer>();
+		Rock2sr->SetImage(Rock2);
+		Rock2sr->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// Rock 3 생성 및 이미지 로드
+		Rock* rock3 = object::Instantiate<Rock>(eLayerType::Rock);
+
+		Transform* tr_Rock3 = rock3->GetComponent<Transform>();
+		tr_Rock3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+
+		Texture* Rock3 = Resources::Load<Texture>(L"Rock3_7"
+			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock005.png");
+
+		SpriteRenderer* Rock3sr = rock3->AddComponent<SpriteRenderer>();
+		Rock3sr->SetImage(Rock3);
+		Rock3sr->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// Rock 4 생성 및 이미지 로드
+		Rock* rock4 = object::Instantiate<Rock>(eLayerType::Rock);
+
+		Transform* tr_Rock4 = rock4->GetComponent<Transform>();
+		tr_Rock4->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+
+		Texture* Rock4 = Resources::Load<Texture>(L"Rock4_7"
+			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock008.png");
+
+		SpriteRenderer* Rock4sr = rock4->AddComponent<SpriteRenderer>();
+		Rock4sr->SetImage(Rock4);
+		Rock4sr->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// Rock 5 생성 및 이미지 로드
+		Rock* rock5 = object::Instantiate<Rock>(eLayerType::Rock);
+
+		Transform* tr_Rock5 = rock5->GetComponent<Transform>();
+		tr_Rock5->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+
+		Texture* Rock5 = Resources::Load<Texture>(L"Rock5_7"
+			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock003.png");
+
+		SpriteRenderer* Rock5sr = rock5->AddComponent<SpriteRenderer>();
+		Rock5sr->SetImage(Rock5);
+		Rock5sr->SetScale(Vector2(0.75f, 0.75f));
 	}
 
 	void ya::Chapter7::Update()

@@ -12,6 +12,7 @@
 #include "yaCollider.h"
 #include "yaMonster.h"
 #include "yaNpc.h"
+#include "yaRock.h"
 
 namespace ya
 {
@@ -108,6 +109,48 @@ namespace ya
 
 		col = modeus->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
+
+
+		// Rock 1 생성 및 이미지 로드
+		Rock* rock1 = object::Instantiate<Rock>(eLayerType::Rock);
+
+		Transform* tr_Rock1 = rock1->GetComponent<Transform>();
+		tr_Rock1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+
+		Texture* Rock1 = Resources::Load<Texture>(L"Rock1_2"
+			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock007.png");
+
+		SpriteRenderer* Rock1sr = rock1->AddComponent<SpriteRenderer>();
+		Rock1sr->SetImage(Rock1);
+		Rock1sr->SetScale(Vector2(0.75f, 0.75f));
+
+		// Rock 2 생성 및 이미지 로드
+		Rock* rock2 = object::Instantiate<Rock>(eLayerType::Rock);
+
+		Transform* tr_Rock2 = rock2->GetComponent<Transform>();
+		tr_Rock2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+
+		Texture* Rock2 = Resources::Load<Texture>(L"Rock2_2"
+			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock005.png");
+
+		SpriteRenderer* Rock2sr = rock2->AddComponent<SpriteRenderer>();
+		Rock2sr->SetImage(Rock2);
+		Rock2sr->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// Rock 3 생성 및 이미지 로드
+		Rock* rock3 = object::Instantiate<Rock>(eLayerType::Rock);
+
+		Transform* tr_Rock3 = rock3->GetComponent<Transform>();
+		tr_Rock3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+
+		Texture* Rock3 = Resources::Load<Texture>(L"Rock3_2"
+			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock003.png");
+
+		SpriteRenderer* Rock3sr = rock3->AddComponent<SpriteRenderer>();
+		Rock3sr->SetImage(Rock3);
+		Rock3sr->SetScale(Vector2(0.75f, 0.75f));
+
 	}
 
 	void ya::Chapter2::Update()

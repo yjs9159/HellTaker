@@ -46,24 +46,24 @@ namespace ya
 
 	void Rock::Hit()
 	{
-		Transform* tr = GetComponent<Transform>();
-		Vector2 pos = tr->GetPosition();
+	//	Transform* tr = GetComponent<Transform>();
+	//	Vector2 pos = tr->GetPosition();
 
-		if (Input::GetKeyDown(eKeyCode::MouseLeft))
-		{
-			//Move();
-			pos.x += 500.0f * Time::DeltaTime();
-			//Animator* animator = GetComponent<Animator>();
-			//animator->PlayAnimation(L"Monster_RightMove", false);
-			mState = eState::Hit;
-		}
-		tr->SetPosition(pos);
+	//	if (Input::GetKeyDown(eKeyCode::MouseLeft))
+	//	{
+	//		//Move();
+	//		pos.x += 500.0f * Time::DeltaTime();
+	//		//Animator* animator = GetComponent<Animator>();
+	//		//animator->PlayAnimation(L"Monster_RightMove", false);
+	//		mState = eState::Hit;
+	//	}
+	//	tr->SetPosition(pos);
 
-		if (Input::GetKeyUp(eKeyCode::MouseLeft))
-		{
-			//Animator* animator = GetComponent<Animator>();
-			//animator->PlayAnimation(L"Monster_RightIdle", true);
-			mState = eState::Idle;
-		}
+	//	if (Input::GetKeyUp(eKeyCode::MouseLeft))
+	//	{
+	//		//Animator* animator = GetComponent<Animator>();
+	//		//animator->PlayAnimation(L"Monster_RightIdle", true);
+	//		mState = eState::Idle;
+	//	}
 	}
 }
