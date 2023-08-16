@@ -153,7 +153,12 @@ namespace ya
 
 	void Player::Attack()
 	{
-		// 농작물에 물을 주는 로직이 추가가된다.(나한텐 attack)
+		// Attack 로직
+		Scene* scene = SceneManager::GetActiveScene();
+		Layer& layer = scene->GetLayer(eLayerType::Monster);
+		GameObject* obj = layer.GetGameObjects().front();
+		dynamic_cast<Monster*>(obj)->Hit();
+
 		Animator* animator = GetComponent<Animator>();
 
 		if (animator->IsActiveAnimationComplete())
@@ -161,16 +166,10 @@ namespace ya
 			animator->PlayAnimation(L"player_rightidle", true);
 			mState = eState::Idle;
 		}
-
-		Scene* scene = SceneManager::GetActiveScene();
-		Layer& layer = scene->GetLayer(eLayerType::Monster);
-		GameObject* obj = layer.GetGameObjects().front();
-		dynamic_cast<Monster*>(obj)->Hit();
 	}
 
 	void Player::Success()
 	{
-
 		Animator* animator = GetComponent<Animator>();
 
 		if (animator->IsActiveAnimationComplete())

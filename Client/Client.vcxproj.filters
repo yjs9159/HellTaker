@@ -231,6 +231,12 @@
     <ClInclude Include="yaNpc.h">
       <Filter>Contents\GameObject\Obstacle</Filter>
     </ClInclude>
+    <ClInclude Include="yaLockBox.h">
+      <Filter>Contents\GameObject\Obstacle</Filter>
+    </ClInclude>
+    <ClInclude Include="yaKey.h">
+      <Filter>Contents\GameObject\Obstacle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -365,6 +371,12 @@
       <Filter>Contents\Scene</Filter>
     </ClCompile>
     <ClCompile Include="yaNpc.cpp">
+      <Filter>Contents\GameObject\Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="yaLockBox.cpp">
+      <Filter>Contents\GameObject\Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="yaKey.cpp">
       <Filter>Contents\GameObject\Obstacle</Filter>
     </ClCompile>
   </ItemGroup>

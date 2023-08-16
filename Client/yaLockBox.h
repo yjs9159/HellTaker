@@ -1,10 +1,9 @@
 #pragma once
 #include "yaGameObject.h"
 
-
 namespace ya
 {
-	class Npc : public GameObject
+	class LockBox : public GameObject
 	{
 	public:
 		enum class eState
@@ -14,17 +13,19 @@ namespace ya
 			End,
 		};
 
-		Npc();
-		virtual ~Npc();
+		LockBox();
+		virtual ~LockBox();
 
-		virtual void Initialize() override;
-		virtual void Update() override;
-		virtual void Render(HDC hdc) override;
+		void Initialize() override;
+		void Update() override;
+		void Render(HDC hdc) override;
 
 		void Idle();
 		void Success();
+
 
 	private:
 		eState mState;
 	};
 }
+

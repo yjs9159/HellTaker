@@ -61,7 +61,7 @@ namespace ya
 		col->SetOffset(Vector2(0.0f, 0.0f));
 
 
-		// Monster 생성
+		// Monster1 생성 및 이미지 로드
 		Monster* monster1 = object::Instantiate<Monster>(eLayerType::Monster); // 몬스터1 생성
 
 		Transform* tr_M1 = monster1->GetComponent<Transform>();
@@ -75,6 +75,7 @@ namespace ya
 		col = monster1->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
 
+		// 몬스터2 생성 및 이미지 로드
 		Monster* monster2 = object::Instantiate<Monster>(eLayerType::Monster); // 몬스터2 생성
 
 		Transform* tr_M2 = monster2->GetComponent<Transform>();
@@ -88,10 +89,11 @@ namespace ya
 		col = monster2->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
 
-		Monster* monster3 = object::Instantiate<Monster>(eLayerType::Monster); // 몬스터3 생성
+		// 몬스터3 생성 및 이미지 로드
+		Monster* monster3 = object::Instantiate<Monster>(eLayerType::Monster);
 
 		Transform* tr_M3 = monster3->GetComponent<Transform>();
-		tr_M3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 3)); // 몬스터3 시작위치
+		tr_M3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 3));
 
 		Animator* at_M3 = monster3->AddComponent<Animator>();
 		at_M3->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));

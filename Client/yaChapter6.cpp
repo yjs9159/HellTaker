@@ -13,6 +13,7 @@
 #include "yaMonster.h"
 #include "yaNpc.h"
 #include "yaRock.h"
+#include "yaKey.h"
 
 namespace ya
 {
@@ -209,6 +210,18 @@ namespace ya
 		SpriteRenderer* Rock8sr = rock8->AddComponent<SpriteRenderer>();
 		Rock8sr->SetImage(Rock8);
 		Rock8sr->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// Key 생성 및 이미지 로드
+		Key* myKey = object::Instantiate<Key>(eLayerType::myKey);
+
+		Transform* tr_Key = myKey->GetComponent<Transform>();
+		tr_Key->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+
+		Animator* at_Key = myKey->AddComponent<Animator>();
+		at_Key->CreateAnimationFolder(L"myKey", L"..\\Resources\\Texture\\obstacle\\Key", Vector2(10.0f, 0.0f));
+		at_Key->PlayAnimation(L"myKey", true);
+		at_Key->SetScale(Vector2(0.8f, 0.8f));
 	}
 
 	void ya::Chapter6::Update()

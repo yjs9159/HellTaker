@@ -24,6 +24,9 @@ namespace ya
 		case Npc::eState::Idle:
 			Idle();
 			break;
+		case Npc::eState::Success:
+			Success();
+			break;
 		case Npc::eState::End:
 			break;
 		default:
@@ -37,6 +40,10 @@ namespace ya
 	}
 
 	void Npc::Idle()
+	{
+	}
+
+	void Npc::Success()
 	{
 	}
 }

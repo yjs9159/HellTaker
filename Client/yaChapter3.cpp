@@ -12,6 +12,8 @@
 #include "yaCollider.h"
 #include "yaMonster.h"
 #include "yaNpc.h"
+#include "yaKey.h"
+
 
 namespace ya
 {
@@ -58,9 +60,11 @@ namespace ya
 		col->SetSize(Vector2(85.0f, 90.0f));
 		col->SetOffset(Vector2(0.0f, -10.0f));
 
-		Monster* monster1 = object::Instantiate<Monster>(eLayerType::Monster); // 몬스터1 생성
+
+		// monster 1 생성 및 이미지 로드
+		Monster* monster1 = object::Instantiate<Monster>(eLayerType::Monster);
 		Transform* tr_M1 = monster1->GetComponent<Transform>();
-		tr_M1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 5)); // 몬스터1 시작위치
+		tr_M1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 5));
 
 		Animator* at_M1 = monster1->AddComponent<Animator>();
 		at_M1->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -70,9 +74,11 @@ namespace ya
 		col = monster1->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
 
-		Monster* monster2 = object::Instantiate<Monster>(eLayerType::Monster); // 몬스터2 생성
+
+		// monster 2 생성 및 이미지 로드
+		Monster* monster2 = object::Instantiate<Monster>(eLayerType::Monster);
 		Transform* tr_M2 = monster2->GetComponent<Transform>();
-		tr_M2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 7)); // 몬스터2 시작위치
+		tr_M2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 7));
 
 		Animator* at_M2 = monster2->AddComponent<Animator>();
 		at_M2->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -83,10 +89,11 @@ namespace ya
 		col->SetSize(Vector2(80.0f, 80.0f));
 
 
-		Npc* cerberus1 = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
+		// Npc 1 생성 및 이미지 로드
+		Npc* cerberus1 = object::Instantiate<Npc>(eLayerType::Npc);
 
 		Transform* Npc_1 = cerberus1->GetComponent<Transform>();
-		Npc_1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // Npc pandemonica 시작위치
+		Npc_1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 1));
 
 		Animator* at_Npc1 = cerberus1->AddComponent<Animator>();
 		at_Npc1->CreateAnimationFolder(L"cerberus", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, -10.0f));
@@ -95,11 +102,13 @@ namespace ya
 
 		col = cerberus1->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
+		
 
-		Npc* cerberus2 = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
+		// Npc 2 생성 및 이미지 로드
+		Npc* cerberus2 = object::Instantiate<Npc>(eLayerType::Npc);
 
 		Transform* Npc_2 = cerberus2->GetComponent<Transform>();
-		Npc_2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // Npc pandemonica 시작위치
+		Npc_2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 1));
 
 		Animator* at_Npc2 = cerberus2->AddComponent<Animator>();
 		at_Npc2->CreateAnimationFolder(L"cerberus", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, -10.0f));
@@ -110,10 +119,11 @@ namespace ya
 		col->SetSize(Vector2(80.0f, 80.0f));
 
 
-		Npc* cerberus3 = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
+		// Npc 3 생성 및 이미지 로드
+		Npc* cerberus3 = object::Instantiate<Npc>(eLayerType::Npc);
 
 		Transform* Npc_3 = cerberus3->GetComponent<Transform>();
-		Npc_3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // Npc pandemonica 시작위치
+		Npc_3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 1));
 
 		Animator* at_Npc3 = cerberus3->AddComponent<Animator>();
 		at_Npc3->CreateAnimationFolder(L"cerberus", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, -10.0f));
@@ -122,6 +132,19 @@ namespace ya
 
 		col = cerberus3->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
+
+		
+		// Key 생성 및 이미지 로드
+		Key* myKey = object::Instantiate<Key>(eLayerType::myKey);
+
+		Transform* tr_Key = myKey->GetComponent<Transform>();
+		tr_Key->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 6));
+
+		Animator* at_Key = myKey->AddComponent<Animator>();
+		at_Key->CreateAnimationFolder(L"myKey", L"..\\Resources\\Texture\\obstacle\\Key", Vector2(10.0f, 0.0f));
+		at_Key->PlayAnimation(L"myKey", true);
+		at_Key->SetScale(Vector2(0.8f, 0.8f));
+
 	}
 
 	void ya::Chapter3::Update()

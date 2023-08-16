@@ -30,6 +30,8 @@ namespace ya::enums
 		Monster,
 		Npc,
 		Rock,
+		myKey,
+		LockBox,
 		Effect,
 		UI,
 		End,
