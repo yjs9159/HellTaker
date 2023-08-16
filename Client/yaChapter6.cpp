@@ -14,6 +14,7 @@
 #include "yaNpc.h"
 #include "yaRock.h"
 #include "yaKey.h"
+#include "yaLockBox.h"
 
 namespace ya
 {
@@ -89,7 +90,7 @@ namespace ya
 		Npc* azazel = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
 
 		Transform* tr_azazel = azazel->GetComponent<Transform>();
-		tr_azazel->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 8)); // Npc pandemonica 시작위치
+		tr_azazel->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 8)); // Npc pandemonica 시작위치
 
 		Animator* at_azazel = azazel->AddComponent<Animator>();
 		at_azazel->CreateAnimationFolder(L"azazel ", L"..\\Resources\\Texture\\npc\\azazel", Vector2(0.0f, -10.0f));
@@ -222,6 +223,20 @@ namespace ya
 		at_Key->CreateAnimationFolder(L"myKey", L"..\\Resources\\Texture\\obstacle\\Key", Vector2(10.0f, 0.0f));
 		at_Key->PlayAnimation(L"myKey", true);
 		at_Key->SetScale(Vector2(0.8f, 0.8f));
+
+
+		// LockBox 생성 및 이미지 로드
+		LockBox* lockbox = object::Instantiate<LockBox>(eLayerType::LockBox);
+
+		Transform* tr_Box = lockbox->GetComponent<Transform>();
+		tr_Box->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 7));
+
+		Texture* Box = Resources::Load<Texture>(L"Box"
+			, L"..\\Resources\\Texture\\obstacle\\lockbox\\lockbox001.png");
+
+		SpriteRenderer* sr_Box = lockbox->AddComponent<SpriteRenderer>();
+		sr_Box->SetImage(Box);
+		sr_Box->SetScale(Vector2(0.75f, 0.75f));
 	}
 
 	void ya::Chapter6::Update()

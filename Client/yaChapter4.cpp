@@ -13,6 +13,7 @@
 #include "yaNpc.h"
 #include "yaRock.h"
 #include "yaKey.h"
+#include "yaLockBox.h"
 
 namespace ya
 {
@@ -267,6 +268,20 @@ namespace ya
 		at_Key->CreateAnimationFolder(L"myKey", L"..\\Resources\\Texture\\obstacle\\Key", Vector2(10.0f, 0.0f));
 		at_Key->PlayAnimation(L"myKey", true);
 		at_Key->SetScale(Vector2(0.8f, 0.8f));
+
+
+		// LockBox 생성 및 이미지 로드
+		LockBox* lockbox = object::Instantiate<LockBox>(eLayerType::LockBox);
+
+		Transform* tr_Box = lockbox->GetComponent<Transform>();
+		tr_Box->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+
+		Texture* Box = Resources::Load<Texture>(L"Box"
+			, L"..\\Resources\\Texture\\obstacle\\lockbox\\lockbox001.png");
+
+		SpriteRenderer* sr_Box = lockbox->AddComponent<SpriteRenderer>();
+		sr_Box->SetImage(Box);
+		sr_Box->SetScale(Vector2(0.75f, 0.75f));
 	}
 
 	void ya::Chapter4::Update()
