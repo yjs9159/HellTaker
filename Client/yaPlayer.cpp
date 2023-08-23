@@ -6,12 +6,13 @@
 #include "yaRigidBody.h"
 #include "yaMonster.h"
 #include "yaObject.h"
-#include "yaHomeScene.h"
 
 namespace ya
 {
 	Player::Player()
 		: mState(eState::Idle)
+		, Hp(0)
+		, dir(0)
 	{
 		
 	}
@@ -28,19 +29,22 @@ namespace ya
 
 		switch (mState)
 		{
-		case ya::Player::eState::Idle:
+		case Player::eState::Idle:
 			Idle();
 			break;
-		case ya::Player::eState::Move:
+		case Player::eState::Move:
 			Move();
 			break;
-		case ya::Player::eState::Attack:
+		case Player::eState::Attack:
 			Attack();
 			break;
-		case ya::Player::eState::Death:
+		case Player::eState::Success:
+			Success();
+			break;
+		case Player::eState::Death:
 			Dead();
 			break;
-		case ya::Player::eState::End:
+		case Player::eState::End:
 			break;
 		default:
 			break;
@@ -64,25 +68,29 @@ namespace ya
 	{
 		Animator* animator = GetComponent<Animator>();
 
-		if (Input::GetKey(eKeyCode::W))
+		if (Input::GetKeyDown(eKeyCode::W))
 		{
 			animator->PlayAnimation(L"PlayerUpMove", true);
 			mState = eState::Move;
+			dir = 0;
 		}
-		if (Input::GetKey(eKeyCode::A))
+		if (Input::GetKeyDown(eKeyCode::A))
 		{
 			animator->PlayAnimation(L"player_leftrun", true);
 			mState = eState::Move;
+			dir = 2;
 		}
-		if (Input::GetKey(eKeyCode::S))
+		if (Input::GetKeyDown(eKeyCode::S))
 		{
 			animator->PlayAnimation(L"PlayerDownMove", true);
 			mState = eState::Move;
+			dir = 1;
 		}
-		if (Input::GetKey(eKeyCode::D))
+		if (Input::GetKeyDown(eKeyCode::D))
 		{
 			animator->PlayAnimation(L"player_rightrun", true);
 			mState = eState::Move;
+			dir = 3;
 		}
 
 		if (Input::GetKey(eKeyCode::MouseLeft))
@@ -94,7 +102,7 @@ namespace ya
 		if (Input::GetKey(eKeyCode::F))
 		{
 			animator->PlayAnimation(L"player_rightsuccess", false);
-			mState = eState::Attack;
+			mState = eState::Success;
 		}
 
 
@@ -104,7 +112,7 @@ namespace ya
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		if (Input::GetKeyUp(eKeyCode::W))
+		if (dir == 0 && Input::GetKeyUp(eKeyCode::W))
 		{
 			//Rigidbody* rb = GetComponent<Rigidbody>();
 			//Vector2 velocity = rb->GetVelocity();
@@ -116,18 +124,19 @@ namespace ya
 			// pos.y -= 100.0f * Time::DeltaTime();
 			// pos.y
 
-			tr->SetPosition(Vector2( pos.x, pos.y - MOVE_TILE_HEIGHT));
+			tr->SetPosition(Vector2(pos.x, pos.y - MOVE_TILE_HEIGHT));
+			
 
 		}
-		if (Input::GetKeyUp(eKeyCode::A))
+		else if (dir == 2 && Input::GetKeyUp(eKeyCode::A))
 		{
 			tr->SetPosition(Vector2(pos.x - MOVE_TILE_WIDTH, pos.y));
 		}
-		if (Input::GetKeyUp(eKeyCode::S))
+		else if (dir == 1 && Input::GetKeyUp(eKeyCode::S))
 		{
 			tr->SetPosition(Vector2(pos.x, pos.y + MOVE_TILE_HEIGHT));
 		}
-		if (Input::GetKeyUp(eKeyCode::D))
+		else if (dir == 3 && Input::GetKeyUp(eKeyCode::D))
 		{
 			tr->SetPosition(Vector2(pos.x + MOVE_TILE_WIDTH, pos.y));
 		}
@@ -157,7 +166,9 @@ namespace ya
 		Scene* scene = SceneManager::GetActiveScene();
 		Layer& layer = scene->GetLayer(eLayerType::Monster);
 		GameObject* obj = layer.GetGameObjects().front();
-		dynamic_cast<Monster*>(obj)->Hit();
+		dynamic_cast<Monster*>(obj)->Hit(/*dir*/);
+
+
 
 		Animator* animator = GetComponent<Animator>();
 

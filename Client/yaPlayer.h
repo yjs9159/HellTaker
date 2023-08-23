@@ -12,6 +12,7 @@ namespace ya
 			Idle,
 			Move,
 			Attack,
+			Success,
 			Death,
 			End,
 		};
@@ -36,5 +37,7 @@ namespace ya
 	private:
 		eState mState;
 		// Vector2 mPos;
+		int Hp;
+		int dir;
 	};
 }

@@ -172,6 +172,7 @@
     <ClInclude Include="yaNpc.h" />
     <ClInclude Include="yaRigidBody.h" />
     <ClInclude Include="yaRock.h" />
+    <ClInclude Include="yaSceneChange.h" />
     <ClInclude Include="yaTexture.h" />
     <ClInclude Include="yaInput.h" />
     <ClInclude Include="yaLayer.h" />
@@ -218,6 +219,7 @@
     <ClCompile Include="yaNpc.cpp" />
     <ClCompile Include="yaRigidBody.cpp" />
     <ClCompile Include="yaRock.cpp" />
+    <ClCompile Include="yaSceneChange.cpp" />
     <ClCompile Include="yaTexture.cpp" />
     <ClCompile Include="yaInput.cpp" />
     <ClCompile Include="yaLayer.cpp" />

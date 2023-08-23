@@ -15,20 +15,50 @@
 #include "yaRock.h"
 #include "yaKey.h"
 #include "yaLockBox.h"
+#include "yaSceneChange.h"
 
 namespace ya
 {
-	ya::Chapter5::Chapter5()
-		: LeftTop(Vector2(283.0f + 72 / 2, 58.0f + 68 / 2))
+	int Chapter5::MapInfo5[9][8] =
+	{
+		// 0 => 바닥
+		// 1 => wall
+		// 2 => player
+		// 3 => monster
+		// 4 => rock
+		{ 1, 1, 1, 1, 1, 1, 1, 1 },
+		{ 1, 1, 1, 1, 0, 0, 1, 1 },
+		{ 1, 1, 1, 0, 0, 0, 0, 1 },
+		{ 1, 2, 1, 0, 0, 0, 0, 1 },
+		{ 1, 0, 1, 0, 0, 0, 0, 1 },
+		{ 1, 3, 1, 0, 0, 0, 0, 1 },
+		{ 1, 0, 0, 0, 0, 0, 0, 1 },
+		{ 1, 1, 1, 1, 1, 1, 1, 1 }
+	};
+
+	Chapter5::Chapter5()
+		: LeftTop(Vector2(355.0f + 72 / 2, 58.0f + 68 / 2))
 	{
 	}
 
-	ya::Chapter5::~Chapter5()
+	Chapter5::~Chapter5()
 	{
 	}
 
-	void ya::Chapter5::Initialize()
+	void Chapter5::Initialize()
 	{
+		// Scene Change 생성 및 애니메이션 재생
+		SceneChange* S_C = object::Instantiate<SceneChange>(eLayerType::SceneChange);
+
+		Transform* tr_SC = S_C->GetComponent<Transform>();
+		tr_SC->SetPosition(Vector2(640.0f, 360.0f));
+
+		Animator* at_SC = S_C->AddComponent<Animator>();
+		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f));
+		at_SC->PlayAnimation(L"Change", false);
+		at_SC->SetScale(Vector2(0.5f, 0.5f));
+
+
 		Texture* Chapter5 = Resources::Load<Texture>(L"Chapter5"
 			, L"..\\Resources\\Texture\\chapterbg\\chapterBG0005.bmp");
 
@@ -44,7 +74,7 @@ namespace ya
 
 		Player* player = object::Instantiate<Player>(eLayerType::Player); // 플레이어 생성
 		Transform* tr = player->GetComponent<Transform>();
-		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 3)); // 플레이어 시작위치
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 0, LeftTop.y + MOVE_TILE_HEIGHT * 0)); // 플레이어 시작위치
 
 		Animator* at = player->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"player_rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 10.0f));
@@ -64,7 +94,7 @@ namespace ya
 
 		Monster* monster1 = object::Instantiate<Monster>(eLayerType::Monster); // 몬스터1 생성
 		Transform* tr_M1 = monster1->GetComponent<Transform>();
-		tr_M1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 5)); // 몬스터1 시작위치
+		tr_M1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 5)); // 몬스터1 시작위치
 
 		Animator* at_M1 = monster1->AddComponent<Animator>();
 		at_M1->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -78,7 +108,7 @@ namespace ya
 		Npc* zdrada = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
 
 		Transform* tr_zdrada = zdrada->GetComponent<Transform>();
-		tr_zdrada->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // Npc pandemonica 시작위치
+		tr_zdrada->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // Npc pandemonica 시작위치
 
 		Animator* at_zdrada = zdrada->AddComponent<Animator>();
 		at_zdrada->CreateAnimationFolder(L"zdrada", L"..\\Resources\\Texture\\npc\\zdrada", Vector2(0.0f, -10.0f));
@@ -93,7 +123,7 @@ namespace ya
 		Rock* rock1 = object::Instantiate<Rock>(eLayerType::Rock);
 
 		Transform* tr_Rock1 = rock1->GetComponent<Transform>();
-		tr_Rock1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		tr_Rock1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 5));
 
 		Texture* Rock1 = Resources::Load<Texture>(L"Rock1_5"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock003.png");
@@ -107,7 +137,7 @@ namespace ya
 		Rock* rock2 = object::Instantiate<Rock>(eLayerType::Rock);
 
 		Transform* tr_Rock2 = rock2->GetComponent<Transform>();
-		tr_Rock2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		tr_Rock2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 5));
 
 		Texture* Rock2 = Resources::Load<Texture>(L"Rock2_5"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock005.png");
@@ -121,7 +151,7 @@ namespace ya
 		Rock* rock3 = object::Instantiate<Rock>(eLayerType::Rock);
 
 		Transform* tr_Rock3 = rock3->GetComponent<Transform>();
-		tr_Rock3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		tr_Rock3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 5));
 
 		Texture* Rock3 = Resources::Load<Texture>(L"Rock3_5"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock001.png");
@@ -135,7 +165,7 @@ namespace ya
 		Rock* rock4 = object::Instantiate<Rock>(eLayerType::Rock);
 
 		Transform* tr_Rock4 = rock4->GetComponent<Transform>();
-		tr_Rock4->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		tr_Rock4->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 5));
 
 		Texture* Rock4 = Resources::Load<Texture>(L"Rock4_5"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock008.png");
@@ -149,7 +179,7 @@ namespace ya
 		Rock* rock5 = object::Instantiate<Rock>(eLayerType::Rock);
 
 		Transform* tr_Rock5 = rock5->GetComponent<Transform>();
-		tr_Rock5->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+		tr_Rock5->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 3));
 
 		Texture* Rock5 = Resources::Load<Texture>(L"Rock5_5"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock007.png");
@@ -163,7 +193,7 @@ namespace ya
 		Rock* rock6 = object::Instantiate<Rock>(eLayerType::Rock);
 
 		Transform* tr_Rock6 = rock6->GetComponent<Transform>();
-		tr_Rock6->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 2));
+		tr_Rock6->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 2));
 
 		Texture* Rock6 = Resources::Load<Texture>(L"Rock6_5"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock011.png");
@@ -176,10 +206,10 @@ namespace ya
 		Key* myKey = object::Instantiate<Key>(eLayerType::myKey);
 
 		Transform* tr_Key = myKey->GetComponent<Transform>();
-		tr_Key->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 7));
+		tr_Key->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 7));
 
 		Animator* at_Key = myKey->AddComponent<Animator>();
-		at_Key->CreateAnimationFolder(L"myKey", L"..\\Resources\\Texture\\obstacle\\Key", Vector2(10.0f, 0.0f));
+		at_Key->CreateAnimationFolder(L"myKey", L"..\\Resources\\Texture\\obstacle\\Key", Vector2(10.0f, 10.0f));
 		at_Key->PlayAnimation(L"myKey", true);
 		at_Key->SetScale(Vector2(0.8f, 0.8f));
 
@@ -188,7 +218,7 @@ namespace ya
 		LockBox* lockbox = object::Instantiate<LockBox>(eLayerType::LockBox);
 
 		Transform* tr_Box = lockbox->GetComponent<Transform>();
-		tr_Box->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 2));
+		tr_Box->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 2));
 
 		Texture* Box = Resources::Load<Texture>(L"Box"
 			, L"..\\Resources\\Texture\\obstacle\\lockbox\\lockbox001.png");

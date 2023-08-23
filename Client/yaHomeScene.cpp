@@ -18,6 +18,7 @@
 #include "yaCollisionManager.h"
 #include "yaRigidBody.h"
 #include "yaFloor.h"
+#include "yaSceneChange.h"
 
 namespace ya
 {
@@ -114,6 +115,16 @@ namespace ya
 		if (Input::GetKeyDown(eKeyCode::Chapter1))
 		{
 			SceneManager::LoadScene(L"Chapter1");
+
+			SceneChange* SC = object::Instantiate<SceneChange>(eLayerType::SceneChange);
+
+			Animator* change = SC->AddComponent<Animator>();
+			change->CreateAnimationFolder(L"SceneChange", L"..\\Resources\\Texture\\levelchange\\BMP", Vector2(0.0f, 0.0f));
+			change->PlayAnimation(L"SceneChange", false);
+			change->SetScale(Vector2(1.0f, 1.0f));
+
+			Transform* tr_SC = SC->GetComponent<Transform>();
+			tr_SC->SetPosition(Vector2(640.0f, 360.0f));
 		}
 		if (Input::GetKeyDown(eKeyCode::Chapter2))
 		{

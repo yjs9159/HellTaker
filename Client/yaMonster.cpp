@@ -3,13 +3,12 @@
 #include "yaTransform.h"
 #include "yaTime.h"
 #include "yaInput.h"
+#include "yaPlayer.h"
 
 namespace ya
 {
-	ya::Monster::Monster()
-		: Hp(10000)
-		, mState(eState::Idle)
-		//, mDeathTime(1.0f)
+	Monster::Monster()
+		: mState(eState::Idle)
 	{
 	}
 	Monster::~Monster()
@@ -24,16 +23,16 @@ namespace ya
 
 		switch (mState)
 		{
-		case ya::Monster::eState::Idle:
+		case Monster::eState::Idle:
 			Idle();
 			break;
-		case ya::Monster::eState::Move:
-			Move();
+		case Monster::eState::Hit:
+			Hit();
 			break;
-		case ya::Monster::eState::Death:
+		case Monster::eState::Death:
 			Dead();
 			break;
-		case ya::Monster::eState::End:
+		case Monster::eState::End:
 			break;
 		default:
 			break;
@@ -58,50 +57,48 @@ namespace ya
 	void Monster::Idle()
 	{
 		
-		if (Hp > 0)
-		{
-			//Move();
-			mState = eState::Move;
-		}
+		//if (Hp > 0)
+		//{
+		//	//Move();
+		//	mState = eState::Hit;
+		//}
 
-		if (Hp <= 0)
-		{
-			//Dead();
-			mState = eState::Death;
-		}
+		//if (Hp <= 0)
+		//{
+		//	//Dead();
+		//	mState = eState::Death;
+		//}
 	}
 
 	void Monster::Hit()
 	{
-		Hp--;
-		
-	}
-
-	void Monster::Move()
-	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-
+		
 		Animator* animator = GetComponent<Animator>();
+		
+
+
+
 		//animator->PlayAnimation(L"Monster_RightIdle", true);
 
-		if (Input::GetKeyDown(eKeyCode::MouseLeft))
-		{
-			//Move();
-			pos.x += 3000.0f * Time::DeltaTime();
-			Animator* animator = GetComponent<Animator>();
-			animator->PlayAnimation(L"Monster_RightMove", false);
-			mState = eState::Move;
-		}
-		tr->SetPosition(pos);
+		//if (Input::GetKey(eKeyCode::MouseLeft))
+		//{
+		//	//Move();
+		//	pos.x += 3000.0f * Time::DeltaTime();
+		//	Animator* animator = GetComponent<Animator>();
+		//	animator->PlayAnimation(L"Monster_RightMove", false);
+		//	mState = eState::Hit;
+		//}
+		//tr->SetPosition(pos);
 
-		if (Input::GetKeyUp(eKeyCode::MouseLeft))
-		{
-			Animator* animator = GetComponent<Animator>();
-			animator->PlayAnimation(L"Monster_RightIdle", true);
-			mState = eState::Idle;
-		}
-		
+		//if (Input::GetKeyUp(eKeyCode::MouseLeft))
+		//{
+		//	Animator* animator = GetComponent<Animator>();
+		//	animator->PlayAnimation(L"Monster_RightIdle", true);
+		//	mState = eState::Idle;
+		//}
+
 
 		//if (animator->IsActiveAnimationComplete())
 		//{
@@ -109,6 +106,11 @@ namespace ya
 		//	mState = eState::Idle;
 		//}
 	}
+
+	//void Monster::Move()
+	//{
+
+	//}
 
 	void Monster::Dead()
 	{

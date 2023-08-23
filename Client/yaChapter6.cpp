@@ -15,9 +15,29 @@
 #include "yaRock.h"
 #include "yaKey.h"
 #include "yaLockBox.h"
+#include "yaSceneChange.h"
 
 namespace ya
 {
+	int Chapter6::MapInfo6[10][9] =
+	{
+		// 0 => 바닥
+		// 1 => wall
+		// 2 => player
+		// 3 => monster
+		// 4 => rock
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+		{ 1, 1, 0, 2, 0, 1, 1, 1, 1 },
+		{ 1, 1, 4, 4, 4, 1, 1, 1, 1 },
+		{ 1, 0, 0, 0, 0, 1, 1, 1, 1 },
+		{ 1, 1, 0, 4, 0, 0, 1, 1, 1 },
+		{ 1, 1, 3, 1, 4, 4, 0, 0, 1 },
+		{ 1, 1, 0, 0, 4, 0, 3, 1, 1 },
+		{ 1, 1, 1, 1, 1, 0, 4, 0, 1 },
+		{ 1, 1, 1, 1, 1, 0, 0, 1, 1 },
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1 }
+	};
+
 	ya::Chapter6::Chapter6()
 		: LeftTop(Vector2(318.0f + 72 / 2, 15.0f + 68 / 2))
 	{
@@ -29,6 +49,18 @@ namespace ya
 
 	void ya::Chapter6::Initialize()
 	{
+		// Scene Change 생성 및 애니메이션 재생
+		SceneChange* S_C = object::Instantiate<SceneChange>(eLayerType::SceneChange);
+
+		Transform* tr_SC = S_C->GetComponent<Transform>();
+		tr_SC->SetPosition(Vector2(640.0f, 360.0f));
+
+		Animator* at_SC = S_C->AddComponent<Animator>();
+		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f));
+		at_SC->PlayAnimation(L"Change", false);
+		at_SC->SetScale(Vector2(0.5f, 0.5f));
+
+
 		Texture* Chapter6 = Resources::Load<Texture>(L"Chapter6"
 			, L"..\\Resources\\Texture\\chapterbg\\chapterBG0006.bmp");
 

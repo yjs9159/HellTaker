@@ -13,20 +13,52 @@
 #include "yaMonster.h"
 #include "yaNpc.h"
 #include "yaRock.h"
+#include "yaSceneChange.h"
 
 namespace ya
 {
-	ya::Chapter1::Chapter1()
+	int Chapter1::MapInfo1[8][9] =
+	{
+		// 0 => 바닥
+		// 1 => wall
+		// 2 => player
+		// 3 => monster
+		// 4 => rock
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+		{ 1, 1, 1, 1, 1, 0, 2, 1, 1 },
+		{ 1, 1, 0, 0, 3, 0, 0, 1, 1 },
+		{ 1, 1, 0, 3, 0, 3, 1, 1, 1 },
+		{ 1, 0, 0, 1, 1, 1, 1, 1, 1 },
+		{ 1, 0, 4, 0, 0, 4, 0, 1, 1 },
+		{ 1, 0, 4, 0, 4, 0, 0, 0, 1 },
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+	};
+
+
+	Chapter1::Chapter1()
 		: LeftTop(Vector2(313.0f + 72 / 2, 84.0f + 68 / 2))
+		, Animation_play(false)
 	{
 	}
 
-	ya::Chapter1::~Chapter1()
+	Chapter1::~Chapter1()
 	{
 	}
 
-	void ya::Chapter1::Initialize()
+	void Chapter1::Initialize()
 	{
+		// Scene Change 생성 및 애니메이션 재생
+		SceneChange* S_C = object::Instantiate<SceneChange>(eLayerType::SceneChange);
+
+		Transform* tr_SC = S_C->GetComponent<Transform>();
+		tr_SC->SetPosition(Vector2(640.0f, 360.0f));
+
+		Animator* at_SC = S_C->AddComponent<Animator>();
+		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f));
+		at_SC->PlayAnimation(L"Change", false);
+		at_SC->SetScale(Vector2(0.5f, 0.5f));
+
+
 		Texture* Chapter1 = Resources::Load<Texture>(L"Chapter1"
 			, L"..\\Resources\\Texture\\chapterbg\\chapterBG0001.bmp");
 
@@ -103,7 +135,10 @@ namespace ya
 		col = monster3->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
 
-		Npc* pandemonica = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
+
+
+		// NPC 생성 및 이미지 로드
+		Npc *pandemonica = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
 
 		Transform* tr_Npc = pandemonica->GetComponent<Transform>();
 		tr_Npc->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 6)); // Npc pandemonica 시작위치
@@ -173,7 +208,7 @@ namespace ya
 		Rock4sr->SetScale(Vector2(0.75f, 0.75f));
 	}
 
-	void ya::Chapter1::Update()
+	void Chapter1::Update()
 	{
 		Scene::Update();
 
@@ -221,9 +256,88 @@ namespace ya
 		{
 			SceneManager::LoadScene(L"Chapter8");
 		}
+
+		//if (Animation_play == false)
+		//{
+		//	if (Input::GetKeyDown(eKeyCode::H))
+		//	{
+		//		//at_SC->PlayAnimation(L"SceneChange", false);
+		//		NextScene = L"HomeScene";
+		//		Animation_play = true;
+		//	}
+		//	if (Input::GetKeyDown(eKeyCode::T))
+		//	{
+		//		//at_SC->PlayAnimation(L"SceneChange", false);
+		//		NextScene = L"TitleScene";
+		//		Animation_play = true;
+		//	}
+		//	if (Input::GetKeyDown(eKeyCode::E))
+		//	{
+		//		//at_SC->PlayAnimation(L"SceneChange", false);
+		//		NextScene = L"EndingScene";
+		//		Animation_play = true;
+		//	}
+		//	if (Input::GetKeyDown(eKeyCode::Chapter1))
+		//	{
+		//		//at_SC->PlayAnimation(L"SceneChange", false);
+		//		NextScene = L"Chapter1";
+		//		Animation_play = true;
+		//	}
+		//	if (Input::GetKeyDown(eKeyCode::Chapter2))
+		//	{
+		//		//at_SC->PlayAnimation(L"SceneChange", false);
+		//		NextScene = L"Chapter2";
+		//		Animation_play = true;
+		//	}
+		//	if (Input::GetKeyDown(eKeyCode::Chapter3))
+		//	{
+		//		//at_SC->PlayAnimation(L"SceneChange", false);
+		//		NextScene = L"Chapter3";
+		//		Animation_play = true;
+		//	}
+		//	if (Input::GetKeyDown(eKeyCode::Chapter4))
+		//	{
+		//		//at_SC->PlayAnimation(L"SceneChange", false);
+		//		NextScene = L"Chapter4";
+		//		Animation_play = true;
+		//	}
+		//	if (Input::GetKeyDown(eKeyCode::Chapter5))
+		//	{
+		//		//at_SC->PlayAnimation(L"SceneChange", false);
+		//		NextScene = L"Chapter5";
+		//		Animation_play = true;
+		//	}
+		//	if (Input::GetKeyDown(eKeyCode::Chapter6))
+		//	{
+		//		//at_SC->PlayAnimation(L"SceneChange", false);
+		//		NextScene = L"Chapter6";
+		//		Animation_play = true;
+		//	}
+		//	if (Input::GetKeyDown(eKeyCode::Chapter7))
+		//	{
+		//		//at_SC->PlayAnimation(L"SceneChange", false);
+		//		NextScene = L"Chapter7";
+		//		Animation_play = true;
+		//	}
+		//	if (Input::GetKeyDown(eKeyCode::Chapter8))
+		//	{
+		//		//at_SC->PlayAnimation(L"SceneChange", false);
+		//		NextScene = L"Chapter8";
+		//		Animation_play = true;
+		//	}
+		//}
+
+		//else
+		//{
+		//	if (at_SC->IsActiveAnimationComplete())
+		//	{
+		//		Animation_play = false;
+		//		SceneManager::LoadScene(NextScene);
+		//	}
+		//}
 	}
 
-	void ya::Chapter1::Render(HDC hdc)
+	void Chapter1::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
 
@@ -240,5 +354,8 @@ namespace ya
 			MoveToEx(hdc, TILE_WIDTH * x * 4 + 25, 0, NULL);      //      라인(선) 시작
 			LineTo(hdc, TILE_WIDTH * x * 4 + 25, 720);        //          라인(선) 끝
 		}
+
+
+
 	}
 }

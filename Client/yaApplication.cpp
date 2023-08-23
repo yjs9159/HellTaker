@@ -56,7 +56,7 @@ namespace ya
 		Time::Initialize();
 		Input::Initailize();
 		Camera::Initialize();
-		
+
 		CollisionManager::Initialize();
 		SceneManager::Initialize();
 

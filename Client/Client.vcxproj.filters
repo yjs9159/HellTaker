@@ -91,6 +91,36 @@
     <Filter Include="Tool">
       <UniqueIdentifier>{a955dbc8-708a-454c-ac40-da62c27d173c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\Monster">
+      <UniqueIdentifier>{6bcb0e1f-225c-487c-a4e5-1403d5f8dd76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Chapter1">
+      <UniqueIdentifier>{13228102-f00e-4063-87fa-1d0fea002e5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Chapter2">
+      <UniqueIdentifier>{ab95c192-4cb9-4b4a-bc21-f1228a853134}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Chapter3">
+      <UniqueIdentifier>{ba5fa977-c90f-4ab4-9752-1c9ddb0e2abf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Chapter4">
+      <UniqueIdentifier>{178e4bf8-83b7-4c0a-bbad-235470cb9811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Chapter5">
+      <UniqueIdentifier>{daef93e6-f051-4b4b-b8bf-d64362ec191d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Chapter6">
+      <UniqueIdentifier>{c37f455c-b11b-43af-b892-444ff82ada5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Chapter7">
+      <UniqueIdentifier>{e3ff37e6-fae9-4051-a284-41c3c1a04eea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\Chapter8">
+      <UniqueIdentifier>{62432fc7-44ba-475b-b55b-794b5d12cd9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\SceneChange">
+      <UniqueIdentifier>{59f4adad-9d26-4ea1-9af8-bfbe0ad538dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -186,9 +216,6 @@
     <ClInclude Include="yaCollider.h">
       <Filter>Engine\Component\Collider</Filter>
     </ClInclude>
-    <ClInclude Include="yaMonster.h">
-      <Filter>Contents\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="yaRigidBody.h">
       <Filter>Engine\Component\Rigidbody</Filter>
     </ClInclude>
@@ -204,30 +231,6 @@
     <ClInclude Include="yaTile.h">
       <Filter>Tool</Filter>
     </ClInclude>
-    <ClInclude Include="yaChapter2.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="yaChapter3.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="yaChapter4.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="yaChapter5.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="yaChapter6.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="yaChapter7.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="yaChapter8.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="yaChapter1.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="yaNpc.h">
       <Filter>Contents\GameObject\Obstacle</Filter>
     </ClInclude>
@@ -236,6 +239,36 @@
     </ClInclude>
     <ClInclude Include="yaKey.h">
       <Filter>Contents\GameObject\Obstacle</Filter>
+    </ClInclude>
+    <ClInclude Include="yaMonster.h">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="yaChapter1.h">
+      <Filter>Contents\Scene\Chapter1</Filter>
+    </ClInclude>
+    <ClInclude Include="yaChapter2.h">
+      <Filter>Contents\Scene\Chapter2</Filter>
+    </ClInclude>
+    <ClInclude Include="yaChapter3.h">
+      <Filter>Contents\Scene\Chapter3</Filter>
+    </ClInclude>
+    <ClInclude Include="yaChapter4.h">
+      <Filter>Contents\Scene\Chapter4</Filter>
+    </ClInclude>
+    <ClInclude Include="yaChapter5.h">
+      <Filter>Contents\Scene\Chapter5</Filter>
+    </ClInclude>
+    <ClInclude Include="yaChapter6.h">
+      <Filter>Contents\Scene\Chapter6</Filter>
+    </ClInclude>
+    <ClInclude Include="yaChapter7.h">
+      <Filter>Contents\Scene\Chapter7</Filter>
+    </ClInclude>
+    <ClInclude Include="yaChapter8.h">
+      <Filter>Contents\Scene\Chapter8</Filter>
+    </ClInclude>
+    <ClInclude Include="yaSceneChange.h">
+      <Filter>Contents\GameObject\SceneChange</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -328,9 +361,6 @@
     <ClCompile Include="yaCollider.cpp">
       <Filter>Engine\Component\Collider</Filter>
     </ClCompile>
-    <ClCompile Include="yaMonster.cpp">
-      <Filter>Contents\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="yaRigidBody.cpp">
       <Filter>Engine\Component\Rigidbody</Filter>
     </ClCompile>
@@ -346,30 +376,6 @@
     <ClCompile Include="yaToolScene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="yaChapter2.cpp">
-      <Filter>Contents\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="yaChapter3.cpp">
-      <Filter>Contents\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="yaChapter4.cpp">
-      <Filter>Contents\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="yaChapter5.cpp">
-      <Filter>Contents\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="yaChapter6.cpp">
-      <Filter>Contents\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="yaChapter7.cpp">
-      <Filter>Contents\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="yaChapter8.cpp">
-      <Filter>Contents\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="yaChapter1.cpp">
-      <Filter>Contents\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="yaNpc.cpp">
       <Filter>Contents\GameObject\Obstacle</Filter>
     </ClCompile>
@@ -378,6 +384,36 @@
     </ClCompile>
     <ClCompile Include="yaKey.cpp">
       <Filter>Contents\GameObject\Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="yaMonster.cpp">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="yaChapter1.cpp">
+      <Filter>Contents\Scene\Chapter1</Filter>
+    </ClCompile>
+    <ClCompile Include="yaChapter2.cpp">
+      <Filter>Contents\Scene\Chapter2</Filter>
+    </ClCompile>
+    <ClCompile Include="yaChapter3.cpp">
+      <Filter>Contents\Scene\Chapter3</Filter>
+    </ClCompile>
+    <ClCompile Include="yaChapter4.cpp">
+      <Filter>Contents\Scene\Chapter4</Filter>
+    </ClCompile>
+    <ClCompile Include="yaChapter5.cpp">
+      <Filter>Contents\Scene\Chapter5</Filter>
+    </ClCompile>
+    <ClCompile Include="yaChapter6.cpp">
+      <Filter>Contents\Scene\Chapter6</Filter>
+    </ClCompile>
+    <ClCompile Include="yaChapter7.cpp">
+      <Filter>Contents\Scene\Chapter7</Filter>
+    </ClCompile>
+    <ClCompile Include="yaChapter8.cpp">
+      <Filter>Contents\Scene\Chapter8</Filter>
+    </ClCompile>
+    <ClCompile Include="yaSceneChange.cpp">
+      <Filter>Contents\GameObject\SceneChange</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

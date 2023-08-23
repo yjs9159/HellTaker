@@ -14,11 +14,30 @@
 #include "yaNpc.h"
 #include "yaKey.h"
 #include "yaLockBox.h"
+#include "yaSceneChange.h"
 
 namespace ya
 {
+	int Chapter3::MapInfo3[9][10] =
+	{
+		// 0 => 바닥
+		// 1 => wall
+		// 2 => player
+		// 3 => monster
+		// 4 => rock
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+		{ 1, 1, 1, 1, 0, 0, 0, 0, 1, 1 },
+		{ 1, 1, 1, 1, 1, 1, 1, 0, 1, 1 },
+		{ 1, 1, 1, 0, 0, 0, 0, 0, 2, 1 },
+		{ 1, 1, 1, 0, 1, 0, 1, 0, 0, 1 },
+		{ 1, 1, 1, 0, 0, 3, 0, 0, 1, 1 },
+		{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 1 },
+		{ 1, 0, 0, 0, 0, 0, 3, 0, 1, 1 },
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+	};
+
 	ya::Chapter3::Chapter3()
-		: LeftTop(Vector2(281.0f + 72 / 2, 58.0f + 68 / 2))
+		: LeftTop(Vector2(281.0f + 72 / 2, 43.0f + 68 / 2))
 	{
 	}
 
@@ -28,6 +47,18 @@ namespace ya
 
 	void ya::Chapter3::Initialize()
 	{
+		// Scene Change 생성 및 애니메이션 재생
+		SceneChange* S_C = object::Instantiate<SceneChange>(eLayerType::SceneChange);
+
+		Transform* tr_SC = S_C->GetComponent<Transform>();
+		tr_SC->SetPosition(Vector2(640.0f, 360.0f));
+
+		Animator* at_SC = S_C->AddComponent<Animator>();
+		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f));
+		at_SC->PlayAnimation(L"Change", false);
+		at_SC->SetScale(Vector2(0.5f, 0.5f));
+
+
 		Texture* Chapter3 = Resources::Load<Texture>(L"Chapter3"
 			, L"..\\Resources\\Texture\\chapterbg\\chapterBG0003.bmp");
 
@@ -218,8 +249,8 @@ namespace ya
 		int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
 		for (size_t y = 0; y < maxRow; y++)
 		{
-			MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 - 10, NULL);      //      라인(선) 시작
-			LineTo(hdc, 1280, TILE_HEIGHT * y * 4 - 10);        //          라인(선) 끝
+			MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 - 25, NULL);      //      라인(선) 시작
+			LineTo(hdc, 1280, TILE_HEIGHT * y * 4 - 25);        //          라인(선) 끝
 		}
 
 		int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;

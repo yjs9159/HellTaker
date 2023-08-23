@@ -54,7 +54,7 @@ namespace ya
 
 		mAnimations.insert(std::make_pair(name, animation));
 		Resources::Insert<Animation>(name, animation);
-		
+
 		return animation;
 	}
 
@@ -87,8 +87,8 @@ namespace ya
 		std::wstring spriteSheetName = name + L"SpriteSheet";
 		Texture* spriteSheet
 			= Texture::Create(spriteSheetName, width * fileCout, height);
-		
-		
+
+
 		spriteSheet->SetType(eTextureType::AlphaBmp);
 
 		int idx = 0;

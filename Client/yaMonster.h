@@ -12,7 +12,7 @@ namespace ya
 		enum class eState
 		{
 			Idle,
-			Move,
+			Hit,
 			Death,
 			End,
 		};
@@ -26,7 +26,6 @@ namespace ya
 
 		void Idle();
 		void Hit();
-		void Move();
 		void Dead();
 
 		//virtual void OnCollisionEnter(class Collider* other);
@@ -34,8 +33,6 @@ namespace ya
 		//virtual void OnCollisionExit(class Collider* other);
 
 	private:
-		float mDeathTime;
 		eState mState;
-		int Hp;
 	};
 }

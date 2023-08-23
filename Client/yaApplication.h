@@ -30,5 +30,3 @@ namespace ya
 		HBITMAP mBackBuffer;
 	};
 }
-
-

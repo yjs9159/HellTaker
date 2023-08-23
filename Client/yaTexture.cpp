@@ -160,9 +160,9 @@ namespace ya
 			////draw passed in image onto graphics object
 			//g.DrawImage(b, new Point(0, 0));
 			//return returnBitmap;
-			
-			
-			//// 내가 원하는 픽셀을 투명화 시킬떄
+
+
+			//// 내가 원하는 픽셀을 투명화 시킬??
 			Gdiplus::ImageAttributes imageAtt = {};
 			//// 투명화 시킬 픽셀 색 범위
 			imageAtt.SetColorKey(Gdiplus::Color(100, 100, 100)
@@ -186,10 +186,8 @@ namespace ya
 				, nullptr);
 		}
 
- 		//Rectangle(hdc
+		//Rectangle(hdc
 			//, pos.x, pos.y
 			//, pos.x + 10, pos.y + 10);
 	}
 }
-
-

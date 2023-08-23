@@ -13,20 +13,51 @@
 #include "yaMonster.h"
 #include "yaNpc.h"
 #include "yaRock.h"
+#include "yaSceneChange.h"
 
 namespace ya
 {
-	ya::Chapter2::Chapter2()
+	int Chapter2::MapInfo2[8][9] =
+	{
+		// 0 => 바닥
+		// 1 => wall
+		// 2 => player
+		// 3 => monster
+		// 4 => rock
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+		{ 1, 1, 0, 0, 0, 0, 1, 1, 1 },
+		{ 1, 1, 3, 1, 0, 0, 0, 0, 1 },
+		{ 1, 0, 0, 1, 1, 4, 4, 4, 1 },
+		{ 1, 0, 0, 1, 1, 0, 0, 0, 1 },
+		{ 1, 2, 0, 1, 1, 0, 3, 0, 1 },
+		{ 1, 1, 1, 1, 1, 0, 0, 3, 1 },
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+	};
+
+
+	Chapter2::Chapter2()
 		: LeftTop(Vector2(318.0f + 72 / 2, 86.0f + 68 / 2))
 	{
+
 	}
 
-	ya::Chapter2::~Chapter2()
+	Chapter2::~Chapter2()
 	{
 	}
 
-	void ya::Chapter2::Initialize()
+	void Chapter2::Initialize()
 	{
+		SceneChange* S_C = object::Instantiate<SceneChange>(eLayerType::SceneChange); // 몬스터3 생성
+
+		Transform* tr_SC = S_C->GetComponent<Transform>();
+		tr_SC->SetPosition(Vector2(640.0f, 360.0f)); // 몬스터3 시작위치
+
+		Animator* at_SC = S_C->AddComponent<Animator>();
+		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f));
+		at_SC->PlayAnimation(L"Change", false);
+		at_SC->SetScale(Vector2(0.5f, 0.5f));
+
+
 		Texture* Chapter2 = Resources::Load<Texture>(L"Chapter2"
 			, L"..\\Resources\\Texture\\chapterbg\\chapterBG0002.bmp");
 
@@ -41,6 +72,7 @@ namespace ya
 		Player* player = object::Instantiate<Player>(eLayerType::Player); // 플레이어 생성
 		Transform* tr = player->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 5)); // 캐릭터 시작위치
+		
 		
 		Animator* at = player->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"player_rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 10.0f));
@@ -57,6 +89,7 @@ namespace ya
 		Collider* col = player->AddComponent<Collider>();
 		col->SetSize(Vector2(100.0f, 110.0f));
 		col->SetOffset(Vector2(0.0f, 0.0f));
+
 
 		Monster* monster1 = object::Instantiate<Monster>(eLayerType::Monster); // 몬스터1 생성
 
@@ -153,7 +186,7 @@ namespace ya
 
 	}
 
-	void ya::Chapter2::Update()
+	void Chapter2::Update()
 	{
 		Scene::Update();
 
@@ -203,7 +236,7 @@ namespace ya
 		}
 	}
 
-	void ya::Chapter2::Render(HDC hdc)
+	void Chapter2::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
 
@@ -220,5 +253,9 @@ namespace ya
 			MoveToEx(hdc, TILE_WIDTH * x * 4 + 30, 0, NULL);      //      라인(선) 시작
 			LineTo(hdc, TILE_WIDTH * x * 4 + 30, 720);        //          라인(선) 끝
 		}
+
+
+	
+	
 	}
 }

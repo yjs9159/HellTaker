@@ -13,6 +13,8 @@ namespace ya
 		virtual void Update();
 		virtual void Render(HDC hdc);
 
+		static int MapInfo3[9][10];
+
 	private:
 		math::Vector2 LeftTop;
 
