@@ -210,82 +210,82 @@ namespace ya
 
 
 		// Fire 1 base
-		Fire* Fire1_base = object::Instantiate<Fire>(eLayerType::Fire);
+		Fire* base1_1 = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr_Fire1base = Fire1_base->GetComponent<Transform>();
-		tr_Fire1base->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 0 + 10, LeftTop.y + MOVE_TILE_HEIGHT * 4 + 10));
+		Transform* tr1_1Firebase = base1_1->GetComponent<Transform>();
+		tr1_1Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 0 + 10, LeftTop.y + MOVE_TILE_HEIGHT * 4 + 10));
 
-		Texture* Fire1_Base = Resources::Load<Texture>(L"Fire1_Base"
+		Texture* Fire1_1Base = Resources::Load<Texture>(L"Fire1_1Base"
 			, L"..\\Resources\\Texture\\fire\\FLAMEbase0002.png");
 
-		SpriteRenderer* Fire1_Sr = Fire1_base->AddComponent<SpriteRenderer>();
-		Fire1_Sr->SetImage(Fire1_Base);
-		Fire1_Sr->SetScale(Vector2(0.75f, 0.75f));
+		SpriteRenderer* Fire1_1Sr = base1_1->AddComponent<SpriteRenderer>();
+		Fire1_1Sr->SetImage(Fire1_1Base);
+		Fire1_1Sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Fire 2 base
-		Fire* Fire2_base = object::Instantiate<Fire>(eLayerType::Fire);
+		Fire* Fire1_2base = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr_Fire2base = Fire2_base->GetComponent<Transform>();
-		tr_Fire2base->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1 + 12, LeftTop.y + MOVE_TILE_HEIGHT * 1 + 10));
+		Transform* tr1_2Firebase = Fire1_2base->GetComponent<Transform>();
+		tr1_2Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1 + 12, LeftTop.y + MOVE_TILE_HEIGHT * 1 + 10));
 
-		Texture* Fire2_Base = Resources::Load<Texture>(L"Fire2_Base"
+		Texture* Fire1_2Base = Resources::Load<Texture>(L"Fire1_2Base"
 			, L"..\\Resources\\Texture\\fire\\FLAMEbase0001.png");
 
-		SpriteRenderer* Fire2_Sr = Fire2_base->AddComponent<SpriteRenderer>();
-		Fire2_Sr->SetImage(Fire2_Base);
-		Fire2_Sr->SetScale(Vector2(0.75f, 0.75f));
+		SpriteRenderer* Fire1_2Sr = Fire1_2base->AddComponent<SpriteRenderer>();
+		Fire1_2Sr->SetImage(Fire1_2Base);
+		Fire1_2Sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Fire 2 
-		Fire* Fire2 = object::Instantiate<Fire>(eLayerType::Fire);
+		Fire* Fire1_2 = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr_Fire2 = Fire2->GetComponent<Transform>();
-		tr_Fire2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1 + 12, LeftTop.y + MOVE_TILE_HEIGHT * 1));
+		Transform* tr1_2Fire = Fire1_2->GetComponent<Transform>();
+		tr1_2Fire->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1 + 12, LeftTop.y + MOVE_TILE_HEIGHT * 1));
 
-		Animator* at_Fire2 = Fire2->AddComponent<Animator>();
-		at_Fire2->CreateAnimationFolder(L"Fire2", L"..\\Resources\\Texture\\fire\\fire", Vector2(2.0f, -22.0f));
-		at_Fire2->PlayAnimation(L"Fire2", true);
-		at_Fire2->SetScale(Vector2(0.4f, 0.5f));
+		Animator* at1_2Fire = Fire1_2->AddComponent<Animator>();
+		at1_2Fire->CreateAnimationFolder(L"Fire1_2", L"..\\Resources\\Texture\\fire\\fire", Vector2(2.0f, -22.0f));
+		at1_2Fire->PlayAnimation(L"Fire1_2", true);
+		at1_2Fire->SetScale(Vector2(0.4f, 0.5f));
 
 
 		// Fire 3 base
-		Fire* Fire3_base = object::Instantiate<Fire>(eLayerType::Fire);
+		Fire* Fire1_3base = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr_Fire3base = Fire3_base->GetComponent<Transform>();
-		tr_Fire3base->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 0 + 5));
+		Transform* tr1_3Firebase = Fire1_3base->GetComponent<Transform>();
+		tr1_3Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 0 + 5));
 
-		Texture* Fire3_Base = Resources::Load<Texture>(L"Fire3_Base"
+		Texture* Fire1_3Base = Resources::Load<Texture>(L"Fire1_3Base"
 			, L"..\\Resources\\Texture\\fire\\FLAMEbase0002.png");
 
-		SpriteRenderer* Fire3_Sr = Fire3_base->AddComponent<SpriteRenderer>();
-		Fire3_Sr->SetImage(Fire3_Base);
-		Fire3_Sr->SetScale(Vector2(0.75f, 0.75f));
+		SpriteRenderer* Fire1_3Sr = Fire1_3base->AddComponent<SpriteRenderer>();
+		Fire1_3Sr->SetImage(Fire1_3Base);
+		Fire1_3Sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Fire 4 base
-		Fire* Fire4_base = object::Instantiate<Fire>(eLayerType::Fire);
+		Fire* Fire1_4base = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr_Fire4base = Fire4_base->GetComponent<Transform>();
-		tr_Fire4base->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7 + 2, LeftTop.y + MOVE_TILE_HEIGHT * 4 - 20));
+		Transform* tr1_4Firebase = Fire1_4base->GetComponent<Transform>();
+		tr1_4Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7 + 2, LeftTop.y + MOVE_TILE_HEIGHT * 4 - 20));
 
-		Texture* Fire4_Base = Resources::Load<Texture>(L"Fire4_Base"
+		Texture* Fire1_4Base = Resources::Load<Texture>(L"Fire1_4Base"
 			, L"..\\Resources\\Texture\\fire\\FLAMEbase0001.png");
 
-		SpriteRenderer* Fire4_Sr = Fire4_base->AddComponent<SpriteRenderer>();
-		Fire4_Sr->SetImage(Fire4_Base);
-		Fire4_Sr->SetScale(Vector2(0.75f, 0.75f));
+		SpriteRenderer* Fire1_4Sr = Fire1_4base->AddComponent<SpriteRenderer>();
+		Fire1_4Sr->SetImage(Fire1_4Base);
+		Fire1_4Sr->SetScale(Vector2(0.75f, 0.75f));
 
 		// Fire 4 
-		Fire* Fire4 = object::Instantiate<Fire>(eLayerType::Fire);
+		Fire* Fire1_4 = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr_Fire4 = Fire4->GetComponent<Transform>();
-		tr_Fire4->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+		Transform* tr1_4Fire = Fire1_4->GetComponent<Transform>();
+		tr1_4Fire->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 4));
 
-		Animator* at_Fire4 = Fire4->AddComponent<Animator>();
-		at_Fire4->CreateAnimationFolder(L"Fire4", L"..\\Resources\\Texture\\fire\\fire", Vector2(4.0f, -52.0f));
-		at_Fire4->PlayAnimation(L"Fire4", true);
-		at_Fire4->SetScale(Vector2(0.4f, 0.5f));
+		Animator* at1_4Fire = Fire1_4->AddComponent<Animator>();
+		at1_4Fire->CreateAnimationFolder(L"Fire4", L"..\\Resources\\Texture\\fire\\fire", Vector2(4.0f, -52.0f));
+		at1_4Fire->PlayAnimation(L"Fire4", true);
+		at1_4Fire->SetScale(Vector2(0.4f, 0.5f));
 	}
 
 	void Chapter1::Update()

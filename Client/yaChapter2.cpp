@@ -14,6 +14,7 @@
 #include "yaNpc.h"
 #include "yaRock.h"
 #include "yaSceneChange.h"
+#include "yaFire.h"
 
 namespace ya
 {
@@ -184,6 +185,72 @@ namespace ya
 		Rock3sr->SetImage(Rock3);
 		Rock3sr->SetScale(Vector2(0.75f, 0.75f));
 
+
+		// Fire 1 base
+		Fire* Fire2_1base = object::Instantiate<Fire>(eLayerType::Fire);
+
+		Transform* tr2_1Firebase = Fire2_1base->GetComponent<Transform>();
+		tr2_1Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 0 + 8));
+
+		Texture* Fire2_1Base = Resources::Load<Texture>(L"Fire2_1Base"
+			, L"..\\Resources\\Texture\\fire\\FLAMEbase0001.png");
+
+		SpriteRenderer* Fire2_1Sr = Fire2_1base->AddComponent<SpriteRenderer>();
+		Fire2_1Sr->SetImage(Fire2_1Base);
+		Fire2_1Sr->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// Fire 1 
+		Fire* Fire2_1 = object::Instantiate<Fire>(eLayerType::Fire);
+
+		Transform* tr2_1Fire = Fire2_1->GetComponent<Transform>();
+		tr2_1Fire->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 0));
+
+		Animator* at2_1Fire = Fire2_1->AddComponent<Animator>();
+		at2_1Fire->CreateAnimationFolder(L"Fire2_1", L"..\\Resources\\Texture\\fire\\fire", Vector2(2.0f, -25.0f));
+		at2_1Fire->PlayAnimation(L"Fire2_1", true);
+		at2_1Fire->SetScale(Vector2(0.4f, 0.5f));
+
+
+		// Fire 2 base
+		Fire* Fire2_2base = object::Instantiate<Fire>(eLayerType::Fire);
+
+		Transform* tr2_2Firebase = Fire2_2base->GetComponent<Transform>();
+		tr2_2Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6 - 3, LeftTop.y + MOVE_TILE_HEIGHT * 0 - 32));
+
+		Texture* Fire2_2Base = Resources::Load<Texture>(L"Fire2_2Base"
+			, L"..\\Resources\\Texture\\fire\\FLAMEbase0002.png");
+
+		SpriteRenderer* Fire2_2Sr = Fire2_2base->AddComponent<SpriteRenderer>();
+		Fire2_2Sr->SetImage(Fire2_2Base);
+		Fire2_2Sr->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// Fire 3 base
+		Fire* Fire2_3base = object::Instantiate<Fire>(eLayerType::Fire);
+
+		Transform* tr2_3Firebase = Fire2_3base->GetComponent<Transform>();
+		tr2_3Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8 - 3, LeftTop.y + MOVE_TILE_HEIGHT * 4 - 23));
+
+		Texture* Fire2_3Base = Resources::Load<Texture>(L"Fire2_3Base"
+			, L"..\\Resources\\Texture\\fire\\FLAMEbase0001.png");
+
+		SpriteRenderer* Fire2_3Sr = Fire2_3base->AddComponent<SpriteRenderer>();
+		Fire2_3Sr->SetImage(Fire2_3Base);
+		Fire2_3Sr->SetScale(Vector2(0.75f, 0.75f));
+
+
+
+		// Fire 2
+		Fire* Fire2_2 = object::Instantiate<Fire>(eLayerType::Fire);
+
+		Transform* tr2_2Fire = Fire2_2->GetComponent<Transform>();
+		tr2_2Fire->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+
+		Animator* at2_2Fire = Fire2_2->AddComponent<Animator>();
+		at2_2Fire->CreateAnimationFolder(L"Fire2_2", L"..\\Resources\\Texture\\fire\\fire", Vector2(0.0f, 10.0f));
+		at2_2Fire->PlayAnimation(L"Fire2_2", true);
+		at2_2Fire->SetScale(Vector2(0.4f, 0.5f));
 	}
 
 	void Chapter2::Update()

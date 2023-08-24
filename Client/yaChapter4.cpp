@@ -15,6 +15,7 @@
 #include "yaKey.h"
 #include "yaLockBox.h"
 #include "yaSceneChange.h"
+#include "yaFire.h"
 
 namespace ya
 {
@@ -311,6 +312,46 @@ namespace ya
 		SpriteRenderer* sr_Box = lockbox->AddComponent<SpriteRenderer>();
 		sr_Box->SetImage(Box);
 		sr_Box->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// Fire 1 base
+		Fire* Fire4_1base = object::Instantiate<Fire>(eLayerType::Fire);
+
+		Transform* tr4_1Firebase = Fire4_1base->GetComponent<Transform>();
+		tr4_1Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3 - 3, LeftTop.y + MOVE_TILE_HEIGHT * 0 + 10));
+
+		Texture* Fire4_1Base = Resources::Load<Texture>(L"Fire4_1Base"
+			, L"..\\Resources\\Texture\\fire\\FLAMEbase0001.png");
+
+		SpriteRenderer* Fire4_1Sr = Fire4_1base->AddComponent<SpriteRenderer>();
+		Fire4_1Sr->SetImage(Fire4_1Base);
+		Fire4_1Sr->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// Fire 2
+		Fire* Fire4_1 = object::Instantiate<Fire>(eLayerType::Fire);
+
+		Transform* tr4_1Fire = Fire4_1->GetComponent<Transform>();
+		tr4_1Fire->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 0));
+
+		Animator* at4_1Fire = Fire4_1->AddComponent<Animator>();
+		at4_1Fire->CreateAnimationFolder(L"Fire4_1", L"..\\Resources\\Texture\\fire\\fire", Vector2(-2.0f, -25.0f));
+		at4_1Fire->PlayAnimation(L"Fire4_1", true);
+		at4_1Fire->SetScale(Vector2(0.4f, 0.5f));
+
+
+		// Fire 2 base
+		Fire* Fire4_2base = object::Instantiate<Fire>(eLayerType::Fire);
+
+		Transform* tr4_2Firebase = Fire4_2base->GetComponent<Transform>();
+		tr4_2Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7 - 7, LeftTop.y + MOVE_TILE_HEIGHT * 0 - 25));
+
+		Texture* Fire4_2Base = Resources::Load<Texture>(L"Fire4_2Base"
+			, L"..\\Resources\\Texture\\fire\\FLAMEbase0002.png");
+
+		SpriteRenderer* Fire4_2Sr = Fire4_2base->AddComponent<SpriteRenderer>();
+		Fire4_2Sr->SetImage(Fire4_2Base);
+		Fire4_2Sr->SetScale(Vector2(0.75f, 0.75f));
 	}
 
 	void Chapter4::Update()
