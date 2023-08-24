@@ -32,6 +32,7 @@ namespace ya::enums
 		Rock,
 		myKey,
 		LockBox,
+		Fire,
 		SceneChange,
 		Effect,
 		UI,

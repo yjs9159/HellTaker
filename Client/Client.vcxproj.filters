@@ -270,6 +270,9 @@
     <ClInclude Include="yaSceneChange.h">
       <Filter>Contents\GameObject\SceneChange</Filter>
     </ClInclude>
+    <ClInclude Include="yaFire.h">
+      <Filter>Contents\GameObject\Obstacle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -414,6 +417,9 @@
     </ClCompile>
     <ClCompile Include="yaSceneChange.cpp">
       <Filter>Contents\GameObject\SceneChange</Filter>
+    </ClCompile>
+    <ClCompile Include="yaFire.cpp">
+      <Filter>Contents\GameObject\Obstacle</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

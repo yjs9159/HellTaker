@@ -1,8 +1,5 @@
 #include "yaRock.h"
-#include "yaAnimator.h"
-#include "yaTransform.h"
-#include "yaTime.h"
-#include "yaInput.h"
+
 
 namespace ya
 {
