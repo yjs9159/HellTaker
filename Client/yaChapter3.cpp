@@ -57,7 +57,7 @@ namespace ya
 		Animator* at_SC = S_C->AddComponent<Animator>();
 		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f));
 		at_SC->PlayAnimation(L"Change", false);
-		at_SC->SetScale(Vector2(0.5f, 0.5f));
+		at_SC->SetScale(Vector2(0.7f, 0.7f));
 
 
 		Texture* Chapter3 = Resources::Load<Texture>(L"Chapter3"
@@ -298,18 +298,18 @@ namespace ya
 	{
 		Scene::Render(hdc);
 
-		int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
-		for (size_t y = 0; y < maxRow; y++)
-		{
-			MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 - 25, NULL);      //      라인(선) 시작
-			LineTo(hdc, 1280, TILE_HEIGHT * y * 4 - 25);        //          라인(선) 끝
-		}
+		//int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
+		//for (size_t y = 0; y < maxRow; y++)
+		//{
+		//	MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 - 25, NULL);      //      라인(선) 시작
+		//	LineTo(hdc, 1280, TILE_HEIGHT * y * 4 - 25);        //          라인(선) 끝
+		//}
 
-		int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;
-		for (size_t x = 0; x < maxColumn; x++)
-		{
-			MoveToEx(hdc, TILE_WIDTH * x * 4 - 7, 0, NULL);      //      라인(선) 시작
-			LineTo(hdc, TILE_WIDTH * x * 4 - 7, 720);        //          라인(선) 끝
-		}
+		//int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;
+		//for (size_t x = 0; x < maxColumn; x++)
+		//{
+		//	MoveToEx(hdc, TILE_WIDTH * x * 4 - 7, 0, NULL);      //      라인(선) 시작
+		//	LineTo(hdc, TILE_WIDTH * x * 4 - 7, 720);        //          라인(선) 끝
+		//}
 	}
 }

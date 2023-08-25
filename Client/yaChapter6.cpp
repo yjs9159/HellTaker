@@ -16,6 +16,7 @@
 #include "yaKey.h"
 #include "yaLockBox.h"
 #include "yaSceneChange.h"
+#include "yaFire.h"
 
 namespace ya
 {
@@ -58,7 +59,7 @@ namespace ya
 		Animator* at_SC = S_C->AddComponent<Animator>();
 		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f));
 		at_SC->PlayAnimation(L"Change", false);
-		at_SC->SetScale(Vector2(0.5f, 0.5f));
+		at_SC->SetScale(Vector2(0.7f, 0.7f));
 
 
 		Texture* Chapter6 = Resources::Load<Texture>(L"Chapter6"
@@ -269,6 +270,72 @@ namespace ya
 		SpriteRenderer* sr_Box = lockbox->AddComponent<SpriteRenderer>();
 		sr_Box->SetImage(Box);
 		sr_Box->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// Fire 1 base
+		Fire* Fire6_1base = object::Instantiate<Fire>(eLayerType::Fire);
+
+		Transform* tr6_1Firebase = Fire6_1base->GetComponent<Transform>();
+		tr6_1Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 1 + 7));
+
+		Texture* Fire6_1Base = Resources::Load<Texture>(L"Fire6_1Base"
+			, L"..\\Resources\\Texture\\fire\\FLAMEbase0001.png");
+
+		SpriteRenderer* Fire6_1Sr = Fire6_1base->AddComponent<SpriteRenderer>();
+		Fire6_1Sr->SetImage(Fire6_1Base);
+		Fire6_1Sr->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// Fire 1
+		Fire* Fire6_1 = object::Instantiate<Fire>(eLayerType::Fire);
+
+		Transform* tr6_1Fire = Fire6_1->GetComponent<Transform>();
+		tr6_1Fire->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 1));
+
+		Animator* at6_1Fire = Fire6_1->AddComponent<Animator>();
+		at6_1Fire->CreateAnimationFolder(L"Fire6_1", L"..\\Resources\\Texture\\fire\\fire", Vector2(0.0f, -30.0f));
+		at6_1Fire->PlayAnimation(L"Fire6_1", true);
+		at6_1Fire->SetScale(Vector2(0.4f, 0.5f));
+
+
+		// Fire 2 base
+		Fire* Fire6_2base = object::Instantiate<Fire>(eLayerType::Fire);
+
+		Transform* tr6_2Firebase = Fire6_2base->GetComponent<Transform>();
+		tr6_2Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5 - 1, LeftTop.y + MOVE_TILE_HEIGHT * 2 + 6));
+
+		Texture* Fire6_2Base = Resources::Load<Texture>(L"Fire6_2Base"
+			, L"..\\Resources\\Texture\\fire\\FLAMEbase0002.png");
+
+		SpriteRenderer* Fire6_2Sr = Fire6_2base->AddComponent<SpriteRenderer>();
+		Fire6_2Sr->SetImage(Fire6_2Base);
+		Fire6_2Sr->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// Fire 3 base
+		Fire* Fire6_3base = object::Instantiate<Fire>(eLayerType::Fire);
+
+		Transform* tr6_3Firebase = Fire6_3base->GetComponent<Transform>();
+		tr6_3Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6 - 1, LeftTop.y + MOVE_TILE_HEIGHT * 2 - 23));
+
+		Texture* Fire6_3Base = Resources::Load<Texture>(L"Fire6_3Base"
+			, L"..\\Resources\\Texture\\fire\\FLAMEbase0001.png");
+
+		SpriteRenderer* Fire6_3Sr = Fire6_3base->AddComponent<SpriteRenderer>();
+		Fire6_3Sr->SetImage(Fire6_3Base);
+		Fire6_3Sr->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// Fire 2
+		Fire* Fire6_2 = object::Instantiate<Fire>(eLayerType::Fire);
+
+		Transform* tr6_2Fire = Fire6_2->GetComponent<Transform>();
+		tr6_2Fire->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 1));
+
+		Animator* at6_2Fire = Fire6_2->AddComponent<Animator>();
+		at6_2Fire->CreateAnimationFolder(L"Fire6_2", L"..\\Resources\\Texture\\fire\\fire", Vector2(0.0f, 10.0f));
+		at6_2Fire->PlayAnimation(L"Fire6_2", true);
+		at6_2Fire->SetScale(Vector2(0.4f, 0.5f));
 	}
 
 	void ya::Chapter6::Update()
@@ -325,18 +392,18 @@ namespace ya
 	{
 		Scene::Render(hdc);
 
-		int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
-		for (size_t y = 0; y < maxRow; y++)
-		{
-			MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 + 15, NULL);      //      라인(선) 시작
-			LineTo(hdc, 1280, TILE_HEIGHT * y * 4 + 15);        //          라인(선) 끝
-		}
+		//int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
+		//for (size_t y = 0; y < maxRow; y++)
+		//{
+		//	MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 + 15, NULL);      //      라인(선) 시작
+		//	LineTo(hdc, 1280, TILE_HEIGHT * y * 4 + 15);        //          라인(선) 끝
+		//}
 
-		int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;
-		for (size_t x = 0; x < maxColumn; x++)
-		{
-			MoveToEx(hdc, TILE_WIDTH * x * 4 + 30, 0, NULL);      //      라인(선) 시작
-			LineTo(hdc, TILE_WIDTH * x * 4 + 30, 720);        //          라인(선) 끝
-		}
+		//int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;
+		//for (size_t x = 0; x < maxColumn; x++)
+		//{
+		//	MoveToEx(hdc, TILE_WIDTH * x * 4 + 30, 0, NULL);      //      라인(선) 시작
+		//	LineTo(hdc, TILE_WIDTH * x * 4 + 30, 720);        //          라인(선) 끝
+		//}
 	}
 }
