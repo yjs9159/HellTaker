@@ -54,7 +54,7 @@ namespace ya
 		tr_SC->SetPosition(Vector2(640.0f, 360.0f)); // 몬스터3 시작위치
 
 		Animator* at_SC = S_C->AddComponent<Animator>();
-		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f));
+		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f), 0.05f);
 		at_SC->PlayAnimation(L"Change", false);
 		at_SC->SetScale(Vector2(0.7f, 0.7f));
 
