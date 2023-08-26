@@ -136,6 +136,20 @@ namespace ya
 		col->SetSize(Vector2(80.0f, 80.0f));
 		
 
+		// Npc LoveSign
+		Npc* LoveSign1 = object::Instantiate<Npc>(eLayerType::Npc);
+
+		Transform* tr_LoveSign1 = LoveSign1->GetComponent<Transform>();
+		tr_LoveSign1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3 + 40, LeftTop.y + MOVE_TILE_HEIGHT * 1 - 30));
+
+		Texture* T_LoveSign1 = Resources::Load<Texture>(L"LoveSign1"
+			, L"..\\Resources\\Texture\\npc\\lovesign\\lovesign.png");
+
+		SpriteRenderer* sr_LoveSign1 = LoveSign1->AddComponent<SpriteRenderer>();
+		sr_LoveSign1->SetImage(T_LoveSign1);
+		sr_LoveSign1->SetScale(Vector2(0.75f, 0.75f));
+
+
 		// Npc 2 생성 및 이미지 로드
 		Npc* cerberus2 = object::Instantiate<Npc>(eLayerType::Npc);
 
@@ -149,6 +163,20 @@ namespace ya
 
 		col = cerberus2->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
+
+
+		// Npc LoveSign
+		Npc* LoveSign2 = object::Instantiate<Npc>(eLayerType::Npc);
+
+		Transform* tr_LoveSign2 = LoveSign2->GetComponent<Transform>();
+		tr_LoveSign2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4 + 40, LeftTop.y + MOVE_TILE_HEIGHT * 1 - 30));
+
+		Texture* T_LoveSign2 = Resources::Load<Texture>(L"LoveSign2"
+			, L"..\\Resources\\Texture\\npc\\lovesign\\lovesign.png");
+
+		SpriteRenderer* sr_LoveSign2 = LoveSign2->AddComponent<SpriteRenderer>();
+		sr_LoveSign2->SetImage(T_LoveSign2);
+		sr_LoveSign2->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Npc 3 생성 및 이미지 로드
@@ -165,7 +193,21 @@ namespace ya
 		col = cerberus3->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
 
-		
+
+		// Npc LoveSign
+		Npc* LoveSign3 = object::Instantiate<Npc>(eLayerType::Npc);
+
+		Transform* tr_LoveSign3 = LoveSign3->GetComponent<Transform>();
+		tr_LoveSign3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5 + 40, LeftTop.y + MOVE_TILE_HEIGHT * 1 - 30));
+
+		Texture* T_LoveSign3 = Resources::Load<Texture>(L"LoveSign3"
+			, L"..\\Resources\\Texture\\npc\\lovesign\\lovesign.png");
+
+		SpriteRenderer* sr_LoveSign3 = LoveSign3->AddComponent<SpriteRenderer>();
+		sr_LoveSign3->SetImage(T_LoveSign3);
+		sr_LoveSign3->SetScale(Vector2(0.75f, 0.75f));
+
+
 		// Key 생성 및 이미지 로드
 		Key* myKey = object::Instantiate<Key>(eLayerType::myKey);
 

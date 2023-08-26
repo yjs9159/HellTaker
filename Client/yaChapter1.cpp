@@ -74,6 +74,7 @@ namespace ya
 
 		// Player 생성
 		Player* player = object::Instantiate<Player>(eLayerType::Player); // 플레이어 생성
+
 		Transform* tr = player->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // 캐릭터 시작위치
 
@@ -151,6 +152,21 @@ namespace ya
 
 		col = pandemonica->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
+
+
+		// Npc LoveSign
+		Npc* LoveSign = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
+
+		Transform* tr_LoveSign = LoveSign->GetComponent<Transform>();
+		tr_LoveSign->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6 + 30, LeftTop.y + MOVE_TILE_HEIGHT * 6 - 30)); // Npc pandemonica 시작위치
+
+		Texture* T_LoveSign = Resources::Load<Texture>(L"LoveSign"
+			, L"..\\Resources\\Texture\\npc\\lovesign\\lovesign.png");
+
+		SpriteRenderer* sr_LoveSign = LoveSign->AddComponent<SpriteRenderer>();
+		sr_LoveSign->SetImage(T_LoveSign);
+		sr_LoveSign->SetScale(Vector2(0.75f, 0.75f));
+
 
 
 		// Rock 1 생성 및 이미지 로드

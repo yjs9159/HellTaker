@@ -105,8 +105,8 @@ namespace ya
 		col = monster1->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
 
-
-		Npc* zdrada = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
+		// Npc pandemonica 생성
+		Npc* zdrada = object::Instantiate<Npc>(eLayerType::Npc);
 
 		Transform* tr_zdrada = zdrada->GetComponent<Transform>();
 		tr_zdrada->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // Npc pandemonica 시작위치
@@ -118,6 +118,20 @@ namespace ya
 
 		col = zdrada->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
+
+
+		// Npc LoveSign
+		Npc* LoveSign = object::Instantiate<Npc>(eLayerType::Npc);
+
+		Transform* tr_LoveSign = LoveSign->GetComponent<Transform>();
+		tr_LoveSign->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4 + 40, LeftTop.y + MOVE_TILE_HEIGHT * 1 - 30));
+
+		Texture* T_LoveSign = Resources::Load<Texture>(L"LoveSign"
+			, L"..\\Resources\\Texture\\npc\\lovesign\\lovesign.png");
+
+		SpriteRenderer* sr_LoveSign = LoveSign->AddComponent<SpriteRenderer>();
+		sr_LoveSign->SetImage(T_LoveSign);
+		sr_LoveSign->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 1 생성 및 이미지 로드

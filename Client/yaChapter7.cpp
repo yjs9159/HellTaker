@@ -94,7 +94,9 @@ namespace ya
 		col->SetSize(Vector2(85.0f, 90.0f));
 		col->SetOffset(Vector2(0.0f, -10.0f));
 
-		Monster* monster1 = object::Instantiate<Monster>(eLayerType::Monster); // 몬스터1 생성
+
+		// 몬스터1 생성
+		Monster* monster1 = object::Instantiate<Monster>(eLayerType::Monster);
 		Transform* tr_M1 = monster1->GetComponent<Transform>();
 		tr_M1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 5)); // 몬스터1 시작위치
 
@@ -106,7 +108,9 @@ namespace ya
 		col = monster1->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
 
-		Monster* monster2 = object::Instantiate<Monster>(eLayerType::Monster); // 몬스터2 생성
+
+		// 몬스터2 생성
+		Monster* monster2 = object::Instantiate<Monster>(eLayerType::Monster);
 		Transform* tr_M2 = monster2->GetComponent<Transform>();
 		tr_M2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 4)); // 몬스터2 시작위치
 
@@ -118,7 +122,9 @@ namespace ya
 		col = monster2->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
 
-		Monster* monster3 = object::Instantiate<Monster>(eLayerType::Monster); // 몬스터3 생성
+
+		// 몬스터3 생성
+		Monster* monster3 = object::Instantiate<Monster>(eLayerType::Monster);
 
 		Transform* tr_M3 = monster3->GetComponent<Transform>();
 		tr_M3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 4)); // 몬스터3 시작위치
@@ -132,7 +138,8 @@ namespace ya
 		col->SetSize(Vector2(80.0f, 80.0f));
 
 
-		Npc* justice = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 생성
+		// Npc pandemonica 생성
+		Npc* justice = object::Instantiate<Npc>(eLayerType::Npc);
 
 		Transform* tr_justice = justice->GetComponent<Transform>();
 		tr_justice->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // Npc pandemonica 시작위치
@@ -144,6 +151,20 @@ namespace ya
 
 		col = justice->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
+
+
+		// Npc LoveSign
+		Npc* LoveSign = object::Instantiate<Npc>(eLayerType::Npc);
+
+		Transform* tr_LoveSign = LoveSign->GetComponent<Transform>();
+		tr_LoveSign->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3 + 40, LeftTop.y + MOVE_TILE_HEIGHT * 1 - 30));
+
+		Texture* T_LoveSign = Resources::Load<Texture>(L"LoveSign"
+			, L"..\\Resources\\Texture\\npc\\lovesign\\lovesign.png");
+
+		SpriteRenderer* sr_LoveSign = LoveSign->AddComponent<SpriteRenderer>();
+		sr_LoveSign->SetImage(T_LoveSign);
+		sr_LoveSign->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 1 생성 및 이미지 로드

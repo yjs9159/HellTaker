@@ -1,9 +1,7 @@
 #include "yaHomeScene.h"
-#include "yaPlayer.h"
 #include "yaSpriteRenderer.h"
 #include "yaObject.h"
 #include "yaInput.h"
-#include "yaPlayer.h"
 #include "yaSpriteRenderer.h"
 #include "yaObject.h"
 #include "yaInput.h"
@@ -13,17 +11,15 @@
 #include "yaBackGround.h"
 #include "yaCamera.h"
 #include "yaAnimator.h"
-#include "yaCollider.h"
-#include "yaMonster.h"
-#include "yaCollisionManager.h"
-#include "yaRigidBody.h"
-#include "yaFloor.h"
 #include "yaSceneChange.h"
+#include "yaNpc.h"
+#include "yaPlayer.h"
+#include "yaCollider.h"
 
 namespace ya
 {
 	HomeScene::HomeScene()
-		:LeftTop(Vector2(313.0f + 72/2, 84.0f + 68/2))
+		:LeftTop(Vector2(0.0f + 72/2, 0.0f + 68/2))
 	{
 	}
 	HomeScene::~HomeScene()
@@ -32,8 +28,19 @@ namespace ya
 
 	void HomeScene::Initialize()
 	{
+		// ScneChange 생성 및 애니메이션 로드
+		SceneChange* S_C = object::Instantiate<SceneChange>(eLayerType::SceneChange);
+
+		Transform* tr_SC = S_C->GetComponent<Transform>();
+		tr_SC->SetPosition(Vector2(640.0f, 360.0f));
+
+		Animator* at_SC = S_C->AddComponent<Animator>();
+		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f), 0.05f);
+		at_SC->PlayAnimation(L"Change", false);
+		at_SC->SetScale(Vector2(0.7f, 0.7f));
+
 		Texture* HomeScene = Resources::Load<Texture>(L"HomeScene"
-			, L"..\\Resources\\Image\\Sprite\\Map\\chapterBG0001.bmp");
+			, L"..\\Resources\\Texture\\Home.png");
 
 
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
@@ -44,56 +51,71 @@ namespace ya
 		//bgsr->SetAlpha(0.2f);
 		bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));
 
-		Texture* image = Resources::Load<Texture>(L"Hero"
-			, L"..\\Resources\\Image\\Sprite\\HeroSprite\\Hero.bmp");
 
-		Player* player = object::Instantiate<Player>(eLayerType::Player);
+
+		Player* player = object::Instantiate<Player>(eLayerType::Player); // 플레이어 생성
+
 		Transform* tr = player->GetComponent<Transform>();
-
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // 캐릭터 시작위치
 
-		//tr->SetPosition(Vector2(640.0f, 360.0f));
-
-		image = Resources::Load<Texture>(L"PlayerImage"
-			, L"..\\Resources\\Image\\Sprite\\Player");
-
-		// 가로 100 세로 194.4
 		Animator* at = player->AddComponent<Animator>();
-		//at->CreateAnimation(L"HeroIdle", image, Vector2(0.0f, 0.0f), Vector2(100.0f, 194.4f), 12);
-		//at->CreateAnimation(L"HeroRight", image, Vector2(0.0f, 388.8f), Vector2(100.0f, 194.4f), 6);
-		at->CreateAnimationFolder(L"Player_Rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 0.0f));
-		at->CreateAnimationFolder(L"Player_Leftidle", L"..\\Resources\\Texture\\player\\player_idle\\left_idle", Vector2(0.0f, 0.0f));
-		at->CreateAnimationFolder(L"Player_Rightrun", L"..\\Resources\\Texture\\player\\player_run\\right_run", Vector2(0.0f, 0.0f));
-		at->CreateAnimationFolder(L"Player_Leftrun", L"..\\Resources\\Texture\\player\\player_run\\left_run", Vector2(0.0f, 0.0f));
-		at->CreateAnimationFolder(L"Player_Rightattack", L"..\\Resources\\Texture\\player\\player_attack\\right_attack", Vector2(0.0f, 0.0f));
-		at->CreateAnimationFolder(L"Player_Leftattack", L"..\\Resources\\Texture\\player\\player_attack\\left_attack", Vector2(0.0f, 0.0f));
-		at->CreateAnimationFolder(L"Player_Rightsuccess", L"..\\Resources\\Texture\\player\\player_success\\right_success", Vector2(0.0f, 0.0f));
-		at->CreateAnimationFolder(L"Player_Leftsuccess", L"..\\Resources\\Texture\\player\\player_success\\left_success", Vector2(0.0f, 0.0f));
-		
-		at->PlayAnimation(L"Player_Rightidle", true);
+		at->CreateAnimationFolder(L"player_rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 10.0f));
+		at->CreateAnimationFolder(L"player_leftidle", L"..\\Resources\\Texture\\player\\player_idle\\left_idle", Vector2(0.0f, 10.0f));
+		at->CreateAnimationFolder(L"player_rightrun", L"..\\Resources\\Texture\\player\\player_run\\right_run", Vector2(0.0f, 10.0f));
+		at->CreateAnimationFolder(L"player_leftrun", L"..\\Resources\\Texture\\player\\player_run\\left_run", Vector2(0.0f, 10.0f));
+		at->CreateAnimationFolder(L"player_rightattack", L"..\\Resources\\Texture\\player\\player_attack\\right_attack", Vector2(0.0f, -10.0f));
+		at->CreateAnimationFolder(L"player_leftattack", L"..\\Resources\\Texture\\player\\player_attack\\left_attack", Vector2(0.0f, -10.0f));
+		at->CreateAnimationFolder(L"player_rightsuccess", L"..\\Resources\\Texture\\player\\player_success\\right_success", Vector2(0.0f, -10.0f));
+		at->PlayAnimation(L"player_rightidle", true);
+		at->SetScale(Vector2(0.8f, 0.8f));
 		at->SetAffectedCamera(true);
 
 		Collider* col = player->AddComponent<Collider>();
 		col->SetSize(Vector2(100.0f, 110.0f));
-		col->SetOffset(Vector2(0.0f, -30.0f));
+		col->SetOffset(Vector2(0.0f, 0.0f));
 
 
-		Monster* monster = object::Instantiate<Monster>(eLayerType::Monster);
-		
-		Animator* Skeleton_at = monster->AddComponent<Animator>();
-		Skeleton_at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, 0.0f));
-		Skeleton_at->CreateAnimationFolder(L"Monster_LeftIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\left_idle", Vector2(0.0f, 0.0f));
-		Skeleton_at->CreateAnimationFolder(L"Monster_RightMove", L"..\\Resources\\Texture\\obstacle\\undead_move\\Right_Move", Vector2(0.0f, 0.0f));
-		Skeleton_at->PlayAnimation(L"Monster_RightIdle", true);
+		// cerberus 첫번째 Npc 생성  
+		Npc* cerberus1 = object::Instantiate<Npc>(eLayerType::Npc);
 
-		col = monster->AddComponent<Collider>();
-		col->SetSize(Vector2(100.0f, 100.0f));
-		//col->SetOffset(Vector2(10.0f, 10.0f));
-		tr = monster->GetComponent<Transform>();
+		Transform* tr_cerberus1 = cerberus1->GetComponent<Transform>();
+		tr_cerberus1->SetPosition(Vector2(0.0f, 0.0f));
 
-		tr->SetPosition(Vector2(940.0f, 360.0f));
+		Animator* at_cerberus1 = cerberus1->AddComponent<Animator>();
+		at_cerberus1->CreateAnimationFolder(L"cerberus1", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, 0.0f));
+		at_cerberus1->PlayAnimation(L"cerberus1");
+		at_cerberus1->SetScale(Vector2(0.8f, 0.8f));
+		at_cerberus1->SetAffectedCamera(true);
 
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
+
+		// cerberus 두번째 Npc 생성  
+		Npc* cerberus2 = object::Instantiate<Npc>(eLayerType::Npc);
+
+		Transform* tr_cerberus2 = cerberus2->GetComponent<Transform>();
+		tr_cerberus2->SetPosition(Vector2(0.0f, 0.0f));
+
+		Animator* at_cerberus2 = cerberus2->AddComponent<Animator>();
+		at_cerberus2->CreateAnimationFolder(L"cerberus2", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, 0.0f));
+		at_cerberus2->PlayAnimation(L"cerberus2");
+		at_cerberus2->SetScale(Vector2(0.8f, 0.8f));
+		at_cerberus2->SetAffectedCamera(true);
+
+
+		// cerberus 세번째 Npc 생성  
+		Npc* cerberus3 = object::Instantiate<Npc>(eLayerType::Npc);
+
+		Transform* tr_cerberus3 = cerberus3->GetComponent<Transform>();
+		tr_cerberus3->SetPosition(Vector2(0.0f, 0.0f));
+
+		Animator* at_cerberus3 = cerberus3->AddComponent<Animator>();
+		at_cerberus3->CreateAnimationFolder(L"cerberus3", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, 0.0f));
+		at_cerberus3->PlayAnimation(L"cerberus3");
+		at_cerberus3->SetScale(Vector2(0.8f, 0.8f));
+		at_cerberus3->SetAffectedCamera(true);
+
+
+
+
 	}
 
 	void HomeScene::Update()
@@ -115,16 +137,6 @@ namespace ya
 		if (Input::GetKeyDown(eKeyCode::Chapter1))
 		{
 			SceneManager::LoadScene(L"Chapter1");
-
-			SceneChange* SC = object::Instantiate<SceneChange>(eLayerType::SceneChange);
-
-			Animator* change = SC->AddComponent<Animator>();
-			change->CreateAnimationFolder(L"SceneChange", L"..\\Resources\\Texture\\levelchange\\BMP", Vector2(0.0f, 0.0f));
-			change->PlayAnimation(L"SceneChange", false);
-			change->SetScale(Vector2(1.0f, 1.0f));
-
-			Transform* tr_SC = SC->GetComponent<Transform>();
-			tr_SC->SetPosition(Vector2(640.0f, 360.0f));
 		}
 		if (Input::GetKeyDown(eKeyCode::Chapter2))
 		{
@@ -162,15 +174,15 @@ namespace ya
 		int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
 		for (size_t y = 0; y < maxRow; y++)
 		{
-			MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 + 16, NULL);      //      라인(선) 시작
-			LineTo(hdc, 1280, TILE_HEIGHT * y * 4 + 16);        //          라인(선) 끝
+			MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 - 20, NULL);      //      라인(선) 시작
+			LineTo(hdc, 1280, TILE_HEIGHT * y * 4 - 20);        //          라인(선) 끝
 		}
 
 		int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;
 		for (size_t x = 0; x < maxColumn; x++)
 		{
-			MoveToEx(hdc, TILE_WIDTH * x * 4 + 25, 0, NULL);      //      라인(선) 시작
-			LineTo(hdc, TILE_WIDTH * x * 4 + 25, 720);        //          라인(선) 끝
+			MoveToEx(hdc, TILE_WIDTH * x * 4 - 30, 0, NULL);      //      라인(선) 시작
+			LineTo(hdc, TILE_WIDTH * x * 4 - 30, 720);        //          라인(선) 끝
 		}
 
 		
