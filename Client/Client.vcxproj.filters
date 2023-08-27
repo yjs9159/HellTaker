@@ -121,11 +121,20 @@
     <Filter Include="Contents\GameObject\SceneChange">
       <UniqueIdentifier>{59f4adad-9d26-4ea1-9af8-bfbe0ad538dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scene\EndingScene">
-      <UniqueIdentifier>{51f71c48-b6de-40c9-9d7d-84256a2e1e18}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Scene\HomeScene">
       <UniqueIdentifier>{2401f206-b8f6-4250-bc34-6a251e6844af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\EndingCutScene">
+      <UniqueIdentifier>{51f71c48-b6de-40c9-9d7d-84256a2e1e18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\StartScene">
+      <UniqueIdentifier>{2943e3bb-759c-44e4-b0cd-67aeef0ddec9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\TitleScene">
+      <UniqueIdentifier>{4939a512-97c0-4766-a8fa-8e5b4fa0fe3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Sound">
+      <UniqueIdentifier>{8e765b0c-7648-44bb-af16-51090cb4b3fa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -179,9 +188,6 @@
     </ClInclude>
     <ClInclude Include="yaObject.h">
       <Filter>Engine\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="yaTitleScene.h">
-      <Filter>Contents\Scene</Filter>
     </ClInclude>
     <ClInclude Include="yaSceneManager.h">
       <Filter>Engine\Scene</Filter>
@@ -274,10 +280,19 @@
       <Filter>Contents\GameObject\Obstacle</Filter>
     </ClInclude>
     <ClInclude Include="yaEndingScene.h">
-      <Filter>Contents\Scene\EndingScene</Filter>
+      <Filter>Contents\Scene\EndingCutScene</Filter>
     </ClInclude>
     <ClInclude Include="yaHomeScene.h">
       <Filter>Contents\Scene\HomeScene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaHero.h">
+      <Filter>Contents\GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="yaTitleScene.h">
+      <Filter>Contents\Scene\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaStartScene.h">
+      <Filter>Contents\Scene\StartScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -324,9 +339,6 @@
     </ClCompile>
     <ClCompile Include="yaPlayer.cpp">
       <Filter>Contents\GameObject\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="yaTitleScene.cpp">
-      <Filter>Contents\Scene</Filter>
     </ClCompile>
     <ClCompile Include="yaSceneManager.cpp">
       <Filter>Engine\Scene</Filter>
@@ -422,10 +434,19 @@
       <Filter>Contents\GameObject\Obstacle</Filter>
     </ClCompile>
     <ClCompile Include="yaEndingScene.cpp">
-      <Filter>Contents\Scene\EndingScene</Filter>
+      <Filter>Contents\Scene\EndingCutScene</Filter>
     </ClCompile>
     <ClCompile Include="yaHomeScene.cpp">
       <Filter>Contents\Scene\HomeScene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaHero.cpp">
+      <Filter>Contents\GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="yaTitleScene.cpp">
+      <Filter>Contents\Scene\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaStartScene.cpp">
+      <Filter>Contents\Scene\StartScene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

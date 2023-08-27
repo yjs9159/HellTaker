@@ -2,7 +2,6 @@
 #include "yaSpriteRenderer.h"
 #include "yaObject.h"
 #include "yaInput.h"
-#include "yaSpriteRenderer.h"
 #include "yaObject.h"
 #include "yaInput.h"
 #include "yaTexture.h"

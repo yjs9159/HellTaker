@@ -94,6 +94,10 @@ namespace ya
 		{
 			SceneManager::LoadScene(L"Chapter8");
 		}
+		if (Input::GetKeyDown(eKeyCode::U))
+		{
+			SceneManager::LoadScene(L"StartScene");
+		}
 	}
 	void TitleScene::Render(HDC hdc)
 	{

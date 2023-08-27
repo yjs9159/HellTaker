@@ -166,6 +166,7 @@
     <ClInclude Include="yaFire.h" />
     <ClInclude Include="yaFloor.h" />
     <ClInclude Include="yaGameObject.h" />
+    <ClInclude Include="yaHero.h" />
     <ClInclude Include="yaHomeScene.h" />
     <ClInclude Include="yaKey.h" />
     <ClInclude Include="yaLockBox.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="yaRigidBody.h" />
     <ClInclude Include="yaRock.h" />
     <ClInclude Include="yaSceneChange.h" />
+    <ClInclude Include="yaStartScene.h" />
     <ClInclude Include="yaTexture.h" />
     <ClInclude Include="yaInput.h" />
     <ClInclude Include="yaLayer.h" />
@@ -214,6 +216,7 @@
     <ClCompile Include="yaFire.cpp" />
     <ClCompile Include="yaFloor.cpp" />
     <ClCompile Include="yaGameObject.cpp" />
+    <ClCompile Include="yaHero.cpp" />
     <ClCompile Include="yaHomeScene.cpp" />
     <ClCompile Include="yaKey.cpp" />
     <ClCompile Include="yaLockBox.cpp" />
@@ -222,6 +225,7 @@
     <ClCompile Include="yaRigidBody.cpp" />
     <ClCompile Include="yaRock.cpp" />
     <ClCompile Include="yaSceneChange.cpp" />
+    <ClCompile Include="yaStartScene.cpp" />
     <ClCompile Include="yaTexture.cpp" />
     <ClCompile Include="yaInput.cpp" />
     <ClCompile Include="yaLayer.cpp" />

@@ -11,6 +11,7 @@
 #include "yaChapter6.h"
 #include "yaChapter7.h"
 #include "yaChapter8.h"
+#include "yaStartScene.h"
 
 
 namespace ya
@@ -20,10 +21,11 @@ namespace ya
 
 	void SceneManager::Initialize()
 	{
+		//CreateScene<ToolScene>(L"ToolScene");
 		CreateScene<TitleScene>(L"TitleScene");
 		CreateScene<HomeScene>(L"HomeScene");
 		CreateScene<EndingScene>(L"EndingScene");
-		CreateScene<ToolScene>(L"ToolScene");
+		CreateScene<StartScene>(L"StartScene");
 		CreateScene<Chapter1>(L"Chapter1");
 		CreateScene<Chapter2>(L"Chapter2");
 		CreateScene<Chapter3>(L"Chapter3");
