@@ -6,6 +6,8 @@
 #include "yaRigidBody.h"
 #include "yaMonster.h"
 #include "yaObject.h"
+#include "yaSound.h"
+#include "yaResources.h"
 
 namespace ya
 {
@@ -110,8 +112,12 @@ namespace ya
 
 	void Player::Move()
 	{
+		Sound* sound = Resources::Load<Sound>(L"Move", L"..\\Resources\\Sound\\character_move_01.wav");
+
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
+
+
 		if (dir == 0 && Input::GetKeyUp(eKeyCode::W))
 		{
 			//Rigidbody* rb = GetComponent<Rigidbody>();
@@ -125,20 +131,22 @@ namespace ya
 			// pos.y
 
 			tr->SetPosition(Vector2(pos.x, pos.y - MOVE_TILE_HEIGHT));
-			
-
+			sound->Play(false);
 		}
 		else if (dir == 2 && Input::GetKeyUp(eKeyCode::A))
 		{
 			tr->SetPosition(Vector2(pos.x - MOVE_TILE_WIDTH, pos.y));
+			sound->Play(false);
 		}
 		else if (dir == 1 && Input::GetKeyUp(eKeyCode::S))
 		{
 			tr->SetPosition(Vector2(pos.x, pos.y + MOVE_TILE_HEIGHT));
+			sound->Play(false);
 		}
 		else if (dir == 3 && Input::GetKeyUp(eKeyCode::D))
 		{
 			tr->SetPosition(Vector2(pos.x + MOVE_TILE_WIDTH, pos.y));
+			sound->Play(false);
 		}
 		//tr->SetPosition(pos);
 

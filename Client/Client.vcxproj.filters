@@ -273,9 +273,6 @@
     <ClInclude Include="yaChapter8.h">
       <Filter>Contents\Scene\Chapter8</Filter>
     </ClInclude>
-    <ClInclude Include="yaSceneChange.h">
-      <Filter>Contents\GameObject\SceneChange</Filter>
-    </ClInclude>
     <ClInclude Include="yaFire.h">
       <Filter>Contents\GameObject\Obstacle</Filter>
     </ClInclude>
@@ -293,6 +290,15 @@
     </ClInclude>
     <ClInclude Include="yaStartScene.h">
       <Filter>Contents\Scene\StartScene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaSound.h">
+      <Filter>Engine\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="yaSoundManager.h">
+      <Filter>Engine\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="yaSceneChange.h">
+      <Filter>Contents\GameObject\SceneChange</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -427,9 +433,6 @@
     <ClCompile Include="yaChapter8.cpp">
       <Filter>Contents\Scene\Chapter8</Filter>
     </ClCompile>
-    <ClCompile Include="yaSceneChange.cpp">
-      <Filter>Contents\GameObject\SceneChange</Filter>
-    </ClCompile>
     <ClCompile Include="yaFire.cpp">
       <Filter>Contents\GameObject\Obstacle</Filter>
     </ClCompile>
@@ -447,6 +450,15 @@
     </ClCompile>
     <ClCompile Include="yaStartScene.cpp">
       <Filter>Contents\Scene\StartScene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaSound.cpp">
+      <Filter>Engine\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="yaSoundManager.cpp">
+      <Filter>Engine\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="yaSceneChange.cpp">
+      <Filter>Contents\GameObject\SceneChange</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

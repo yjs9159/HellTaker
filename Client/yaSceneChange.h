@@ -9,7 +9,7 @@ namespace ya
 		enum class eState
 		{
 			Idle,
-			Success,
+			On,
 			End,
 		};
 
@@ -21,10 +21,9 @@ namespace ya
 		void Render(HDC hdc) override;
 
 		void Idle();
-		void Success();
+		void On();
 
 	private:
 		eState mState;
 	};
 }
-

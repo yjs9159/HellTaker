@@ -70,7 +70,7 @@ namespace ya
 		at->CreateAnimationFolder(L"player_rightattack", L"..\\Resources\\Texture\\player\\player_attack\\right_attack", Vector2(0.0f, -10.0f));
 		at->CreateAnimationFolder(L"player_leftattack", L"..\\Resources\\Texture\\player\\player_attack\\left_attack", Vector2(0.0f, -10.0f));
 		at->CreateAnimationFolder(L"player_rightsuccess", L"..\\Resources\\Texture\\player\\player_success\\right_success", Vector2(0.0f, -10.0f));
-		at->PlayAnimation(L"PlayerIdle", true);
+		at->PlayAnimation(L"hero_rightIdle", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 		at->SetAffectedCamera(true);
 

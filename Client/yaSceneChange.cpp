@@ -21,8 +21,8 @@ namespace ya
 		case SceneChange::eState::Idle:
 			Idle();
 			break;
-		case SceneChange::eState::Success:
-			Success();
+		case SceneChange::eState::On:
+			On();
 			break;
 		case SceneChange::eState::End:
 			break;
@@ -38,7 +38,7 @@ namespace ya
 	void SceneChange::Idle()
 	{
 	}
-	void SceneChange::Success()
+	void SceneChange::On()
 	{
 	}
 }

@@ -7,11 +7,19 @@
 #include <string>
 #include <filesystem>
 #include <bitset>
+#include <assert.h>
 
 #include "framework.h"	
 #include "yaMath.h"
 
 #pragma comment(lib, "Msimg32.lib")
+
+#include <mmsystem.h>
+#include <dsound.h>
+#include <dinput.h>
+
+#pragma comment(lib, "winmm.lib")
+#pragma comment(lib, "dsound.lib")
 
 #define TILE_WIDTH 18
 #define TILE_HEIGHT 17

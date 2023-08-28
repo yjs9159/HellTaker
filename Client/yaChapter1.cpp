@@ -15,6 +15,7 @@
 #include "yaRock.h"
 #include "yaSceneChange.h"
 #include "yaFire.h"
+#include "yaSound.h"
 
 namespace ya
 {
@@ -58,6 +59,8 @@ namespace ya
 		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f), 0.05f);
 		at_SC->PlayAnimation(L"Change", false);
 		at_SC->SetScale(Vector2(0.7f, 0.7f));
+		
+		//Sound* sound = Resources::Load<Sound>(L"SceneChange", L"..\\Resources\\Sound\\");
 
 
 		Texture* Chapter1 = Resources::Load<Texture>(L"Chapter1"
@@ -302,6 +305,11 @@ namespace ya
 		at1_4Fire->CreateAnimationFolder(L"Fire4", L"..\\Resources\\Texture\\fire\\fire", Vector2(4.0f, -52.0f));
 		at1_4Fire->PlayAnimation(L"Fire4", true);
 		at1_4Fire->SetScale(Vector2(0.4f, 0.5f));
+
+
+		// »ç¿îµå
+		//Sound* sound = Resources::Load<Sound>(L"Chapter1_Sound", L"..\\Resources\\Sound\\Vitality.wav");
+		//sound->Play(true);
 	}
 
 	void Chapter1::Update()
