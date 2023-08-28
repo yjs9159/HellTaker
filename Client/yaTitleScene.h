@@ -12,7 +12,8 @@ namespace ya
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
-
+		
+		static inline class Sound* sound;
 	private:
 
 	};

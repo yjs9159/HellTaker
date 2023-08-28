@@ -20,6 +20,10 @@ namespace ya
 	}
 	void TitleScene::Initialize()
 	{
+		sound = Resources::Load<Sound>(L"SceneChange", L"..\\Resources\\Sound\\Apropos.wav");
+		sound->Play(false);
+		
+
 		Texture* image = Resources::Load<Texture>(L"introTexture"
 			, L"..\\Resources\\Texture\\introTexture.bmp");
 
@@ -37,6 +41,7 @@ namespace ya
 	{
 		Scene::Update();
 
+		
 
 		if (Input::GetKeyDown(eKeyCode::H))
 		{
@@ -52,8 +57,10 @@ namespace ya
 		}
 		if (Input::GetKeyDown(eKeyCode::Chapter1))
 		{
-			Sound* sound = Resources::Load<Sound>(L"Chapter1_Sound", L"..\\Resources\\Sound\\Vitality.wav");
+			sound->Stop(false);
+			sound = Resources::Load<Sound>(L"Chapter1_Sound", L"..\\Resources\\Sound\\Vitality.wav");
 			sound->Play(true);
+
 			SceneManager::LoadScene(L"Chapter1");
 		}
 		if (Input::GetKeyDown(eKeyCode::Chapter2))
