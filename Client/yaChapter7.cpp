@@ -18,6 +18,7 @@
 #include "yaSceneChange.h"
 #include "yaFire.h"
 #include "yaSound.h"
+#include "yaUi.h"
 
 namespace ya
 {
@@ -60,6 +61,65 @@ namespace ya
 		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f), 0.05f);
 		at_SC->PlayAnimation(L"Change", false);
 		at_SC->SetScale(Vector2(0.7f, 0.7f));
+
+
+		// 왼쪽 위 Ui
+		Ui* Ui1 = object::Instantiate<Ui>(eLayerType::UI);
+
+		Transform* tr_Ui1 = Ui1->GetComponent<Transform>();
+		tr_Ui1->SetPosition(Vector2(115.0f, 215.0f));
+
+
+		Texture* T_Ui1 = Resources::Load<Texture>(L"Ui1"
+			, L"..\\Resources\\Texture\\playui\\mainUI002.bmp");
+
+		SpriteRenderer* sr_Ui1 = Ui1->AddComponent<SpriteRenderer>();
+		sr_Ui1->SetImage(T_Ui1);
+		sr_Ui1->SetScale(Vector2(0.75f, 0.75f));
+
+		// 왼쪽 아래 Ui
+		Ui* Ui2 = object::Instantiate<Ui>(eLayerType::UI);
+
+		Transform* tr_Ui2 = Ui2->GetComponent<Transform>();
+		tr_Ui2->SetPosition(Vector2(180.0f, 500.0f));
+
+
+		Texture* T_Ui2 = Resources::Load<Texture>(L"Ui2"
+			, L"..\\Resources\\Texture\\playui\\mainUI001.bmp");
+
+		SpriteRenderer* sr_Ui2 = Ui2->AddComponent<SpriteRenderer>();
+		sr_Ui2->SetImage(T_Ui2);
+		sr_Ui2->SetScale(Vector2(0.75f, 0.75f));
+
+		// 오른쪽 위 Ui
+		Ui* Ui3 = object::Instantiate<Ui>(eLayerType::UI);
+
+		Transform* tr_Ui3 = Ui3->GetComponent<Transform>();
+		tr_Ui3->SetPosition(Vector2(1170.0f, 215.0f));
+
+
+		Texture* T_Ui3 = Resources::Load<Texture>(L"Ui3"
+			, L"..\\Resources\\Texture\\playui\\mainUI003.bmp");
+
+		SpriteRenderer* sr_Ui3 = Ui3->AddComponent<SpriteRenderer>();
+		sr_Ui3->SetImage(T_Ui3);
+		sr_Ui3->SetScale(Vector2(0.75f, 0.75f));
+
+
+		// 오른쪽 아래 Ui
+		Ui* Ui4 = object::Instantiate<Ui>(eLayerType::UI);
+
+		Transform* tr_Ui4 = Ui4->GetComponent<Transform>();
+		tr_Ui4->SetPosition(Vector2(1100.0f, 500.0f));
+
+
+		Texture* T_Ui4 = Resources::Load<Texture>(L"Ui4"
+			, L"..\\Resources\\Texture\\playui\\mainUI000.bmp");
+
+		SpriteRenderer* sr_Ui4 = Ui4->AddComponent<SpriteRenderer>();
+		sr_Ui4->SetImage(T_Ui4);
+		sr_Ui4->SetScale(Vector2(0.75f, 0.75f));
+
 
 
 		Texture* Chapter7 = Resources::Load<Texture>(L"Chapter7"

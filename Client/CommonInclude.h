@@ -41,9 +41,9 @@ namespace ya::enums
 		myKey,
 		LockBox,
 		Fire,
+		UI,
 		SceneChange,
 		Effect,
-		UI,
 		End,
 	};
 

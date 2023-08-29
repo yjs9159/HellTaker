@@ -194,6 +194,7 @@
     <ClInclude Include="yaTitleScene.h" />
     <ClInclude Include="yaToolScene.h" />
     <ClInclude Include="yaTransform.h" />
+    <ClInclude Include="yaUi.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -245,6 +246,7 @@
     <ClCompile Include="yaTitleScene.cpp" />
     <ClCompile Include="yaToolScene.cpp" />
     <ClCompile Include="yaTransform.cpp" />
+    <ClCompile Include="yaUi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc" />

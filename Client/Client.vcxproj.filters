@@ -136,6 +136,9 @@
     <Filter Include="Engine\Sound">
       <UniqueIdentifier>{8e765b0c-7648-44bb-af16-51090cb4b3fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\Ui">
+      <UniqueIdentifier>{06b2aad1-eb82-4b34-a77c-6129223d3b74}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -300,6 +303,9 @@
     <ClInclude Include="yaSceneChange.h">
       <Filter>Contents\GameObject\SceneChange</Filter>
     </ClInclude>
+    <ClInclude Include="yaUi.h">
+      <Filter>Contents\GameObject\Ui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -459,6 +465,9 @@
     </ClCompile>
     <ClCompile Include="yaSceneChange.cpp">
       <Filter>Contents\GameObject\SceneChange</Filter>
+    </ClCompile>
+    <ClCompile Include="yaUi.cpp">
+      <Filter>Contents\GameObject\Ui</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
