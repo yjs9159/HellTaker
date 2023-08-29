@@ -17,7 +17,7 @@ namespace ya
 
 	private:
 		math::Vector2 LeftTop;
-		std::wstring NextScene = L" ";
+		std::wstring NextScene = L"";
 		bool Animation_play;
 	};
 }

@@ -20,7 +20,7 @@ namespace ya
 	}
 	void TitleScene::Initialize()
 	{
-		sound = Resources::Load<Sound>(L"SceneChange", L"..\\Resources\\Sound\\Apropos.wav");
+		sound = Resources::Load<Sound>(L"TitleScene", L"..\\Resources\\Sound\\Apropos.wav");
 		sound->Play(false);
 		
 
@@ -55,12 +55,12 @@ namespace ya
 		{
 			SceneManager::LoadScene(L"EndingScene");
 		}
+		if (Input::GetKeyDown(eKeyCode::U))
+		{
+			SceneManager::LoadScene(L"StartScene");
+		}
 		if (Input::GetKeyDown(eKeyCode::Chapter1))
 		{
-			sound->Stop(false);
-			sound = Resources::Load<Sound>(L"Chapter1_Sound", L"..\\Resources\\Sound\\Vitality.wav");
-			sound->Play(true);
-
 			SceneManager::LoadScene(L"Chapter1");
 		}
 		if (Input::GetKeyDown(eKeyCode::Chapter2))
@@ -90,10 +90,6 @@ namespace ya
 		if (Input::GetKeyDown(eKeyCode::Chapter8))
 		{
 			SceneManager::LoadScene(L"Chapter8");
-		}
-		if (Input::GetKeyDown(eKeyCode::U))
-		{
-			SceneManager::LoadScene(L"StartScene");
 		}
 	}
 	void TitleScene::Render(HDC hdc)

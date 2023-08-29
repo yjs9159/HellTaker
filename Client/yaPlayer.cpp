@@ -8,6 +8,8 @@
 #include "yaObject.h"
 #include "yaSound.h"
 #include "yaResources.h"
+#include "yaChapter1.h"
+#include "yaCollisionManager.h"
 
 namespace ya
 {
@@ -170,11 +172,25 @@ namespace ya
 
 	void Player::Attack()
 	{
+
 		// Attack ·ÎÁ÷
 		Scene* scene = SceneManager::GetActiveScene();
-		Layer& layer = scene->GetLayer(eLayerType::Monster);
-		GameObject* obj = layer.GetGameObjects().front();
-		dynamic_cast<Monster*>(obj)->Hit(/*dir*/);
+		std::wstring Now = scene->GetName();
+		
+		Transform* tr = GetComponent<Transform>();
+		Vector2 pos = tr->GetPosition();
+
+		if (Now == L"Chapter1")
+		{
+			static_cast<Chapter1*>(scene)->MapInfo1 ;
+			
+			
+		}
+
+
+		//Layer& layer = scene->GetLayer(eLayerType::Monster);
+		//GameObject* obj = layer.GetGameObjects().front();
+		//dynamic_cast<Monster*>(obj)->Hit(/*dir*/);
 
 
 

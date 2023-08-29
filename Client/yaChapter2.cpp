@@ -15,6 +15,7 @@
 #include "yaRock.h"
 #include "yaSceneChange.h"
 #include "yaFire.h"
+#include "yaSound.h"
 
 namespace ya
 {
@@ -294,6 +295,9 @@ namespace ya
 		}
 		if (Input::GetKeyDown(eKeyCode::Chapter3))
 		{
+			Sound* Sound_SC3 = Resources::Load<Sound>(L"SceneChange3", L"..\\Resources\\Sound\\screen_changer_part1_01.wav");
+			Sound_SC3->Play(false);
+
 			SceneManager::LoadScene(L"Chapter3");
 		}
 		if (Input::GetKeyDown(eKeyCode::Chapter4))

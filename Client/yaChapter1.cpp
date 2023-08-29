@@ -16,6 +16,8 @@
 #include "yaSceneChange.h"
 #include "yaFire.h"
 #include "yaSound.h"
+#include "yaCollisionManager.h"
+#include "yaFloor.h"
 
 namespace ya
 {
@@ -60,8 +62,9 @@ namespace ya
 		at_SC->PlayAnimation(L"Change", false);
 		at_SC->SetScale(Vector2(0.7f, 0.7f));
 		
-		//Sound* sound = Resources::Load<Sound>(L"SceneChange", L"..\\Resources\\Sound\\");
-
+		//Sound* Sound_SC = Resources::Load<Sound>(L"SceneChange", L"..\\Resources\\Sound\\screen_changer_part1_01.wav");
+		//Sound_SC->Play(false);
+		////Sound_SC->SetVolume(100.0f);
 
 		Texture* Chapter1 = Resources::Load<Texture>(L"Chapter1"
 			, L"..\\Resources\\Texture\\chapterbg\\chapterBG0001.bmp");
@@ -306,10 +309,98 @@ namespace ya
 		at1_4Fire->PlayAnimation(L"Fire4", true);
 		at1_4Fire->SetScale(Vector2(0.4f, 0.5f));
 
+		Floor* floor1 = object::Instantiate<Floor>(eLayerType::Floor);
 
-		// 사운드
-		//Sound* sound = Resources::Load<Sound>(L"Chapter1_Sound", L"..\\Resources\\Sound\\Vitality.wav");
-		//sound->Play(true);
+		tr = floor1->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 0, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+
+		col = floor1->AddComponent<Collider>();
+		col->SetSize(Vector2(MOVE_TILE_WIDTH * 1, MOVE_TILE_HEIGHT * 3));
+
+
+		Floor* floor2 = object::Instantiate<Floor>(eLayerType::Floor);
+
+		tr = floor2->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 2));
+
+		col = floor2->AddComponent<Collider>();
+		col->SetSize(Vector2(MOVE_TILE_WIDTH * 1, MOVE_TILE_HEIGHT * 3));
+
+
+		Floor* floor3 = object::Instantiate<Floor>(eLayerType::Floor);
+
+		tr = floor3->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 1));
+
+		col = floor3->AddComponent<Collider>();
+		col->SetSize(Vector2(MOVE_TILE_WIDTH * 3, MOVE_TILE_HEIGHT * 1));
+
+
+		Floor* floor4 = object::Instantiate<Floor>(eLayerType::Floor);
+
+		tr = floor4->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5.5, LeftTop.y + MOVE_TILE_HEIGHT * 0));
+
+		col = floor4->AddComponent<Collider>();
+		col->SetSize(Vector2(MOVE_TILE_WIDTH * 2, MOVE_TILE_HEIGHT * 1));
+
+
+		Floor* floor5 = object::Instantiate<Floor>(eLayerType::Floor);
+
+		tr = floor5->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 1));
+
+		col = floor5->AddComponent<Collider>();
+		col->SetSize(Vector2(MOVE_TILE_WIDTH * 1, MOVE_TILE_HEIGHT * 3));
+
+
+		Floor* floor6 = object::Instantiate<Floor>(eLayerType::Floor);
+
+		tr = floor6->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 3.5));
+
+		col = floor6->AddComponent<Collider>();
+		col->SetSize(Vector2(MOVE_TILE_WIDTH * 1, MOVE_TILE_HEIGHT * 2));
+
+
+		Floor* floor7 = object::Instantiate<Floor>(eLayerType::Floor);
+
+		tr = floor7->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+
+		col = floor7->AddComponent<Collider>();
+		col->SetSize(Vector2(MOVE_TILE_WIDTH * 3, MOVE_TILE_HEIGHT * 1));
+
+
+		Floor* floor8 = object::Instantiate<Floor>(eLayerType::Floor);
+
+		tr = floor8->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 4.5));
+
+		col = floor8->AddComponent<Collider>();
+		col->SetSize(Vector2(MOVE_TILE_WIDTH * 1, MOVE_TILE_HEIGHT * 2));
+
+
+		Floor* floor9 = object::Instantiate<Floor>(eLayerType::Floor);
+
+		tr = floor9->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8, LeftTop.y + MOVE_TILE_HEIGHT * 5.5));
+
+		col = floor9->AddComponent<Collider>();
+		col->SetSize(Vector2(MOVE_TILE_WIDTH * 1, MOVE_TILE_HEIGHT * 2));
+
+
+		Floor* floor10 = object::Instantiate<Floor>(eLayerType::Floor);
+
+		tr = floor10->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 7));
+
+		col = floor10->AddComponent<Collider>();
+		col->SetSize(Vector2(MOVE_TILE_WIDTH * 9, MOVE_TILE_HEIGHT * 1));
+
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Floor, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::Monster, eLayerType::Floor, true);
 	}
 
 	void Chapter1::Update()
@@ -334,6 +425,9 @@ namespace ya
 		}
 		if (Input::GetKeyDown(eKeyCode::Chapter2))
 		{
+			Sound* Sound_SC2 = Resources::Load<Sound>(L"SceneChange2", L"..\\Resources\\Sound\\screen_changer_part1_01.wav");
+			Sound_SC2->Play(false);
+
 			SceneManager::LoadScene(L"Chapter2");
 		}
 		if (Input::GetKeyDown(eKeyCode::Chapter3))
@@ -360,104 +454,25 @@ namespace ya
 		{
 			SceneManager::LoadScene(L"Chapter8");
 		}
-
-		//if (Animation_play == false)
-		//{
-		//	if (Input::GetKeyDown(eKeyCode::H))
-		//	{
-		//		//at_SC->PlayAnimation(L"SceneChange", false);
-		//		NextScene = L"HomeScene";
-		//		Animation_play = true;
-		//	}
-		//	if (Input::GetKeyDown(eKeyCode::T))
-		//	{
-		//		//at_SC->PlayAnimation(L"SceneChange", false);
-		//		NextScene = L"TitleScene";
-		//		Animation_play = true;
-		//	}
-		//	if (Input::GetKeyDown(eKeyCode::E))
-		//	{
-		//		//at_SC->PlayAnimation(L"SceneChange", false);
-		//		NextScene = L"EndingScene";
-		//		Animation_play = true;
-		//	}
-		//	if (Input::GetKeyDown(eKeyCode::Chapter1))
-		//	{
-		//		//at_SC->PlayAnimation(L"SceneChange", false);
-		//		NextScene = L"Chapter1";
-		//		Animation_play = true;
-		//	}
-		//	if (Input::GetKeyDown(eKeyCode::Chapter2))
-		//	{
-		//		//at_SC->PlayAnimation(L"SceneChange", false);
-		//		NextScene = L"Chapter2";
-		//		Animation_play = true;
-		//	}
-		//	if (Input::GetKeyDown(eKeyCode::Chapter3))
-		//	{
-		//		//at_SC->PlayAnimation(L"SceneChange", false);
-		//		NextScene = L"Chapter3";
-		//		Animation_play = true;
-		//	}
-		//	if (Input::GetKeyDown(eKeyCode::Chapter4))
-		//	{
-		//		//at_SC->PlayAnimation(L"SceneChange", false);
-		//		NextScene = L"Chapter4";
-		//		Animation_play = true;
-		//	}
-		//	if (Input::GetKeyDown(eKeyCode::Chapter5))
-		//	{
-		//		//at_SC->PlayAnimation(L"SceneChange", false);
-		//		NextScene = L"Chapter5";
-		//		Animation_play = true;
-		//	}
-		//	if (Input::GetKeyDown(eKeyCode::Chapter6))
-		//	{
-		//		//at_SC->PlayAnimation(L"SceneChange", false);
-		//		NextScene = L"Chapter6";
-		//		Animation_play = true;
-		//	}
-		//	if (Input::GetKeyDown(eKeyCode::Chapter7))
-		//	{
-		//		//at_SC->PlayAnimation(L"SceneChange", false);
-		//		NextScene = L"Chapter7";
-		//		Animation_play = true;
-		//	}
-		//	if (Input::GetKeyDown(eKeyCode::Chapter8))
-		//	{
-		//		//at_SC->PlayAnimation(L"SceneChange", false);
-		//		NextScene = L"Chapter8";
-		//		Animation_play = true;
-		//	}
-		//}
-
-		//else
-		//{
-		//	if (at_SC->IsActiveAnimationComplete())
-		//	{
-		//		Animation_play = false;
-		//		SceneManager::LoadScene(NextScene);
-		//	}
-		//}
 	}
 
 	void Chapter1::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
 
-		//int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
-		//for (size_t y = 0; y < maxRow; y++)
-		//{
-		//	MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 + 16, NULL);      //      라인(선) 시작
-		//	LineTo(hdc, 1280, TILE_HEIGHT * y * 4 + 16);        //          라인(선) 끝
-		//}
+		int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
+		for (size_t y = 0; y < maxRow; y++)
+		{
+			MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 + 16, NULL);      //      라인(선) 시작
+			LineTo(hdc, 1280, TILE_HEIGHT * y * 4 + 16);        //          라인(선) 끝
+		}
 
-		//int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;
-		//for (size_t x = 0; x < maxColumn; x++)
-		//{
-		//	MoveToEx(hdc, TILE_WIDTH * x * 4 + 25, 0, NULL);      //      라인(선) 시작
-		//	LineTo(hdc, TILE_WIDTH * x * 4 + 25, 720);        //          라인(선) 끝
-		//}
+		int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;
+		for (size_t x = 0; x < maxColumn; x++)
+		{
+			MoveToEx(hdc, TILE_WIDTH * x * 4 + 25, 0, NULL);      //      라인(선) 시작
+			LineTo(hdc, TILE_WIDTH * x * 4 + 25, 720);        //          라인(선) 끝
+		}
 
 
 

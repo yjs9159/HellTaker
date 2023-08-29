@@ -5,6 +5,9 @@
 #include "yaObject.h"
 #include "yaTransform.h"
 #include "yaAnimator.h"
+#include "yaSound.h"
+#include "yaResources.h"
+#include "yaTitleScene.h"
 
 namespace ya
 {
@@ -45,6 +48,15 @@ namespace ya
 		}
 		if (Input::GetKeyDown(eKeyCode::Chapter1))
 		{
+			TitleScene::sound->Stop(true);
+			
+			Sound* Sound_SC1 = Resources::Load<Sound>(L"SceneChange1", L"..\\Resources\\Sound\\screen_changer_part1_01.wav");
+			Sound_SC1->Play(false);
+
+			Sound* sound = Resources::Load<Sound>(L"Chapter1_Sound", L"..\\Resources\\Sound\\Vitality.wav");
+			sound->Play(true);
+
+
 			SceneManager::LoadScene(L"Chapter1");
 		}
 		if (Input::GetKeyDown(eKeyCode::Chapter2))
