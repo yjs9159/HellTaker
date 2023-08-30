@@ -29,15 +29,15 @@ namespace ya
 		//virtual void OnCollisionExit(class Collider* other) override;
 
 		void Idle();
-		void Move();
+		void Move(int _dir);
 		void Attack();
 		void Dead();
 		void Success();
+		int Hp;
 
 	private:
 		eState mState;
 		// Vector2 mPos;
-		int Hp;
 		int dir;
 	};
 }

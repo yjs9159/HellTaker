@@ -1,5 +1,6 @@
 #pragma once
 #include "yaScene.h"
+#include "yaGameObject.h"
 
 namespace ya
 {
@@ -14,9 +15,10 @@ namespace ya
 		virtual void Render(HDC hdc);
 
 		static int MapInfo1[8][9];
+		GameObject* pointerMap[8][9];
 
-	private:
 		math::Vector2 LeftTop;
+	private:
 		std::wstring NextScene = L"";
 		bool Animation_play;
 	};

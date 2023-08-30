@@ -1,4 +1,5 @@
 #include "yaFire.h"
+#include "yaPlayer.h"
 
 namespace ya
 {

@@ -42,8 +42,8 @@ namespace ya::enums
 		LockBox,
 		Fire,
 		UI,
-		SceneChange,
 		Effect,
+		SceneChange,
 		End,
 	};
 

@@ -13,6 +13,7 @@ namespace ya
 		{
 			Idle,
 			Hit,
+			Move,
 			Death,
 			End,
 		};
@@ -25,8 +26,9 @@ namespace ya
 		virtual void Render(HDC hdc) override;
 
 		void Idle();
-		void Hit();
+		void Hit(int _dir);
 		void Dead();
+		void Move();
 
 		//virtual void OnCollisionEnter(class Collider* other);
 		//virtual void OnCollisionStay(class Collider* other);
@@ -34,5 +36,7 @@ namespace ya
 
 	private:
 		eState mState;
+		int dir;
+		bool IsDead;
 	};
 }

@@ -20,8 +20,11 @@
 #include "yaFloor.h"
 #include "yaUi.h"
 
+extern HWND g_hWnd;
+
 namespace ya
 {
+
 	int Chapter1::MapInfo1[8][9] =
 	{
 		// 0 => 바닥
@@ -44,6 +47,10 @@ namespace ya
 		: LeftTop(Vector2(313.0f + 72 / 2, 84.0f + 68 / 2))
 		, Animation_play(false)
 	{
+		pointerMap[8][9] =
+		{
+			NULL,
+		};
 	}
 
 	Chapter1::~Chapter1()
@@ -135,9 +142,11 @@ namespace ya
 
 		// Player 생성
 		Player* player = object::Instantiate<Player>(eLayerType::Player); // 플레이어 생성
+		player->Hp = 34;
 
 		Transform* tr = player->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // 캐릭터 시작위치
+		pointerMap[1][6] = player;
 
 		Animator* at = player->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"player_rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 10.0f));
@@ -161,6 +170,7 @@ namespace ya
 
 		Transform* tr_M1 = monster1->GetComponent<Transform>();
 		tr_M1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 2)); // 몬스터1 시작위치
+		pointerMap[2][4] = monster1;
 
 		Animator* at_M1 = monster1->AddComponent<Animator>();
 		at_M1->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -175,6 +185,7 @@ namespace ya
 
 		Transform* tr_M2 = monster2->GetComponent<Transform>();
 		tr_M2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 3)); // 몬스터2 시작위치
+		pointerMap[3][5] = monster2;
 
 		Animator* at_M2 = monster2->AddComponent<Animator>();
 		at_M2->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -189,6 +200,7 @@ namespace ya
 
 		Transform* tr_M3 = monster3->GetComponent<Transform>();
 		tr_M3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+		pointerMap[3][3] = monster3;
 
 		Animator* at_M3 = monster3->AddComponent<Animator>();
 		at_M3->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -235,6 +247,8 @@ namespace ya
 
 		Transform* tr_Rock1 = rock1->GetComponent<Transform>();
 		tr_Rock1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		pointerMap[5][2] = rock1;
+
 
 		Texture* Rock1 = Resources::Load<Texture>(L"Rock1_1"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock008.png");
@@ -249,6 +263,7 @@ namespace ya
 
 		Transform* tr_Rock2 = rock2->GetComponent<Transform>();
 		tr_Rock2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 6));
+		pointerMap[6][2] = rock2;
 
 		Texture* Rock2 = Resources::Load<Texture>(L"Rock2_1"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock006.png");
@@ -263,6 +278,7 @@ namespace ya
 
 		Transform* tr_Rock3 = rock3->GetComponent<Transform>();
 		tr_Rock3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 6));
+		pointerMap[6][4] = rock3;
 
 		Texture* Rock3 = Resources::Load<Texture>(L"Rock3_1"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock005.png");
@@ -277,6 +293,7 @@ namespace ya
 
 		Transform* tr_Rock4 = rock4->GetComponent<Transform>();
 		tr_Rock4->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		pointerMap[5][5] = rock4;
 
 		Texture* Rock4 = Resources::Load<Texture>(L"Rock4_1"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock001.png");
@@ -364,98 +381,14 @@ namespace ya
 		at1_4Fire->PlayAnimation(L"Fire4", true);
 		at1_4Fire->SetScale(Vector2(0.4f, 0.5f));
 
-		Floor* floor1 = object::Instantiate<Floor>(eLayerType::Floor);
+		// Hp Ui
+		Fire* Ui_Hp = object::Instantiate<Fire>(eLayerType::Effect);
 
-		tr = floor1->GetComponent<Transform>();
-		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 0, LeftTop.y + MOVE_TILE_HEIGHT * 5));
-
-		col = floor1->AddComponent<Collider>();
-		col->SetSize(Vector2(MOVE_TILE_WIDTH * 1, MOVE_TILE_HEIGHT * 3));
+		Transform* tr_Hp = Ui_Hp->GetComponent<Transform>();
+		tr_Hp->SetPosition(Vector2(180.0f, 500.0f));
 
 
-		Floor* floor2 = object::Instantiate<Floor>(eLayerType::Floor);
 
-		tr = floor2->GetComponent<Transform>();
-		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 2));
-
-		col = floor2->AddComponent<Collider>();
-		col->SetSize(Vector2(MOVE_TILE_WIDTH * 1, MOVE_TILE_HEIGHT * 3));
-
-
-		Floor* floor3 = object::Instantiate<Floor>(eLayerType::Floor);
-
-		tr = floor3->GetComponent<Transform>();
-		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 1));
-
-		col = floor3->AddComponent<Collider>();
-		col->SetSize(Vector2(MOVE_TILE_WIDTH * 3, MOVE_TILE_HEIGHT * 1));
-
-
-		Floor* floor4 = object::Instantiate<Floor>(eLayerType::Floor);
-
-		tr = floor4->GetComponent<Transform>();
-		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5.5, LeftTop.y + MOVE_TILE_HEIGHT * 0));
-
-		col = floor4->AddComponent<Collider>();
-		col->SetSize(Vector2(MOVE_TILE_WIDTH * 2, MOVE_TILE_HEIGHT * 1));
-
-
-		Floor* floor5 = object::Instantiate<Floor>(eLayerType::Floor);
-
-		tr = floor5->GetComponent<Transform>();
-		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 1));
-
-		col = floor5->AddComponent<Collider>();
-		col->SetSize(Vector2(MOVE_TILE_WIDTH * 1, MOVE_TILE_HEIGHT * 3));
-
-
-		Floor* floor6 = object::Instantiate<Floor>(eLayerType::Floor);
-
-		tr = floor6->GetComponent<Transform>();
-		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 3.5));
-
-		col = floor6->AddComponent<Collider>();
-		col->SetSize(Vector2(MOVE_TILE_WIDTH * 1, MOVE_TILE_HEIGHT * 2));
-
-
-		Floor* floor7 = object::Instantiate<Floor>(eLayerType::Floor);
-
-		tr = floor7->GetComponent<Transform>();
-		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 4));
-
-		col = floor7->AddComponent<Collider>();
-		col->SetSize(Vector2(MOVE_TILE_WIDTH * 3, MOVE_TILE_HEIGHT * 1));
-
-
-		Floor* floor8 = object::Instantiate<Floor>(eLayerType::Floor);
-
-		tr = floor8->GetComponent<Transform>();
-		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 4.5));
-
-		col = floor8->AddComponent<Collider>();
-		col->SetSize(Vector2(MOVE_TILE_WIDTH * 1, MOVE_TILE_HEIGHT * 2));
-
-
-		Floor* floor9 = object::Instantiate<Floor>(eLayerType::Floor);
-
-		tr = floor9->GetComponent<Transform>();
-		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8, LeftTop.y + MOVE_TILE_HEIGHT * 5.5));
-
-		col = floor9->AddComponent<Collider>();
-		col->SetSize(Vector2(MOVE_TILE_WIDTH * 1, MOVE_TILE_HEIGHT * 2));
-
-
-		Floor* floor10 = object::Instantiate<Floor>(eLayerType::Floor);
-
-		tr = floor10->GetComponent<Transform>();
-		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 7));
-
-		col = floor10->AddComponent<Collider>();
-		col->SetSize(Vector2(MOVE_TILE_WIDTH * 9, MOVE_TILE_HEIGHT * 1));
-
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Floor, true);
-		CollisionManager::CollisionLayerCheck(eLayerType::Monster, eLayerType::Floor, true);
 	}
 
 	void Chapter1::Update()
