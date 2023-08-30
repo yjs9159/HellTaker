@@ -53,8 +53,8 @@ namespace ya
 		// Scene Change 생성 및 애니메이션 재생
 		SceneChange* S_C = object::Instantiate<SceneChange>(eLayerType::SceneChange);
 
-		Transform* tr_SC = S_C->GetComponent<Transform>();
-		tr_SC->SetPosition(Vector2(640.0f, 360.0f));
+		Transform* tr = S_C->GetComponent<Transform>();
+		tr->SetPosition(Vector2(640.0f, 360.0f));
 
 		Animator* at_SC = S_C->AddComponent<Animator>();
 		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f), 0.05f);
@@ -135,7 +135,7 @@ namespace ya
 
 
 		Player* player = object::Instantiate<Player>(eLayerType::Player); // 플레이어 생성
-		Transform* tr = player->GetComponent<Transform>();
+		tr = player->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 3)); // 플레이어 시작위치
 
 		Animator* at = player->AddComponent<Animator>();

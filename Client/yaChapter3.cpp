@@ -53,90 +53,93 @@ namespace ya
 		// Scene Change 생성 및 애니메이션 재생
 		SceneChange* S_C = object::Instantiate<SceneChange>(eLayerType::SceneChange);
 
-		Transform* tr_SC = S_C->GetComponent<Transform>();
-		tr_SC->SetPosition(Vector2(640.0f, 360.0f));
+		Transform* tr = S_C->GetComponent<Transform>();
+		tr->SetPosition(Vector2(640.0f, 360.0f));
 
-		Animator* at_SC = S_C->AddComponent<Animator>();
-		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f), 0.05f);
-		at_SC->PlayAnimation(L"Change", false);
-		at_SC->SetScale(Vector2(0.7f, 0.7f));
+		Animator* at = S_C->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f), 0.05f);
+		at->PlayAnimation(L"Change", false);
+		at->SetScale(Vector2(0.7f, 0.7f));
 
 
 		// 왼쪽 위 Ui
 		Ui* Ui1 = object::Instantiate<Ui>(eLayerType::UI);
 
-		Transform* tr_Ui1 = Ui1->GetComponent<Transform>();
-		tr_Ui1->SetPosition(Vector2(115.0f, 215.0f));
+		tr = Ui1->GetComponent<Transform>();
+		tr->SetPosition(Vector2(115.0f, 215.0f));
 
 
-		Texture* T_Ui1 = Resources::Load<Texture>(L"Ui1"
+		Texture* T_Ui = Resources::Load<Texture>(L"Ui1"
 			, L"..\\Resources\\Texture\\playui\\mainUI002.bmp");
 
-		SpriteRenderer* sr_Ui1 = Ui1->AddComponent<SpriteRenderer>();
-		sr_Ui1->SetImage(T_Ui1);
-		sr_Ui1->SetScale(Vector2(0.75f, 0.75f));
+		SpriteRenderer* sr_Ui = Ui1->AddComponent<SpriteRenderer>();
+		sr_Ui->SetImage(T_Ui);
+		sr_Ui->SetScale(Vector2(0.75f, 0.75f));
 
 		// 왼쪽 아래 Ui
 		Ui* Ui2 = object::Instantiate<Ui>(eLayerType::UI);
 
-		Transform* tr_Ui2 = Ui2->GetComponent<Transform>();
-		tr_Ui2->SetPosition(Vector2(180.0f, 500.0f));
+		tr = Ui2->GetComponent<Transform>();
+		tr->SetPosition(Vector2(180.0f, 500.0f));
 
 
-		Texture* T_Ui2 = Resources::Load<Texture>(L"Ui2"
+		T_Ui = Resources::Load<Texture>(L"Ui2"
 			, L"..\\Resources\\Texture\\playui\\mainUI001.bmp");
 
-		SpriteRenderer* sr_Ui2 = Ui2->AddComponent<SpriteRenderer>();
-		sr_Ui2->SetImage(T_Ui2);
-		sr_Ui2->SetScale(Vector2(0.75f, 0.75f));
+		sr_Ui = Ui2->AddComponent<SpriteRenderer>();
+		sr_Ui->SetImage(T_Ui);
+		sr_Ui->SetScale(Vector2(0.75f, 0.75f));
 
 		// 오른쪽 위 Ui
 		Ui* Ui3 = object::Instantiate<Ui>(eLayerType::UI);
 
-		Transform* tr_Ui3 = Ui3->GetComponent<Transform>();
-		tr_Ui3->SetPosition(Vector2(1170.0f, 215.0f));
+		tr = Ui3->GetComponent<Transform>();
+		tr->SetPosition(Vector2(1170.0f, 215.0f));
 
 
-		Texture* T_Ui3 = Resources::Load<Texture>(L"Ui3"
+		T_Ui = Resources::Load<Texture>(L"Ui3"
 			, L"..\\Resources\\Texture\\playui\\mainUI003.bmp");
 
-		SpriteRenderer* sr_Ui3 = Ui3->AddComponent<SpriteRenderer>();
-		sr_Ui3->SetImage(T_Ui3);
-		sr_Ui3->SetScale(Vector2(0.75f, 0.75f));
+		sr_Ui = Ui3->AddComponent<SpriteRenderer>();
+		sr_Ui->SetImage(T_Ui);
+		sr_Ui->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// 오른쪽 아래 Ui
 		Ui* Ui4 = object::Instantiate<Ui>(eLayerType::UI);
 
-		Transform* tr_Ui4 = Ui4->GetComponent<Transform>();
-		tr_Ui4->SetPosition(Vector2(1100.0f, 500.0f));
+		tr = Ui4->GetComponent<Transform>();
+		tr->SetPosition(Vector2(1100.0f, 500.0f));
 
 
-		Texture* T_Ui4 = Resources::Load<Texture>(L"Ui4"
+		T_Ui = Resources::Load<Texture>(L"Ui4"
 			, L"..\\Resources\\Texture\\playui\\mainUI000.bmp");
 
-		SpriteRenderer* sr_Ui4 = Ui4->AddComponent<SpriteRenderer>();
-		sr_Ui4->SetImage(T_Ui4);
-		sr_Ui4->SetScale(Vector2(0.75f, 0.75f));
+		sr_Ui = Ui4->AddComponent<SpriteRenderer>();
+		sr_Ui->SetImage(T_Ui);
+		sr_Ui->SetScale(Vector2(0.75f, 0.75f));
 
 
-		Texture* Chapter3 = Resources::Load<Texture>(L"Chapter3"
+		// 배경 이미지 생성
+		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
+
+		bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));
+		
+		T_Ui = Resources::Load<Texture>(L"Chapter3"
 			, L"..\\Resources\\Texture\\chapterbg\\chapterBG0003.bmp");
 
+		sr_Ui = bg->AddComponent<SpriteRenderer>();
+		sr_Ui->SetImage(T_Ui);
+		sr_Ui->SetScale(Vector2(0.7f, 0.7f));
+		sr_Ui->SetAffectCamera(false);
 
-		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
-		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
-		bgsr->SetImage(Chapter3);
-		bgsr->SetScale(Vector2(0.7f, 0.7f));
-		bgsr->SetAffectCamera(false);
-		//bgsr->SetAlpha(0.2f);
-		bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));
 
+		// player 생성
 		Player* player = object::Instantiate<Player>(eLayerType::Player); // 플레이어 생성
-		Transform* tr = player->GetComponent<Transform>();
+		tr = player->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8, LeftTop.y + MOVE_TILE_HEIGHT * 3)); // 플레이어 시작위치
 
-		Animator* at = player->AddComponent<Animator>();
+		at = player->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"player_rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 10.0f));
 		at->CreateAnimationFolder(L"player_leftidle", L"..\\Resources\\Texture\\player\\player_idle\\left_idle", Vector2(0.0f, 10.0f));
 		at->CreateAnimationFolder(L"player_rightrun", L"..\\Resources\\Texture\\player\\player_run\\right_run", Vector2(0.0f, 10.0f));
@@ -155,13 +158,13 @@ namespace ya
 
 		// monster 1 생성 및 이미지 로드
 		Monster* monster1 = object::Instantiate<Monster>(eLayerType::Monster);
-		Transform* tr_M1 = monster1->GetComponent<Transform>();
-		tr_M1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		tr = monster1->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 5));
 
-		Animator* at_M1 = monster1->AddComponent<Animator>();
-		at_M1->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
-		at_M1->PlayAnimation(L"Monster_RightIdle", true);
-		at_M1->SetScale(Vector2(0.8f, 0.8f));
+		at = monster1->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
+		at->PlayAnimation(L"Monster_RightIdle", true);
+		at->SetScale(Vector2(0.8f, 0.8f));
 
 		col = monster1->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
@@ -169,13 +172,13 @@ namespace ya
 
 		// monster 2 생성 및 이미지 로드
 		Monster* monster2 = object::Instantiate<Monster>(eLayerType::Monster);
-		Transform* tr_M2 = monster2->GetComponent<Transform>();
-		tr_M2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 7));
+		tr = monster2->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 7));
 
-		Animator* at_M2 = monster2->AddComponent<Animator>();
-		at_M2->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
-		at_M2->PlayAnimation(L"Monster_RightIdle", true);
-		at_M2->SetScale(Vector2(0.8f, 0.8f));
+		at = monster2->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
+		at->PlayAnimation(L"Monster_RightIdle", true);
+		at->SetScale(Vector2(0.8f, 0.8f));
 
 		col = monster2->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
@@ -184,13 +187,13 @@ namespace ya
 		// Npc 1 생성 및 이미지 로드
 		Npc* cerberus1 = object::Instantiate<Npc>(eLayerType::Npc);
 
-		Transform* Npc_1 = cerberus1->GetComponent<Transform>();
-		Npc_1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 1));
+		tr = cerberus1->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 1));
 
-		Animator* at_Npc1 = cerberus1->AddComponent<Animator>();
-		at_Npc1->CreateAnimationFolder(L"cerberus", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, -10.0f));
-		at_Npc1->PlayAnimation(L"cerberus", true);
-		at_Npc1->SetScale(Vector2(0.8f, 0.8f));
+		at = cerberus1->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"cerberus", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, -10.0f));
+		at->PlayAnimation(L"cerberus", true);
+		at->SetScale(Vector2(0.8f, 0.8f));
 
 		col = cerberus1->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
@@ -199,27 +202,27 @@ namespace ya
 		// Npc LoveSign
 		Npc* LoveSign1 = object::Instantiate<Npc>(eLayerType::Npc);
 
-		Transform* tr_LoveSign1 = LoveSign1->GetComponent<Transform>();
-		tr_LoveSign1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3 + 40, LeftTop.y + MOVE_TILE_HEIGHT * 1 - 30));
+		tr = LoveSign1->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3 + 40, LeftTop.y + MOVE_TILE_HEIGHT * 1 - 30));
 
-		Texture* T_LoveSign1 = Resources::Load<Texture>(L"LoveSign1"
+		T_Ui = Resources::Load<Texture>(L"LoveSign"
 			, L"..\\Resources\\Texture\\npc\\lovesign\\lovesign.png");
 
-		SpriteRenderer* sr_LoveSign1 = LoveSign1->AddComponent<SpriteRenderer>();
-		sr_LoveSign1->SetImage(T_LoveSign1);
-		sr_LoveSign1->SetScale(Vector2(0.75f, 0.75f));
+		sr_Ui = LoveSign1->AddComponent<SpriteRenderer>();
+		sr_Ui->SetImage(T_Ui);
+		sr_Ui->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Npc 2 생성 및 이미지 로드
 		Npc* cerberus2 = object::Instantiate<Npc>(eLayerType::Npc);
 
-		Transform* Npc_2 = cerberus2->GetComponent<Transform>();
-		Npc_2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 1));
+		tr = cerberus2->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 1));
 
-		Animator* at_Npc2 = cerberus2->AddComponent<Animator>();
-		at_Npc2->CreateAnimationFolder(L"cerberus", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, -10.0f));
-		at_Npc2->PlayAnimation(L"cerberus", true);
-		at_Npc2->SetScale(Vector2(0.8f, 0.8f));
+		at = cerberus2->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"cerberus", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, -10.0f));
+		at->PlayAnimation(L"cerberus", true);
+		at->SetScale(Vector2(0.8f, 0.8f));
 
 		col = cerberus2->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
@@ -228,27 +231,27 @@ namespace ya
 		// Npc LoveSign
 		Npc* LoveSign2 = object::Instantiate<Npc>(eLayerType::Npc);
 
-		Transform* tr_LoveSign2 = LoveSign2->GetComponent<Transform>();
-		tr_LoveSign2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4 + 40, LeftTop.y + MOVE_TILE_HEIGHT * 1 - 30));
+		tr = LoveSign2->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4 + 40, LeftTop.y + MOVE_TILE_HEIGHT * 1 - 30));
 
-		Texture* T_LoveSign2 = Resources::Load<Texture>(L"LoveSign2"
+		T_Ui = Resources::Load<Texture>(L"LoveSign"
 			, L"..\\Resources\\Texture\\npc\\lovesign\\lovesign.png");
 
-		SpriteRenderer* sr_LoveSign2 = LoveSign2->AddComponent<SpriteRenderer>();
-		sr_LoveSign2->SetImage(T_LoveSign2);
-		sr_LoveSign2->SetScale(Vector2(0.75f, 0.75f));
+		sr_Ui = LoveSign2->AddComponent<SpriteRenderer>();
+		sr_Ui->SetImage(T_Ui);
+		sr_Ui->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Npc 3 생성 및 이미지 로드
 		Npc* cerberus3 = object::Instantiate<Npc>(eLayerType::Npc);
 
-		Transform* Npc_3 = cerberus3->GetComponent<Transform>();
-		Npc_3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 1));
+		tr = cerberus3->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 1));
 
-		Animator* at_Npc3 = cerberus3->AddComponent<Animator>();
-		at_Npc3->CreateAnimationFolder(L"cerberus", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, -10.0f));
-		at_Npc3->PlayAnimation(L"cerberus", true);
-		at_Npc3->SetScale(Vector2(0.8f, 0.8f));
+		at = cerberus3->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"cerberus", L"..\\Resources\\Texture\\npc\\cerberus", Vector2(0.0f, -10.0f));
+		at->PlayAnimation(L"cerberus", true);
+		at->SetScale(Vector2(0.8f, 0.8f));
 
 		col = cerberus3->AddComponent<Collider>();
 		col->SetSize(Vector2(80.0f, 80.0f));
@@ -257,93 +260,93 @@ namespace ya
 		// Npc LoveSign
 		Npc* LoveSign3 = object::Instantiate<Npc>(eLayerType::Npc);
 
-		Transform* tr_LoveSign3 = LoveSign3->GetComponent<Transform>();
-		tr_LoveSign3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5 + 40, LeftTop.y + MOVE_TILE_HEIGHT * 1 - 30));
+		tr = LoveSign3->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5 + 40, LeftTop.y + MOVE_TILE_HEIGHT * 1 - 30));
 
-		Texture* T_LoveSign3 = Resources::Load<Texture>(L"LoveSign3"
+		T_Ui = Resources::Load<Texture>(L"LoveSign"
 			, L"..\\Resources\\Texture\\npc\\lovesign\\lovesign.png");
 
-		SpriteRenderer* sr_LoveSign3 = LoveSign3->AddComponent<SpriteRenderer>();
-		sr_LoveSign3->SetImage(T_LoveSign3);
-		sr_LoveSign3->SetScale(Vector2(0.75f, 0.75f));
+		sr_Ui = LoveSign3->AddComponent<SpriteRenderer>();
+		sr_Ui->SetImage(T_Ui);
+		sr_Ui->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Key 생성 및 이미지 로드
 		Key* myKey = object::Instantiate<Key>(eLayerType::myKey);
 
-		Transform* tr_Key = myKey->GetComponent<Transform>();
-		tr_Key->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 6));
+		tr = myKey->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 6));
 
-		Animator* at_Key = myKey->AddComponent<Animator>();
-		at_Key->CreateAnimationFolder(L"myKey", L"..\\Resources\\Texture\\obstacle\\Key", Vector2(10.0f, 0.0f));
-		at_Key->PlayAnimation(L"myKey", true);
-		at_Key->SetScale(Vector2(0.8f, 0.8f));
+		at = myKey->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"myKey", L"..\\Resources\\Texture\\obstacle\\Key", Vector2(10.0f, 0.0f));
+		at->PlayAnimation(L"myKey", true);
+		at->SetScale(Vector2(0.8f, 0.8f));
 
 
 		// LockBox 생성 및 이미지 로드
 		LockBox* lockbox = object::Instantiate<LockBox>(eLayerType::LockBox);
 
-		Transform* tr_Box = lockbox->GetComponent<Transform>();
-		tr_Box->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 2));
+		tr = lockbox->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 2));
 
-		Texture* Box = Resources::Load<Texture>(L"Box"
+		T_Ui = Resources::Load<Texture>(L"Box"
 			, L"..\\Resources\\Texture\\obstacle\\lockbox\\lockbox001.png");
 
-		SpriteRenderer* sr_Box = lockbox->AddComponent<SpriteRenderer>();
-		sr_Box->SetImage(Box);
-		sr_Box->SetScale(Vector2(0.75f, 0.75f));
+		sr_Ui = lockbox->AddComponent<SpriteRenderer>();
+		sr_Ui->SetImage(T_Ui);
+		sr_Ui->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Fire 1 base
 		Fire* Fire3_1base = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr3_1Firebase = Fire3_1base->GetComponent<Transform>();
-		tr3_1Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8 - 4, LeftTop.y + MOVE_TILE_HEIGHT * 1 + 11));
+		tr = Fire3_1base->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8 - 4, LeftTop.y + MOVE_TILE_HEIGHT * 1 + 11));
 
-		Texture* Fire3_1Base = Resources::Load<Texture>(L"Fire3_1Base"
+		T_Ui = Resources::Load<Texture>(L"Base"
 			, L"..\\Resources\\Texture\\fire\\FLAMEbase0001.png");
 
-		SpriteRenderer* Fire3_1Sr = Fire3_1base->AddComponent<SpriteRenderer>();
-		Fire3_1Sr->SetImage(Fire3_1Base);
-		Fire3_1Sr->SetScale(Vector2(0.75f, 0.75f));
+		sr_Ui = Fire3_1base->AddComponent<SpriteRenderer>();
+		sr_Ui->SetImage(T_Ui);
+		sr_Ui->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Fire 2
 		Fire* Fire3_1 = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr3_1Fire = Fire3_1->GetComponent<Transform>();
-		tr3_1Fire->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8, LeftTop.y + MOVE_TILE_HEIGHT * 1));
+		tr = Fire3_1->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8, LeftTop.y + MOVE_TILE_HEIGHT * 1));
 
-		Animator* at3_1Fire = Fire3_1->AddComponent<Animator>();
-		at3_1Fire->CreateAnimationFolder(L"Fire3_1", L"..\\Resources\\Texture\\fire\\fire", Vector2(-2.0f, -25.0f));
-		at3_1Fire->PlayAnimation(L"Fire3_1", true);
-		at3_1Fire->SetScale(Vector2(0.4f, 0.5f));
+		at = Fire3_1->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"Fire", L"..\\Resources\\Texture\\fire\\fire", Vector2(-2.0f, -25.0f));
+		at->PlayAnimation(L"Fire", true);
+		at->SetScale(Vector2(0.4f, 0.5f));
 
 
 		// Fire 3 base
 		Fire* Fire3_2base = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr3_2Firebase = Fire3_2base->GetComponent<Transform>();
-		tr3_2Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2 + 1, LeftTop.y + MOVE_TILE_HEIGHT * 5 - 13));
+		tr = Fire3_2base->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2 + 1, LeftTop.y + MOVE_TILE_HEIGHT * 5 - 13));
 
-		Texture* Fire3_2Base = Resources::Load<Texture>(L"Fire3_1Base"
+		T_Ui = Resources::Load<Texture>(L"Base"
 			, L"..\\Resources\\Texture\\fire\\FLAMEbase0001.png");
 
-		SpriteRenderer* Fire3_2Sr = Fire3_2base->AddComponent<SpriteRenderer>();
-		Fire3_2Sr->SetImage(Fire3_2Base);
-		Fire3_2Sr->SetScale(Vector2(0.75f, 0.75f));
+		sr_Ui = Fire3_2base->AddComponent<SpriteRenderer>();
+		sr_Ui->SetImage(T_Ui);
+		sr_Ui->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Fire 2
 		Fire* Fire3_2 = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr3_2Fire = Fire3_2->GetComponent<Transform>();
-		tr3_2Fire->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+		tr = Fire3_2->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 4));
 
-		Animator* at3_2Fire = Fire3_2->AddComponent<Animator>();
-		at3_2Fire->CreateAnimationFolder(L"Fire3_2", L"..\\Resources\\Texture\\fire\\fire", Vector2(2.0f, 20.0f));
-		at3_2Fire->PlayAnimation(L"Fire3_2", true);
-		at3_2Fire->SetScale(Vector2(0.4f, 0.5f));
+		at = Fire3_2->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"Fire", L"..\\Resources\\Texture\\fire\\fire", Vector2(2.0f, 20.0f));
+		at->PlayAnimation(L"Fire", true);
+		at->SetScale(Vector2(0.4f, 0.5f));
 	}
 
 	void ya::Chapter3::Update()
