@@ -51,92 +51,93 @@ namespace ya
 		// Scene Change 생성 및 애니메이션 재생
 		SceneChange* S_C = object::Instantiate<SceneChange>(eLayerType::SceneChange);
 
-		Transform* tr_SC = S_C->GetComponent<Transform>();
-		tr_SC->SetPosition(Vector2(640.0f, 360.0f));
+		Transform* tr = S_C->GetComponent<Transform>();
+		tr->SetPosition(Vector2(640.0f, 360.0f));
 
-		Animator* at_SC = S_C->AddComponent<Animator>();
-		at_SC->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f), 0.05f);
-		at_SC->PlayAnimation(L"Change", false);
-		at_SC->SetScale(Vector2(0.7f, 0.7f));
+		Animator* at = S_C->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"Change", L"..\\Resources\\Texture\\levelchange\\bmp", Vector2(0.0f, 0.0f), 0.05f);
+		at->PlayAnimation(L"Change", false);
+		at->SetScale(Vector2(0.7f, 0.7f));
 
 
 		// 왼쪽 위 Ui
 		Ui* Ui1 = object::Instantiate<Ui>(eLayerType::UI);
 
-		Transform* tr_Ui1 = Ui1->GetComponent<Transform>();
-		tr_Ui1->SetPosition(Vector2(115.0f, 215.0f));
+		tr = Ui1->GetComponent<Transform>();
+		tr->SetPosition(Vector2(115.0f, 215.0f));
 
 
-		Texture* T_Ui1 = Resources::Load<Texture>(L"Ui1"
+		Texture* T_Ui = Resources::Load<Texture>(L"Ui1"
 			, L"..\\Resources\\Texture\\playui\\mainUI002.bmp");
 
-		SpriteRenderer* sr_Ui1 = Ui1->AddComponent<SpriteRenderer>();
-		sr_Ui1->SetImage(T_Ui1);
-		sr_Ui1->SetScale(Vector2(0.75f, 0.75f));
+		SpriteRenderer* sr = Ui1->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 		// 왼쪽 아래 Ui
 		Ui* Ui2 = object::Instantiate<Ui>(eLayerType::UI);
 
-		Transform* tr_Ui2 = Ui2->GetComponent<Transform>();
-		tr_Ui2->SetPosition(Vector2(180.0f, 500.0f));
+		tr = Ui2->GetComponent<Transform>();
+		tr->SetPosition(Vector2(180.0f, 500.0f));
 
 
-		Texture* T_Ui2 = Resources::Load<Texture>(L"Ui2"
+		T_Ui = Resources::Load<Texture>(L"Ui2"
 			, L"..\\Resources\\Texture\\playui\\mainUI001.bmp");
 
-		SpriteRenderer* sr_Ui2 = Ui2->AddComponent<SpriteRenderer>();
-		sr_Ui2->SetImage(T_Ui2);
-		sr_Ui2->SetScale(Vector2(0.75f, 0.75f));
+		sr = Ui2->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 		// 오른쪽 위 Ui
 		Ui* Ui3 = object::Instantiate<Ui>(eLayerType::UI);
 
-		Transform* tr_Ui3 = Ui3->GetComponent<Transform>();
-		tr_Ui3->SetPosition(Vector2(1170.0f, 215.0f));
+		tr = Ui3->GetComponent<Transform>();
+		tr->SetPosition(Vector2(1170.0f, 215.0f));
 
 
-		Texture* T_Ui3 = Resources::Load<Texture>(L"Ui3"
+		T_Ui = Resources::Load<Texture>(L"Ui3"
 			, L"..\\Resources\\Texture\\playui\\mainUI003.bmp");
 
-		SpriteRenderer* sr_Ui3 = Ui3->AddComponent<SpriteRenderer>();
-		sr_Ui3->SetImage(T_Ui3);
-		sr_Ui3->SetScale(Vector2(0.75f, 0.75f));
+		sr = Ui3->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// 오른쪽 아래 Ui
 		Ui* Ui4 = object::Instantiate<Ui>(eLayerType::UI);
 
-		Transform* tr_Ui4 = Ui4->GetComponent<Transform>();
-		tr_Ui4->SetPosition(Vector2(1100.0f, 500.0f));
+		tr = Ui4->GetComponent<Transform>();
+		tr->SetPosition(Vector2(1100.0f, 500.0f));
 
 
-		Texture* T_Ui4 = Resources::Load<Texture>(L"Ui4"
+		T_Ui = Resources::Load<Texture>(L"Ui4"
 			, L"..\\Resources\\Texture\\playui\\mainUI000.bmp");
 
-		SpriteRenderer* sr_Ui4 = Ui4->AddComponent<SpriteRenderer>();
-		sr_Ui4->SetImage(T_Ui4);
-		sr_Ui4->SetScale(Vector2(0.75f, 0.75f));
+		sr = Ui4->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
+		// 배경 이미지 적용
+		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
+		bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));
 
-		Texture* Chapter8 = Resources::Load<Texture>(L"Chapter8"
+		T_Ui = Resources::Load<Texture>(L"Chapter8"
 			, L"..\\Resources\\Texture\\chapterbg\\chapterBG0008.bmp");
 
 
-		BackGround* bg = object::Instantiate<BackGround>(eLayerType::BackGround);
-		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
-		bgsr->SetImage(Chapter8);
-		bgsr->SetScale(Vector2(0.7f, 0.7f));
-		bgsr->SetAffectCamera(false);
+		sr = bg->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.7f, 0.7f));
+		sr->SetAffectCamera(false);
 		//bgsr->SetAlpha(0.2f);
-		bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));
 
 
 		Player* player = object::Instantiate<Player>(eLayerType::Player); // 플레이어 생성
-		Transform* tr = player->GetComponent<Transform>();
+		tr = player->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 6)); // 플레이어 시작위치
 
-		Animator* at = player->AddComponent<Animator>();
+		at = player->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"player_rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 10.0f));
 		at->CreateAnimationFolder(L"player_leftidle", L"..\\Resources\\Texture\\player\\player_idle\\left_idle", Vector2(0.0f, 10.0f));
 		at->CreateAnimationFolder(L"player_rightrun", L"..\\Resources\\Texture\\player\\player_run\\right_run", Vector2(0.0f, 10.0f));
@@ -156,341 +157,341 @@ namespace ya
 		// Rock 1 생성 및 이미지 로드
 		Rock* rock1 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock1 = rock1->GetComponent<Transform>();
-		tr_Rock1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+		tr = rock1->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 4));
 
-		Texture* Rock1 = Resources::Load<Texture>(L"Rock1_8"
+		T_Ui = Resources::Load<Texture>(L"Rock4"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock004.png");
 
-		SpriteRenderer* Rock1sr = rock1->AddComponent<SpriteRenderer>();
-		Rock1sr->SetImage(Rock1);
-		Rock1sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock1->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 2 생성 및 이미지 로드
 		Rock* rock2 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock2 = rock2->GetComponent<Transform>();
-		tr_Rock2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+		tr = rock2->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 3));
 
-		Texture* Rock2 = Resources::Load<Texture>(L"Rock2_8"
+		T_Ui = Resources::Load<Texture>(L"Rock5"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock005.png");
 
-		SpriteRenderer* Rock2sr = rock2->AddComponent<SpriteRenderer>();
-		Rock2sr->SetImage(Rock2);
-		Rock2sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock2->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 3 생성 및 이미지 로드
 		Rock* rock3 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock3 = rock3->GetComponent<Transform>();
-		tr_Rock3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		tr = rock3->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 5));
 
-		Texture* Rock3 = Resources::Load<Texture>(L"Rock3_8"
+		T_Ui = Resources::Load<Texture>(L"Rock6"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock006.png");
 
-		SpriteRenderer* Rock3sr = rock3->AddComponent<SpriteRenderer>();
-		Rock3sr->SetImage(Rock3);
-		Rock3sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock3->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 4 생성 및 이미지 로드
 		Rock* rock4 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock4 = rock4->GetComponent<Transform>();
-		tr_Rock4->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		tr = rock4->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 5));
 
-		Texture* Rock4 = Resources::Load<Texture>(L"Rock4_8"
+		T_Ui = Resources::Load<Texture>(L"Rock8"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock008.png");
 
-		SpriteRenderer* Rock4sr = rock4->AddComponent<SpriteRenderer>();
-		Rock4sr->SetImage(Rock4);
-		Rock4sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock4->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 5 생성 및 이미지 로드
 		Rock* rock5 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock5 = rock5->GetComponent<Transform>();
-		tr_Rock5->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 2));
+		tr = rock5->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 2));
 
-		Texture* Rock5 = Resources::Load<Texture>(L"Rock5_8"
+		T_Ui = Resources::Load<Texture>(L"Rock6"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock006.png");
 
-		SpriteRenderer* Rock5sr = rock5->AddComponent<SpriteRenderer>();
-		Rock5sr->SetImage(Rock5);
-		Rock5sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock5->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 6 생성 및 이미지 로드
 		Rock* rock6 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock6 = rock6->GetComponent<Transform>();
-		tr_Rock6->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+		tr = rock6->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 3));
 
-		Texture* Rock6 = Resources::Load<Texture>(L"Rock6_8"
+		T_Ui = Resources::Load<Texture>(L"Rock1"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock001.png");
 
-		SpriteRenderer* Rock6sr = rock6->AddComponent<SpriteRenderer>();
-		Rock6sr->SetImage(Rock6);
-		Rock6sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock6->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 7 생성 및 이미지 로드
 		Rock* rock7 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock7 = rock7->GetComponent<Transform>();
-		tr_Rock7->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+		tr = rock7->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 4));
 
-		Texture* Rock7 = Resources::Load<Texture>(L"Rock7_8"
+		T_Ui = Resources::Load<Texture>(L"Rock3"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock003.png");
 
-		SpriteRenderer* Rock7sr = rock7->AddComponent<SpriteRenderer>();
-		Rock7sr->SetImage(Rock7);
-		Rock7sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock7->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 8 생성 및 이미지 로드
 		Rock* rock8 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock8 = rock8->GetComponent<Transform>();
-		tr_Rock8->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		tr = rock8->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 5));
 
-		Texture* Rock8 = Resources::Load<Texture>(L"Rock8_8"
+		T_Ui = Resources::Load<Texture>(L"Rock7"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock007.png");
 
-		SpriteRenderer* Rock8sr = rock8->AddComponent<SpriteRenderer>();
-		Rock8sr->SetImage(Rock8);
-		Rock8sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock8->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 9 생성 및 이미지 로드
 		Rock* rock9 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock9 = rock9->GetComponent<Transform>();
-		tr_Rock9->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 6));
+		tr = rock9->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 6));
 
-		Texture* Rock9 = Resources::Load<Texture>(L"Rock9_8"
+		T_Ui = Resources::Load<Texture>(L"Rock5"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock005.png");
 
-		SpriteRenderer* Rock9sr = rock9->AddComponent<SpriteRenderer>();
-		Rock9sr->SetImage(Rock9);
-		Rock9sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock9->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 10 생성 및 이미지 로드
 		Rock* rock10 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock10 = rock10->GetComponent<Transform>();
-		tr_Rock10->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+		tr = rock10->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 4));
 
-		Texture* Rock10 = Resources::Load<Texture>(L"Rock10_8"
+		T_Ui = Resources::Load<Texture>(L"Rock2"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock002.png");
 
-		SpriteRenderer* Rock10sr = rock10->AddComponent<SpriteRenderer>();
-		Rock10sr->SetImage(Rock10);
-		Rock10sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock10->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 11 생성 및 이미지 로드
 		Rock* rock11 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock11 = rock11->GetComponent<Transform>();
-		tr_Rock11->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 2));
+		tr = rock11->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 2));
 
-		Texture* Rock11 = Resources::Load<Texture>(L"Rock11_8"
+		T_Ui = Resources::Load<Texture>(L"Rock7"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock007.png");
 
-		SpriteRenderer* Rock11sr = rock11->AddComponent<SpriteRenderer>();
-		Rock11sr->SetImage(Rock11);
-		Rock11sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock11->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 12 생성 및 이미지 로드
 		Rock* rock12 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock12 = rock12->GetComponent<Transform>();
-		tr_Rock12->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+		tr = rock12->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 4));
 
-		Texture* Rock12 = Resources::Load<Texture>(L"Rock12_8"
+		T_Ui = Resources::Load<Texture>(L"Rock8"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock008.png");
 
-		SpriteRenderer* Rock12sr = rock12->AddComponent<SpriteRenderer>();
-		Rock12sr->SetImage(Rock12);
-		Rock12sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock12->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 13 생성 및 이미지 로드
 		Rock* rock13 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock13 = rock13->GetComponent<Transform>();
-		tr_Rock13->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		tr = rock13->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 5));
 
-		Texture* Rock13 = Resources::Load<Texture>(L"Rock13_8"
+		T_Ui = Resources::Load<Texture>(L"Rock1"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock001.png");
 
-		SpriteRenderer* Rock13sr = rock13->AddComponent<SpriteRenderer>();
-		Rock13sr->SetImage(Rock13);
-		Rock13sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock13->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 14 생성 및 이미지 로드
 		Rock* rock14 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock14 = rock14->GetComponent<Transform>();
-		tr_Rock14->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 6));
+		tr = rock14->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 6));
 
-		Texture* Rock14 = Resources::Load<Texture>(L"Rock14_8"
+		T_Ui = Resources::Load<Texture>(L"Rock4"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock004.png");
 
-		SpriteRenderer* Rock14sr = rock14->AddComponent<SpriteRenderer>();
-		Rock14sr->SetImage(Rock14);
-		Rock14sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock14->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Rock 15 생성 및 이미지 로드
 		Rock* rock15 = object::Instantiate<Rock>(eLayerType::Rock);
 
-		Transform* tr_Rock15 = rock15->GetComponent<Transform>();
-		tr_Rock15->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		tr = rock15->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8, LeftTop.y + MOVE_TILE_HEIGHT * 5));
 
-		Texture* Rock15 = Resources::Load<Texture>(L"Rock15_8"
+		T_Ui = Resources::Load<Texture>(L"Rock3"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock003.png");
 
-		SpriteRenderer* Rock15sr = rock15->AddComponent<SpriteRenderer>();
-		Rock15sr->SetImage(Rock15);
-		Rock15sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = rock15->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Key 생성 및 이미지 로드
 		Key* myKey = object::Instantiate<Key>(eLayerType::myKey);
 
-		Transform* tr_Key = myKey->GetComponent<Transform>();
-		tr_Key->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 9, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+		tr = myKey->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 9, LeftTop.y + MOVE_TILE_HEIGHT * 4));
 
-		Animator* at_Key = myKey->AddComponent<Animator>();
-		at_Key->CreateAnimationFolder(L"myKey", L"..\\Resources\\Texture\\obstacle\\Key", Vector2(10.0f, 0.0f));
-		at_Key->PlayAnimation(L"myKey", true);
-		at_Key->SetScale(Vector2(0.8f, 0.8f));
+		at = myKey->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"myKey", L"..\\Resources\\Texture\\obstacle\\Key", Vector2(10.0f, 0.0f));
+		at->PlayAnimation(L"myKey", true);
+		at->SetScale(Vector2(0.8f, 0.8f));
 
 
 		// LockBox 생성 및 이미지 로드
 		LockBox* lockbox = object::Instantiate<LockBox>(eLayerType::LockBox);
 
-		Transform* tr_Box = lockbox->GetComponent<Transform>();
-		tr_Box->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 2));
+		tr = lockbox->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 2));
 
-		Texture* Box = Resources::Load<Texture>(L"Box"
+		T_Ui = Resources::Load<Texture>(L"Box"
 			, L"..\\Resources\\Texture\\obstacle\\lockbox\\lockbox001.png");
 
-		SpriteRenderer* sr_Box = lockbox->AddComponent<SpriteRenderer>();
-		sr_Box->SetImage(Box);
-		sr_Box->SetScale(Vector2(0.75f, 0.75f));
+		sr = lockbox->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Fire 1 base
 		Fire* Fire8_1base = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr8_1Firebase = Fire8_1base->GetComponent<Transform>();
-		tr8_1Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2 + 9, LeftTop.y + MOVE_TILE_HEIGHT * 0 - 30));
+		tr = Fire8_1base->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2 + 9, LeftTop.y + MOVE_TILE_HEIGHT * 0 - 30));
 
-		Texture* Fire8_1Base = Resources::Load<Texture>(L"Fire8_1Base"
+		T_Ui = Resources::Load<Texture>(L"Base"
 			, L"..\\Resources\\Texture\\fire\\FLAMEbase0001.png");
 
-		SpriteRenderer* Fire8_1Sr = Fire8_1base->AddComponent<SpriteRenderer>();
-		Fire8_1Sr->SetImage(Fire8_1Base);
-		Fire8_1Sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = Fire8_1base->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Fire 1
 		Fire* Fire8_1 = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr8_1Fire = Fire8_1->GetComponent<Transform>();
-		tr8_1Fire->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * -1));
+		tr = Fire8_1->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * -1));
 
-		Animator* at8_1Fire = Fire8_1->AddComponent<Animator>();
-		at8_1Fire->CreateAnimationFolder(L"Fire8_1", L"..\\Resources\\Texture\\fire\\fire", Vector2(10.0f, 0.0f));
-		at8_1Fire->PlayAnimation(L"Fire8_1", true);
-		at8_1Fire->SetScale(Vector2(0.4f, 0.5f));
+		at = Fire8_1->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"Fire", L"..\\Resources\\Texture\\fire\\fire", Vector2(10.0f, 0.0f));
+		at->PlayAnimation(L"Fire", true);
+		at->SetScale(Vector2(0.4f, 0.5f));
 
 
 		// Fire 2 base
 		Fire* Fire8_2base = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr8_2Firebase = Fire8_2base->GetComponent<Transform>();
-		tr8_2Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3 + 4, LeftTop.y + MOVE_TILE_HEIGHT * 2 - 31));
+		tr = Fire8_2base->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3 + 4, LeftTop.y + MOVE_TILE_HEIGHT * 2 - 31));
 
-		Texture* Fire8_2Base = Resources::Load<Texture>(L"Fire8_2Base"
+		T_Ui = Resources::Load<Texture>(L"Base"
 			, L"..\\Resources\\Texture\\fire\\FLAMEbase0001.png");
 
-		SpriteRenderer* Fire8_2Sr = Fire8_2base->AddComponent<SpriteRenderer>();
-		Fire8_2Sr->SetImage(Fire8_2Base);
-		Fire8_2Sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = Fire8_2base->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Fire 2
 		Fire* Fire8_2 = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr8_2Fire = Fire8_2->GetComponent<Transform>();
-		tr8_2Fire->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 1));
+		tr = Fire8_2->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 1));
 
-		Animator* at8_2Fire = Fire8_2->AddComponent<Animator>();
-		at8_2Fire->CreateAnimationFolder(L"Fire8_2", L"..\\Resources\\Texture\\fire\\fire", Vector2(5.0f, 0.0f));
-		at8_2Fire->PlayAnimation(L"Fire8_2", true);
-		at8_2Fire->SetScale(Vector2(0.4f, 0.5f));
+		at = Fire8_2->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"Fire", L"..\\Resources\\Texture\\fire\\fire", Vector2(5.0f, 0.0f));
+		at->PlayAnimation(L"Fire", true);
+		at->SetScale(Vector2(0.4f, 0.5f));
 
 
 		// Fire 3 base
 		Fire* Fire8_3base = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr8_3Firebase = Fire8_3base->GetComponent<Transform>();
-		tr8_3Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7 - 3, LeftTop.y + MOVE_TILE_HEIGHT * 2 - 31));
+		tr = Fire8_3base->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7 - 3, LeftTop.y + MOVE_TILE_HEIGHT * 2 - 31));
 
-		Texture* Fire8_3Base = Resources::Load<Texture>(L"Fire8_3Base"
+		T_Ui = Resources::Load<Texture>(L"Base"
 			, L"..\\Resources\\Texture\\fire\\FLAMEbase0001.png");
 
-		SpriteRenderer* Fire8_3Sr = Fire8_3base->AddComponent<SpriteRenderer>();
-		Fire8_3Sr->SetImage(Fire8_3Base);
-		Fire8_3Sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = Fire8_3base->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Fire 3
 		Fire* Fire8_3 = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr8_3Fire = Fire8_3->GetComponent<Transform>();
-		tr8_3Fire->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 1));
+		tr = Fire8_3->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 1));
 
-		Animator* at8_3Fire = Fire8_3->AddComponent<Animator>();
-		at8_3Fire->CreateAnimationFolder(L"Fire8_3", L"..\\Resources\\Texture\\fire\\fire", Vector2(0.0f, 0.0f));
-		at8_3Fire->PlayAnimation(L"Fire8_3", true);
-		at8_3Fire->SetScale(Vector2(0.4f, 0.5f));
+		at = Fire8_3->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"Fire", L"..\\Resources\\Texture\\fire\\fire", Vector2(0.0f, 0.0f));
+		at->PlayAnimation(L"Fire", true);
+		at->SetScale(Vector2(0.4f, 0.5f));
 
 
 		// Fire 4 base
 		Fire* Fire8_4base = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr8_4Firebase = Fire8_4base->GetComponent<Transform>();
-		tr8_4Firebase->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8 - 8, LeftTop.y + MOVE_TILE_HEIGHT * 0 - 31));
+		tr = Fire8_4base->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8 - 8, LeftTop.y + MOVE_TILE_HEIGHT * 0 - 31));
 
-		Texture* Fire8_4Base = Resources::Load<Texture>(L"Fire8_4Base"
+		T_Ui = Resources::Load<Texture>(L"Base"
 			, L"..\\Resources\\Texture\\fire\\FLAMEbase0001.png");
 
-		SpriteRenderer* Fire8_4Sr = Fire8_4base->AddComponent<SpriteRenderer>();
-		Fire8_4Sr->SetImage(Fire8_4Base);
-		Fire8_4Sr->SetScale(Vector2(0.75f, 0.75f));
+		sr = Fire8_4base->AddComponent<SpriteRenderer>();
+		sr->SetImage(T_Ui);
+		sr->SetScale(Vector2(0.75f, 0.75f));
 
 
 		// Fire 4
 		Fire* Fire8_4 = object::Instantiate<Fire>(eLayerType::Fire);
 
-		Transform* tr8_4Fire = Fire8_4->GetComponent<Transform>();
-		tr8_4Fire->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8, LeftTop.y + MOVE_TILE_HEIGHT * -1));
+		tr = Fire8_4->GetComponent<Transform>();
+		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8, LeftTop.y + MOVE_TILE_HEIGHT * -1));
 
-		Animator* at8_4Fire = Fire8_4->AddComponent<Animator>();
-		at8_4Fire->CreateAnimationFolder(L"Fire8_4", L"..\\Resources\\Texture\\fire\\fire", Vector2(-5.0f, 0.0f));
-		at8_4Fire->PlayAnimation(L"Fire8_4", true);
-		at8_4Fire->SetScale(Vector2(0.4f, 0.5f));
+		at = Fire8_4->AddComponent<Animator>();
+		at->CreateAnimationFolder(L"Fire", L"..\\Resources\\Texture\\fire\\fire", Vector2(-5.0f, 0.0f));
+		at->PlayAnimation(L"Fire", true);
+		at->SetScale(Vector2(0.4f, 0.5f));
 	}
 
 	void ya::Chapter8::Update()

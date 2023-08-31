@@ -143,7 +143,7 @@ namespace ya
 					chpt1->MapInfo1[PlayerY][PlayerX] = 0;
 					chpt1->MapInfo1[PlayerY - 1][PlayerX] = 2;
 
-					break;
+					break; 
 				case 1:
 					Hp++;
 					return;
