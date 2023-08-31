@@ -6,7 +6,10 @@
 #include "yaChapter2.h"
 #include "yaChapter3.h"
 #include "yaChapter4.h"
-
+#include "yaChapter5.h"
+#include "yaChapter6.h"
+#include "yaChapter7.h"
+#include "yaChapter8.h"
 
 namespace ya
 {
@@ -167,6 +170,39 @@ namespace ya
 
 			case 3:
 				if (chpt4->MapInfo4[MonsterY][MonsterX + 1] == 0)
+					RockMove();
+				break;
+
+			default:
+				break;
+			}
+		}
+
+		if (Chapter5* chpt5 = dynamic_cast<Chapter5*>(scene))
+		{
+			int MonsterY = int(pos.y - chpt5->LeftTop.y) / MOVE_TILE_HEIGHT;
+			int MonsterX = int(pos.x - chpt5->LeftTop.x) / MOVE_TILE_WIDTH;
+			chpt5->pointerMap5[MonsterY - 1][MonsterX];
+
+			switch (_dir)
+			{
+			case 0:
+				if (chpt5->MapInfo5[MonsterY - 1][MonsterX] == 0)
+					RockMove();
+				break;
+
+			case 1:
+				if (chpt5->MapInfo5[MonsterY + 1][MonsterX] == 0)
+					RockMove();
+				break;
+
+			case 2:
+				if (chpt5->MapInfo5[MonsterY][MonsterX - 1] == 0)
+					RockMove();
+				break;
+
+			case 3:
+				if (chpt5->MapInfo5[MonsterY][MonsterX + 1] == 0)
 					RockMove();
 				break;
 
@@ -359,6 +395,52 @@ namespace ya
 				chpt4->MapInfo4[posY][posX] = 0;
 				chpt4->pointerMap4[posY][posX + 1] = this;
 				chpt4->pointerMap4[posY][posX] = nullptr;
+
+				tr->SetPosition(Vector2(pos.x + MOVE_TILE_WIDTH, pos.y));
+				break;
+
+			default:
+				break;
+			}
+		}
+
+		if (Chapter5* chpt5 = dynamic_cast<Chapter5*>(scene))
+		{
+			int posY = int(pos.y - chpt5->LeftTop.y) / MOVE_TILE_HEIGHT;
+			int posX = int(pos.x - chpt5->LeftTop.x) / MOVE_TILE_WIDTH;
+
+			switch (dir)
+			{
+			case 0:
+				chpt5->MapInfo5[posY - 1][posX] = 4;
+				chpt5->MapInfo5[posY][posX] = 0;
+				chpt5->pointerMap5[posY - 1][posX] = this;
+				chpt5->pointerMap5[posY][posX] = nullptr;
+
+				tr->SetPosition(Vector2(pos.x, pos.y - MOVE_TILE_HEIGHT));
+				break;
+
+			case 1:
+				chpt5->MapInfo5[posY + 1][posX] = 4;
+				chpt5->MapInfo5[posY][posX] = 0;
+				chpt5->pointerMap5[posY + 1][posX] = this;
+				chpt5->pointerMap5[posY][posX] = nullptr;
+
+				tr->SetPosition(Vector2(pos.x, pos.y + MOVE_TILE_HEIGHT));
+				break;
+			case 2:
+				chpt5->MapInfo5[posY][posX - 1] = 4;
+				chpt5->MapInfo5[posY][posX] = 0;
+				chpt5->pointerMap5[posY][posX - 1] = this;
+				chpt5->pointerMap5[posY][posX] = nullptr;
+
+				tr->SetPosition(Vector2(pos.x - MOVE_TILE_WIDTH, pos.y));
+				break;
+			case 3:
+				chpt5->MapInfo5[posY][posX + 1] = 4;
+				chpt5->MapInfo5[posY][posX] = 0;
+				chpt5->pointerMap5[posY][posX + 1] = this;
+				chpt5->pointerMap5[posY][posX] = nullptr;
 
 				tr->SetPosition(Vector2(pos.x + MOVE_TILE_WIDTH, pos.y));
 				break;
