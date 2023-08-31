@@ -9,7 +9,6 @@
 #include "yaObject.h"
 #include "yaPlayer.h"
 #include "yaAnimator.h"
-#include "yaCollider.h"
 #include "yaMonster.h"
 #include "yaNpc.h"
 #include "yaRock.h"
@@ -36,7 +35,7 @@ namespace ya
 		{ 1, 0, 1, 0, 0, 0, 0, 1 },
 		{ 1, 3, 1, 4, 4, 4, 4, 1 },
 		{ 1, 0, 0, 0, 0, 0, 0, 1 },
-		{ 1, 1, 1, 1, 1, 1, 1, 1 }
+		{ 1, 1, 1, 1, 1, 1, 0, 1 }
 	};
 
 	Chapter5::Chapter5()
@@ -158,9 +157,9 @@ namespace ya
 		at->SetScale(Vector2(0.8f, 0.8f));
 		at->SetAffectedCamera(true);
 
-		Collider* col = player->AddComponent<Collider>();
-		col->SetSize(Vector2(85.0f, 90.0f));
-		col->SetOffset(Vector2(0.0f, -10.0f));
+		//Collider* col = player->AddComponent<Collider>();
+		//col->SetSize(Vector2(85.0f, 90.0f));
+		//col->SetOffset(Vector2(0.0f, -10.0f));
 
 
 		// monster1 持失
@@ -175,8 +174,8 @@ namespace ya
 		at->PlayAnimation(L"Monster_RightIdle", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = monster1->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = monster1->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 		// Npc pandemonica 持失
 		Npc* zdrada = object::Instantiate<Npc>(eLayerType::Npc);
@@ -189,8 +188,8 @@ namespace ya
 		at->PlayAnimation(L"zdrada", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = zdrada->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = zdrada->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign
