@@ -324,6 +324,37 @@ namespace ya
 				}
 			}
 
+			if (Chapter7* chpt7 = dynamic_cast<Chapter7*>(scene))
+			{
+				int PlayerY = int(pos.y - chpt7->LeftTop.y) / MOVE_TILE_HEIGHT;
+				int PlayerX = int(pos.x - chpt7->LeftTop.x) / MOVE_TILE_WIDTH;
+
+				switch (chpt7->MapInfo7[PlayerY - 1][PlayerX])
+				{
+				case 0:
+					//캐릭터 이동시키고 맵정보 2개 갱신
+					tr->SetPosition(Vector2(pos.x, pos.y - MOVE_TILE_HEIGHT));
+					chpt7->pointerMap7[PlayerY][PlayerX] = nullptr;
+					chpt7->pointerMap7[PlayerY - 1][PlayerX] = this;
+
+					chpt7->MapInfo7[PlayerY][PlayerX] = 0;
+					chpt7->MapInfo7[PlayerY - 1][PlayerX] = 2;
+
+					break;
+				case 1:
+					Hp++;
+					return;
+				case 3:
+					static_cast<Monster*>(chpt7->pointerMap7[PlayerY - 1][PlayerX])->Hit(dir); /* 몬스터 내부에 공격받는 함수 만들고 */
+					break;
+				case 4:
+					static_cast<Rock*>(chpt7->pointerMap7[PlayerY - 1][PlayerX])->RockHit(_dir);
+					break;
+				default:
+					break;
+				}
+			}
+
 			sound->Play(false);
 		}
 		else if (_dir == 2 && Input::GetKeyUp(eKeyCode::A))
@@ -503,6 +534,36 @@ namespace ya
 					break;
 				case 4:
 					static_cast<Rock*>(chpt6->pointerMap6[PlayerY][PlayerX - 1])->RockHit(_dir);
+					break;
+				default:
+					break;
+				}
+			}
+
+			if (Chapter7* chpt7 = dynamic_cast<Chapter7*>(scene))
+			{
+				int PlayerY = int(pos.y - chpt7->LeftTop.y) / MOVE_TILE_HEIGHT;
+				int PlayerX = int(pos.x - chpt7->LeftTop.x) / MOVE_TILE_WIDTH;
+
+				switch (chpt7->MapInfo7[PlayerY][PlayerX - 1])
+				{
+				case 0:
+					//캐릭터 이동시키고 맵정보 2개 갱신
+					tr->SetPosition(Vector2(pos.x - MOVE_TILE_WIDTH, pos.y));
+					chpt7->pointerMap7[PlayerY][PlayerX] = nullptr;
+					chpt7->pointerMap7[PlayerY][PlayerX - 1] = this;
+
+					chpt7->MapInfo7[PlayerY][PlayerX] = 0;
+					chpt7->MapInfo7[PlayerY][PlayerX - 1] = 2;
+
+					break;
+				case 1:
+					return;
+				case 3:
+					static_cast<Monster*>(chpt7->pointerMap7[PlayerY][PlayerX - 1])->Hit(_dir) /* 몬스터 내부에 공격받는 함수 만들고 */;
+					break;
+				case 4:
+					static_cast<Rock*>(chpt7->pointerMap7[PlayerY][PlayerX - 1])->RockHit(_dir);
 					break;
 				default:
 					break;
@@ -694,6 +755,36 @@ namespace ya
 				}
 			}
 
+			if (Chapter7* chpt7 = dynamic_cast<Chapter7*>(scene))
+			{
+				int PlayerY = int(pos.y - chpt7->LeftTop.y) / MOVE_TILE_HEIGHT;
+				int PlayerX = int(pos.x - chpt7->LeftTop.x) / MOVE_TILE_WIDTH;
+
+				switch (chpt7->MapInfo7[PlayerY + 1][PlayerX])
+				{
+				case 0:
+					//캐릭터 이동시키고 맵정보 2개 갱신
+					tr->SetPosition(Vector2(pos.x, pos.y + MOVE_TILE_HEIGHT));
+					chpt7->pointerMap7[PlayerY][PlayerX] = nullptr;
+					chpt7->pointerMap7[PlayerY + 1][PlayerX] = this;
+
+					chpt7->MapInfo7[PlayerY][PlayerX] = 0;
+					chpt7->MapInfo7[PlayerY + 1][PlayerX] = 2;
+
+					break;
+				case 1:
+					return;
+				case 3:
+					static_cast<Monster*>(chpt7->pointerMap7[PlayerY + 1][PlayerX])->Hit(_dir) /* 몬스터 내부에 공격받는 함수 만들고 */;
+					break;
+				case 4:
+					static_cast<Rock*>(chpt7->pointerMap7[PlayerY + 1][PlayerX])->RockHit(_dir);
+					break;
+				default:
+					break;
+				}
+			}
+
 			sound->Play(false);
 		}
 		else if (_dir == 3 && Input::GetKeyUp(eKeyCode::D))
@@ -873,6 +964,36 @@ namespace ya
 					break;
 				case 4:
 					static_cast<Rock*>(chpt6->pointerMap6[PlayerY][PlayerX + 1])->RockHit(_dir);
+					break;
+				default:
+					break;
+				}
+			}
+
+			if (Chapter7* chpt7 = dynamic_cast<Chapter7*>(scene))
+			{
+				int PlayerY = int(pos.y - chpt7->LeftTop.y) / MOVE_TILE_HEIGHT;
+				int PlayerX = int(pos.x - chpt7->LeftTop.x) / MOVE_TILE_WIDTH;
+
+				switch (chpt7->MapInfo7[PlayerY][PlayerX + 1])
+				{
+				case 0:
+					//캐릭터 이동시키고 맵정보 2개 갱신
+					tr->SetPosition(Vector2(pos.x + MOVE_TILE_WIDTH, pos.y));
+					chpt7->pointerMap7[PlayerY][PlayerX] = nullptr;
+					chpt7->pointerMap7[PlayerY][PlayerX + 1] = this;
+
+					chpt7->MapInfo7[PlayerY][PlayerX] = 0;
+					chpt7->MapInfo7[PlayerY][PlayerX + 1] = 2;
+
+					break;
+				case 1:
+					return;
+				case 3:
+					static_cast<Monster*>(chpt7->pointerMap7[PlayerY][PlayerX + 1])->Hit(_dir) /* 몬스터 내부에 공격받는 함수 만들고 */;
+					break;
+				case 4:
+					static_cast<Rock*>(chpt7->pointerMap7[PlayerY][PlayerX + 1])->RockHit(_dir);
 					break;
 				default:
 					break;

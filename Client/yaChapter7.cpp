@@ -43,6 +43,10 @@ namespace ya
 	ya::Chapter7::Chapter7()
 		: LeftTop(Vector2(350.0f + 72 / 2, 58.0f + 68 / 2))
 	{
+		pointerMap7[9][8] =
+		{
+			NULL,
+		};
 	}
 
 	ya::Chapter7::~Chapter7()
@@ -141,6 +145,7 @@ namespace ya
 
 		tr = player->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 5)); // 플레이어 시작위치
+		pointerMap7[5][6] = player;
 
 		at = player->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"player_rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 10.0f));
@@ -164,6 +169,7 @@ namespace ya
 		
 		tr = monster1->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 5)); // 몬스터1 시작위치
+		pointerMap7[5][3] = monster1;
 
 		at = monster1->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -176,8 +182,10 @@ namespace ya
 
 		// 몬스터2 생성
 		Monster* monster2 = object::Instantiate<Monster>(eLayerType::Monster);
+
 		tr = monster2->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 4)); // 몬스터2 시작위치
+		pointerMap7[4][4] = monster2;
 
 		at = monster2->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -193,6 +201,7 @@ namespace ya
 
 		tr = monster3->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 4)); // 몬스터3 시작위치
+		pointerMap7[4][1] = monster3;
 
 		at = monster3->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -237,6 +246,7 @@ namespace ya
 
 		tr = rock1->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+		pointerMap7[4][2] = rock1;
 
 		T_Ui = Resources::Load<Texture>(L"Rock4"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock004.png");
@@ -251,6 +261,7 @@ namespace ya
 
 		tr = rock2->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+		pointerMap7[3][4] = rock2;
 
 		T_Ui = Resources::Load<Texture>(L"Rock1"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock001.png");
@@ -265,6 +276,7 @@ namespace ya
 
 		tr = rock3->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+		pointerMap7[3][5] = rock3;
 
 		T_Ui = Resources::Load<Texture>(L"Rock5"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock005.png");
@@ -279,6 +291,7 @@ namespace ya
 
 		tr = rock4->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+		pointerMap7[4][5] = rock4;
 
 		T_Ui = Resources::Load<Texture>(L"Rock8"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock008.png");
@@ -293,6 +306,7 @@ namespace ya
 
 		tr = rock5->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+		pointerMap7[3][6] = rock5;
 
 		T_Ui = Resources::Load<Texture>(L"Rock3"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock003.png");
