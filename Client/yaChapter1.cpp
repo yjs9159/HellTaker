@@ -158,9 +158,9 @@ namespace ya
 		at->SetScale(Vector2(0.8f, 0.8f));
 		at->SetAffectedCamera(true);
 
-		Collider* col = player->AddComponent<Collider>();
-		col->SetSize(Vector2(100.0f, 110.0f));
-		col->SetOffset(Vector2(0.0f, 0.0f));
+		//Collider* col = player->AddComponent<Collider>();
+		//col->SetSize(Vector2(100.0f, 110.0f));
+		//col->SetOffset(Vector2(0.0f, 0.0f));
 
 
 		// Monster1 생성 및 이미지 로드
@@ -175,8 +175,8 @@ namespace ya
 		at->PlayAnimation(L"Monster_RightIdle", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = monster1->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = monster1->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 		// 몬스터2 생성 및 이미지 로드
 		Monster* monster2 = object::Instantiate<Monster>(eLayerType::Monster); // 몬스터2 생성
@@ -190,8 +190,8 @@ namespace ya
 		at->PlayAnimation(L"Monster_RightIdle", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = monster2->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = monster2->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 		// 몬스터3 생성 및 이미지 로드
 		Monster* monster3 = object::Instantiate<Monster>(eLayerType::Monster);
@@ -205,8 +205,8 @@ namespace ya
 		at->PlayAnimation(L"Monster_RightIdle", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = monster3->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = monster3->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 
@@ -221,8 +221,8 @@ namespace ya
 		at->PlayAnimation(L"pandemonica", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = pandemonica->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = pandemonica->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign

@@ -157,9 +157,9 @@ namespace ya
 		at->SetScale(Vector2(0.8f, 0.8f));
 		at->SetAffectedCamera(true);
 
-		Collider* col = player->AddComponent<Collider>();
-		col->SetSize(Vector2(85.0f, 90.0f));
-		col->SetOffset(Vector2(0.0f, -10.0f));
+		//Collider* col = player->AddComponent<Collider>();
+		//col->SetSize(Vector2(85.0f, 90.0f));
+		//col->SetOffset(Vector2(0.0f, -10.0f));
 
 
 		// monster 1 생성 및 이미지 로드
@@ -173,8 +173,8 @@ namespace ya
 		at->PlayAnimation(L"Monster_RightIdle", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = monster1->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = monster1->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// monster 2 생성 및 이미지 로드
@@ -188,8 +188,8 @@ namespace ya
 		at->PlayAnimation(L"Monster_RightIdle", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = monster2->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = monster2->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc 1 생성 및 이미지 로드
@@ -203,8 +203,8 @@ namespace ya
 		at->PlayAnimation(L"cerberus", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = cerberus1->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = cerberus1->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 		
 
 		// Npc LoveSign
@@ -232,8 +232,8 @@ namespace ya
 		at->PlayAnimation(L"cerberus", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = cerberus2->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = cerberus2->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign
@@ -261,8 +261,8 @@ namespace ya
 		at->PlayAnimation(L"cerberus", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = cerberus3->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = cerberus3->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign

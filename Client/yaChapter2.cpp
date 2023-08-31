@@ -154,9 +154,9 @@ namespace ya
 		at->SetScale(Vector2(0.8f, 0.8f));
 		at->SetAffectedCamera(true);
 
-		Collider* col = player->AddComponent<Collider>();
-		col->SetSize(Vector2(100.0f, 110.0f));
-		col->SetOffset(Vector2(0.0f, 0.0f));
+		//Collider* col = player->AddComponent<Collider>();
+		//col->SetSize(Vector2(100.0f, 110.0f));
+		//col->SetOffset(Vector2(0.0f, 0.0f));
 
 
 		// monster1 持失
@@ -171,8 +171,8 @@ namespace ya
 		at->PlayAnimation(L"Monster_RightIdle", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = monster1->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = monster1->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// monster2 持失
@@ -187,8 +187,8 @@ namespace ya
 		at->PlayAnimation(L"Monster_RightIdle", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = monster2->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = monster2->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// monster3 持失
@@ -203,8 +203,8 @@ namespace ya
 		at->PlayAnimation(L"Monster_RightIdle", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = monster3->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = monster3->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 		// Npc 持失
 		Npc* modeus = object::Instantiate<Npc>(eLayerType::Npc); // Npc pandemonica 持失
@@ -217,8 +217,8 @@ namespace ya
 		at->PlayAnimation(L"modeus", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = modeus->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = modeus->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign
