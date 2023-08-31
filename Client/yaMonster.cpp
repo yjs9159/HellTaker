@@ -7,6 +7,7 @@
 #include "yaChapter1.h"
 #include "yaChapter2.h"
 #include "yaChapter3.h"
+#include "yaChapter4.h"
 
 namespace ya
 {
@@ -204,6 +205,47 @@ namespace ya
 			}
 		}
 
+		if (Chapter4* chpt4 = dynamic_cast<Chapter4*>(scene))
+		{
+			int MonsterY = int(pos.y - chpt4->LeftTop.y) / MOVE_TILE_HEIGHT;
+			int MonsterX = int(pos.x - chpt4->LeftTop.x) / MOVE_TILE_WIDTH;
+			int ObjectInfo;
+
+			switch (_dir)
+			{
+			case 0:
+				ObjectInfo = chpt4->MapInfo4[MonsterY - 1][MonsterX];
+				break;
+			case 1:
+				ObjectInfo = chpt4->MapInfo4[MonsterY + 1][MonsterX];
+				break;
+			case 2:
+				ObjectInfo = chpt4->MapInfo4[MonsterY][MonsterX - 1];
+				break;
+			case 3:
+				ObjectInfo = chpt4->MapInfo4[MonsterY][MonsterX + 1];
+				break;
+			default:
+				break;
+			}
+
+			if (ObjectInfo == 0)
+			{
+				Move();
+			}
+
+			else
+			{
+				mState = eState::Death;
+				IsDead = true;
+
+				//Animator* at = GetComponent<Animator>();
+				//at->CreateAnimationFolder(L"Monster_Move", L"..\\Resources\\Texture\\obstacle\\undead_move\\Right_Move", Vector2(0.0f, 0.0f));
+				//at->PlayAnimation(L"Monster_Move", false);
+
+				Dead();
+			}
+		}
 	}
 
 	void Monster::Move()
@@ -406,6 +448,67 @@ namespace ya
 				break;
 			}
 		}
+
+		if (Chapter4* chpt4 = dynamic_cast<Chapter4*>(scene))
+		{
+			int posY = int(pos.y - chpt4->LeftTop.y) / MOVE_TILE_HEIGHT;
+			int posX = int(pos.x - chpt4->LeftTop.x) / MOVE_TILE_WIDTH;
+
+			switch (dir)
+			{
+			case 0:
+				chpt4->MapInfo4[posY - 1][posX] = 3;
+				chpt4->MapInfo4[posY][posX] = 0;
+				chpt4->pointerMap4[posY - 1][posX] = this;
+				chpt4->pointerMap4[posY][posX] = nullptr;
+
+				tr->SetPosition(Vector2(pos.x, pos.y - MOVE_TILE_HEIGHT));
+
+				at->PlayAnimation(L"Monster_RightMove", false);
+				mState = eState::Idle;
+
+				break;
+
+			case 1:
+				chpt4->MapInfo4[posY + 1][posX] = 3;
+				chpt4->MapInfo4[posY][posX] = 0;
+				chpt4->pointerMap4[posY + 1][posX] = this;
+				chpt4->pointerMap4[posY][posX] = nullptr;
+
+				tr->SetPosition(Vector2(pos.x, pos.y + MOVE_TILE_HEIGHT));
+
+				at->PlayAnimation(L"Monster_RightMove", false);
+				mState = eState::Idle;
+				break;
+
+			case 2:
+				chpt4->MapInfo4[posY][posX - 1] = 3;
+				chpt4->MapInfo4[posY][posX] = 0;
+				chpt4->pointerMap4[posY][posX - 1] = this;
+				chpt4->pointerMap4[posY][posX] = nullptr;
+
+				tr->SetPosition(Vector2(pos.x - MOVE_TILE_WIDTH, pos.y));
+
+				at->PlayAnimation(L"Monster_LeftMove", false);
+				mState = eState::Idle;
+				break;
+
+			case 3:
+				chpt4->MapInfo4[posY][posX + 1] = 3;
+				chpt4->MapInfo4[posY][posX] = 0;
+				chpt4->pointerMap4[posY][posX + 1] = this;
+				chpt4->pointerMap4[posY][posX] = nullptr;
+
+				tr->SetPosition(Vector2(pos.x + MOVE_TILE_WIDTH, pos.y));
+
+				at->PlayAnimation(L"Monster_RightMove", false);
+				mState = eState::Idle;
+				break;
+
+			default:
+				break;
+			}
+		}
 	}
 
 	void Monster::Dead()
@@ -444,6 +547,16 @@ namespace ya
 
 			chpt3->MapInfo3[posY][posX] = 0;
 			chpt3->pointerMap3[posY][posX] = nullptr;
+		}
+
+		if (Chapter4* chpt4 = dynamic_cast<Chapter4*>(scene))
+		{
+			int posY = int(pos.y - chpt4->LeftTop.y) / MOVE_TILE_HEIGHT;
+			int posX = int(pos.x - chpt4->LeftTop.x) / MOVE_TILE_WIDTH;
+
+
+			chpt4->MapInfo4[posY][posX] = 0;
+			chpt4->pointerMap4[posY][posX] = nullptr;
 		}
 	}
 }

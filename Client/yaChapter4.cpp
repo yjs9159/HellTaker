@@ -40,6 +40,10 @@ namespace ya
 	Chapter4::Chapter4()
 		: LeftTop(Vector2(216.0f + 72 / 2, 115.0f + 68 / 2))
 	{
+		pointerMap4[7][11] =
+		{
+			NULL,
+		};
 	}
 
 	Chapter4::~Chapter4()
@@ -136,6 +140,7 @@ namespace ya
 		// player 생성
 		Player* player = object::Instantiate<Player>(eLayerType::Player); // 플레이어 생성
 		player->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 1));
+		pointerMap4[1][2] = player;
 
 		//tr = player->GetComponent<Transform>();
 		//tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // 플레이어 시작위치
@@ -152,15 +157,15 @@ namespace ya
 		at->SetScale(Vector2(0.8f, 0.8f));
 		at->SetAffectedCamera(true);
 
-		Collider* col = player->AddComponent<Collider>();
-		col->SetSize(Vector2(85.0f, 90.0f));
-		col->SetOffset(Vector2(0.0f, -10.0f));
+		//Collider* col = player->AddComponent<Collider>();
+		//col->SetSize(Vector2(85.0f, 90.0f));
+		//col->SetOffset(Vector2(0.0f, -10.0f));
 
 
 		// Npc pandemonica 생성
 		Npc* malina = object::Instantiate<Npc>(eLayerType::Npc);
 		malina->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 9, LeftTop.y + MOVE_TILE_HEIGHT * 3));
-
+		
 		//Transform* tr_malina = malina->GetComponent<Transform>();
 		//tr_malina->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 9, LeftTop.y + MOVE_TILE_HEIGHT * 3));
 
@@ -169,8 +174,8 @@ namespace ya
 		at->PlayAnimation(L"malina", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = malina->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = malina->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign
@@ -191,7 +196,8 @@ namespace ya
 		// Rock 1 생성 및 이미지 로드
 		Rock* rock1 = object::Instantiate<Rock>(eLayerType::Rock);
 		rock1->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 3));
-		
+		pointerMap4[3][2] = rock1;
+
 		//Transform* tr_Rock1 = rock1->GetComponent<Transform>();
 		//tr_Rock1->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 3));
 
@@ -206,6 +212,7 @@ namespace ya
 		// Rock 2 생성 및 이미지 로드
 		Rock* rock2 = object::Instantiate<Rock>(eLayerType::Rock);
 		rock2->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 2));
+		pointerMap4[2][3] = rock2;
 
 		//Transform* tr_Rock2 = rock2->GetComponent<Transform>();
 		//tr_Rock2->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 2));
@@ -221,6 +228,7 @@ namespace ya
 		// Rock 3 생성 및 이미지 로드
 		Rock* rock3 = object::Instantiate<Rock>(eLayerType::Rock);
 		rock3->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+		pointerMap4[4][3] = rock3;
 
 		//Transform* tr_Rock3 = rock3->GetComponent<Transform>();
 		//tr_Rock3->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 4));
@@ -236,6 +244,7 @@ namespace ya
 		// Rock 4 생성 및 이미지 로드
 		Rock* rock4 = object::Instantiate<Rock>(eLayerType::Rock);
 		rock4->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+		pointerMap4[3][4] = rock4;
 
 		//Transform* tr_Rock4 = rock4->GetComponent<Transform>();
 		//tr_Rock4->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 3));
@@ -251,6 +260,7 @@ namespace ya
 		// Rock 5 생성 및 이미지 로드
 		Rock* rock5 = object::Instantiate<Rock>(eLayerType::Rock);
 		rock5->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		pointerMap4[5][4] = rock5;
 
 		//Transform* tr_Rock5 = rock5->GetComponent<Transform>();
 		//tr_Rock5->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 5));
@@ -266,6 +276,7 @@ namespace ya
 		// Rock 6 생성 및 이미지 로드
 		Rock* rock6 = object::Instantiate<Rock>(eLayerType::Rock);
 		rock6->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 2));
+		pointerMap4[2][5] = rock6;
 
 		//Transform* tr_Rock6 = rock6->GetComponent<Transform>();
 		//tr_Rock6->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 2));
@@ -281,6 +292,7 @@ namespace ya
 		// Rock 7 생성 및 이미지 로드
 		Rock* rock7 = object::Instantiate<Rock>(eLayerType::Rock);
 		rock7->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+		pointerMap4[4][5] = rock7;
 
 		//Transform* tr_Rock7 = rock7->GetComponent<Transform>();
 		//tr_Rock7->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 4));
@@ -296,6 +308,7 @@ namespace ya
 		// Rock 8 생성 및 이미지 로드
 		Rock* rock8 = object::Instantiate<Rock>(eLayerType::Rock);
 		rock8->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 1));
+		pointerMap4[1][6] = rock8;
 
 		//Transform* tr_Rock8 = rock8->GetComponent<Transform>();
 		//tr_Rock8->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 1));
@@ -311,6 +324,7 @@ namespace ya
 		// Rock 9 생성 및 이미지 로드
 		Rock* rock9 = object::Instantiate<Rock>(eLayerType::Rock);
 		rock9->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+		pointerMap4[3][6] = rock9;
 
 		//Transform* tr_Rock9 = rock9->GetComponent<Transform>();
 		//tr_Rock9->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 3));
@@ -326,6 +340,7 @@ namespace ya
 		// Rock 10 생성 및 이미지 로드
 		Rock* rock10 = object::Instantiate<Rock>(eLayerType::Rock);
 		rock10->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		pointerMap4[5][6] = rock10;
 
 		//Transform* tr_Rock10 = rock10->GetComponent<Transform>();
 		//tr_Rock10->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 5));
@@ -341,6 +356,7 @@ namespace ya
 		// Rock 11 생성 및 이미지 로드
 		Rock* rock11 = object::Instantiate<Rock>(eLayerType::Rock);
 		rock11->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+		pointerMap4[3][7] = rock11;
 
 		//Transform* tr_Rock11 = rock11->GetComponent<Transform>();
 		//tr_Rock11->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 3));
@@ -356,6 +372,7 @@ namespace ya
 		// Rock 12 생성 및 이미지 로드
 		Rock* rock12 = object::Instantiate<Rock>(eLayerType::Rock);
 		rock12->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+		pointerMap4[4][7] = rock12;
 
 		//Transform* tr_Rock12 = rock12->GetComponent<Transform>();
 		//tr_Rock12->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 4));
@@ -371,6 +388,7 @@ namespace ya
 		// Rock 13 생성 및 이미지 로드
 		Rock* rock13 = object::Instantiate<Rock>(eLayerType::Rock);
 		rock13->GetComponent<Transform>()->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+		pointerMap4[4][8] = rock13;
 
 		//Transform* tr_Rock13 = rock13->GetComponent<Transform>();
 		//tr_Rock13->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8, LeftTop.y + MOVE_TILE_HEIGHT * 4));
