@@ -44,6 +44,10 @@ namespace ya
 	ya::Chapter6::Chapter6()
 		: LeftTop(Vector2(318.0f + 72 / 2, 15.0f + 68 / 2))
 	{
+		pointerMap6[10][9] =
+		{
+			NULL,
+		};
 	}
 
 	ya::Chapter6::~Chapter6()
@@ -138,8 +142,10 @@ namespace ya
 
 		// player 생성
 		Player* player = object::Instantiate<Player>(eLayerType::Player); // 플레이어 생성
+
 		tr = player->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // 플레이어 시작위치
+		pointerMap6[1][3] = player;
 
 		at = player->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"player_rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 10.0f));
@@ -153,37 +159,41 @@ namespace ya
 		at->SetScale(Vector2(0.8f, 0.8f));
 		at->SetAffectedCamera(true);
 
-		Collider* col = player->AddComponent<Collider>();
-		col->SetSize(Vector2(85.0f, 90.0f));
-		col->SetOffset(Vector2(0.0f, -10.0f));
+		//Collider* col = player->AddComponent<Collider>();
+		//col->SetSize(Vector2(85.0f, 90.0f));
+		//col->SetOffset(Vector2(0.0f, -10.0f));
 
 
 		// monster 1
 		Monster* monster1 = object::Instantiate<Monster>(eLayerType::Monster); // 몬스터1 생성
+
 		tr = monster1->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 5)); // 몬스터1 시작위치
+		pointerMap6[5][2] = monster1;
 
 		at = monster1->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
 		at->PlayAnimation(L"Monster_RightIdle", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = monster1->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = monster1->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// monster2
 		Monster* monster2 = object::Instantiate<Monster>(eLayerType::Monster); // 몬스터2 생성
+
 		tr = monster2->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 6)); // 몬스터2 시작위치
+		pointerMap6[6][6] = monster2;
 
 		at = monster2->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
 		at->PlayAnimation(L"Monster_RightIdle", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = monster2->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = monster2->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc pandemonica 생성
@@ -197,8 +207,8 @@ namespace ya
 		at->PlayAnimation(L"azazel ", true);
 		at->SetScale(Vector2(0.8f, 0.8f));
 
-		col = azazel->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = azazel->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign
@@ -221,6 +231,7 @@ namespace ya
 
 		tr = rock1->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 2));
+		pointerMap6[2][2] = rock1;
 
 		T_Ui = Resources::Load<Texture>(L"Rock4"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock004.png");
@@ -235,6 +246,7 @@ namespace ya
 
 		tr = rock2->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 2));
+		pointerMap6[2][3] = rock2;
 
 		T_Ui = Resources::Load<Texture>(L"Rock5"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock005.png");
@@ -249,6 +261,7 @@ namespace ya
 
 		tr = rock3->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 2));
+		pointerMap6[2][4] = rock3;
 
 		T_Ui = Resources::Load<Texture>(L"Rock6"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock006.png");
@@ -263,6 +276,7 @@ namespace ya
 
 		tr = rock4->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 4));
+		pointerMap6[4][3] = rock4;
 
 		T_Ui = Resources::Load<Texture>(L"Rock7"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock007.png");
@@ -277,7 +291,8 @@ namespace ya
 
 		tr = rock5->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 5));
-
+		pointerMap6[5][4] = rock5;
+		
 		T_Ui = Resources::Load<Texture>(L"Rock8"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock008.png");
 
@@ -291,6 +306,7 @@ namespace ya
 
 		tr = rock6->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 6));
+		pointerMap6[6][4] = rock6;
 
 		T_Ui = Resources::Load<Texture>(L"Rock2"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock002.png");
@@ -305,6 +321,7 @@ namespace ya
 
 		tr = rock7->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		pointerMap6[5][5] = rock7;
 
 		T_Ui = Resources::Load<Texture>(L"Rock1"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock001.png");
@@ -319,6 +336,7 @@ namespace ya
 
 		tr = rock8->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 7));
+		pointerMap6[7][6] = rock8;
 
 		T_Ui = Resources::Load<Texture>(L"Rock9"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock009.png");
