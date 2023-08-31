@@ -16,8 +16,6 @@
 #include "yaSceneChange.h"
 #include "yaFire.h"
 #include "yaSound.h"
-#include "yaCollisionManager.h"
-#include "yaFloor.h"
 #include "yaUi.h"
 
 //extern HWND g_hWnd;
@@ -47,7 +45,7 @@ namespace ya
 		: LeftTop(Vector2(313.0f + 72 / 2, 84.0f + 68 / 2))
 		, Animation_play(false)
 	{
-		pointerMap[8][9] =
+		pointerMap1[8][9] =
 		{
 			NULL,
 		};
@@ -146,7 +144,7 @@ namespace ya
 
 		tr = player->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 1)); // 캐릭터 시작위치
-		pointerMap[1][6] = player;
+		pointerMap1[1][6] = player;
 
 		at = player->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"player_rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 10.0f));
@@ -170,7 +168,7 @@ namespace ya
 
 		tr = monster1->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 2)); // 몬스터1 시작위치
-		pointerMap[2][4] = monster1;
+		pointerMap1[2][4] = monster1;
 
 		at = monster1->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -185,7 +183,7 @@ namespace ya
 
 		tr = monster2->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 3)); // 몬스터2 시작위치
-		pointerMap[3][5] = monster2;
+		pointerMap1[3][5] = monster2;
 
 		at = monster2->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -200,7 +198,7 @@ namespace ya
 
 		tr = monster3->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 3, LeftTop.y + MOVE_TILE_HEIGHT * 3));
-		pointerMap[3][3] = monster3;
+		pointerMap1[3][3] = monster3;
 
 		at = monster3->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -247,7 +245,7 @@ namespace ya
 
 		tr = rock1->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 5));
-		pointerMap[5][2] = rock1;
+		pointerMap1[5][2] = rock1;
 
 
 		T_Ui = Resources::Load<Texture>(L"Rock8"
@@ -263,7 +261,7 @@ namespace ya
 
 		tr = rock2->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 6));
-		pointerMap[6][2] = rock2;
+		pointerMap1[6][2] = rock2;
 
 		T_Ui = Resources::Load<Texture>(L"Rock6"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock006.png");
@@ -278,7 +276,7 @@ namespace ya
 
 		tr = rock3->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 4, LeftTop.y + MOVE_TILE_HEIGHT * 6));
-		pointerMap[6][4] = rock3;
+		pointerMap1[6][4] = rock3;
 
 		T_Ui = Resources::Load<Texture>(L"Rock5"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock005.png");
@@ -293,7 +291,7 @@ namespace ya
 
 		tr = rock4->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 5));
-		pointerMap[5][5] = rock4;
+		pointerMap1[5][5] = rock4;
 
 		T_Ui = Resources::Load<Texture>(L"Rock1"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock001.png");
@@ -386,9 +384,6 @@ namespace ya
 
 		tr = Ui_Hp->GetComponent<Transform>();
 		tr->SetPosition(Vector2(180.0f, 500.0f));
-
-
-
 	}
 
 	void Chapter1::Update()

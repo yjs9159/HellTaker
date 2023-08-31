@@ -15,11 +15,10 @@ namespace ya
 		virtual void Render(HDC hdc);
 
 		static int MapInfo1[8][9];
-		GameObject* pointerMap[8][9];
+		GameObject* pointerMap1[8][9];
 
 		math::Vector2 LeftTop;
 	private:
-		std::wstring NextScene = L"";
 		bool Animation_play;
 	};
 }

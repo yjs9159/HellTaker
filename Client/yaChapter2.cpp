@@ -40,8 +40,12 @@ namespace ya
 
 	Chapter2::Chapter2()
 		: LeftTop(Vector2(318.0f + 72 / 2, 86.0f + 68 / 2))
+		, Animation_play(false)
 	{
-
+		pointerMap2[8][9] =
+		{
+			NULL,
+		};
 	}
 
 	Chapter2::~Chapter2()
@@ -135,6 +139,7 @@ namespace ya
 		
 		tr = player->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 1, LeftTop.y + MOVE_TILE_HEIGHT * 5)); // 캐릭터 시작위치
+		pointerMap2[5][1] = player;
 		
 		
 		at = player->AddComponent<Animator>();
@@ -159,6 +164,7 @@ namespace ya
 
 		tr = monster1->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 2, LeftTop.y + MOVE_TILE_HEIGHT * 2)); // 몬스터1 시작위치
+		pointerMap2[2][2] = monster1;
 
 		at = monster1->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -174,6 +180,7 @@ namespace ya
 
 		tr = monster2->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 5)); // 몬스터2 시작위치
+		pointerMap2[5][6] = monster2;
 
 		at = monster2->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -189,6 +196,7 @@ namespace ya
 
 		tr = monster3->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 6)); // 몬스터3 시작위치
+		pointerMap2[6][7] = monster3;
 
 		at = monster3->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -232,6 +240,7 @@ namespace ya
 
 		tr = rock1->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+		pointerMap2[3][5] = rock1;
 
 		T_Ui = Resources::Load<Texture>(L"Rock7"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock007.png");
@@ -245,6 +254,7 @@ namespace ya
 
 		tr = rock2->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+		pointerMap2[3][6] = rock2;
 
 		T_Ui = Resources::Load<Texture>(L"Rock5"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock005.png");
@@ -259,6 +269,7 @@ namespace ya
 
 		tr = rock3->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 7, LeftTop.y + MOVE_TILE_HEIGHT * 3));
+		pointerMap2[3][7] = rock3;
 
 		T_Ui = Resources::Load<Texture>(L"Rock3"
 			, L"..\\Resources\\Texture\\obstacle\\rock\\Rock003.png");
@@ -392,19 +403,19 @@ namespace ya
 	{
 		Scene::Render(hdc);
 
-		//int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
-		//for (size_t y = 0; y < maxRow; y++)
-		//{
-		//	MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 + 18, NULL);      //      라인(선) 시작
-		//	LineTo(hdc, 1280, TILE_HEIGHT * y * 4 + 18);        //          라인(선) 끝
-		//}
+		int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
+		for (size_t y = 0; y < maxRow; y++)
+		{
+			MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 + 18, NULL);      //      라인(선) 시작
+			LineTo(hdc, 1280, TILE_HEIGHT * y * 4 + 18);        //          라인(선) 끝
+		}
 
-		//int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;
-		//for (size_t x = 0; x < maxColumn; x++)
-		//{
-		//	MoveToEx(hdc, TILE_WIDTH * x * 4 + 30, 0, NULL);      //      라인(선) 시작
-		//	LineTo(hdc, TILE_WIDTH * x * 4 + 30, 720);        //          라인(선) 끝
-		//}
+		int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;
+		for (size_t x = 0; x < maxColumn; x++)
+		{
+			MoveToEx(hdc, TILE_WIDTH * x * 4 + 30, 0, NULL);      //      라인(선) 시작
+			LineTo(hdc, TILE_WIDTH * x * 4 + 30, 720);        //          라인(선) 끝
+		}
 
 
 	

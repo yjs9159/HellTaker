@@ -10,8 +10,9 @@
 #include "yaResources.h"
 #include "yaChapter1.h"
 #include "yaCollisionManager.h"
-#include "yaChapter1.h"
 #include "yaRock.h"
+#include "yaChapter1.h"
+#include "yaChapter2.h"
 
 namespace ya
 {
@@ -106,27 +107,31 @@ namespace ya
 			animator->PlayAnimation(L"player_rightsuccess", false);
 			mState = eState::Success;
 		}
-
-
 	}
 
 	void Player::Move(int _dir)
 	{
+		dir = _dir;
 		Sound* sound = Resources::Load<Sound>(L"Move", L"..\\Resources\\Sound\\character_move_01.wav");
 
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 
-		
+		Animator* at = GetComponent<Animator>();
+		at->CreateAnimationFolder(L"Player_Right_Attack", L"..\\Resources\\Texture\\player\\player_attack\\right_attack");
+		at->CreateAnimationFolder(L"Player_Left_Attack", L"..\\Resources\\Texture\\player\\player_attack\\left_attack");
+		at->CreateAnimationFolder(L"Player_Idle", L"..\\Resources\\Texture\\player\\player_Idle\\right_Idle");
+
 		// 0 => 바닥
-// 1 => wall
-// 2 => player
-// 3 => monster
-// 4 => rock
+		// 1 => wall
+		// 2 => player
+		// 3 => monster
+		// 4 => rock
 
 		if (_dir == 0 && Input::GetKeyUp(eKeyCode::W))
 		{
 			Scene* scene = SceneManager::GetActiveScene();
+
 			if (Chapter1* chpt1 = dynamic_cast<Chapter1*>(scene))
 			{
 				int PlayerY = int(pos.y - chpt1->LeftTop.y) / MOVE_TILE_HEIGHT;
@@ -137,8 +142,8 @@ namespace ya
 				case 0:
 					//캐릭터 이동시키고 맵정보 2개 갱신
 					tr->SetPosition(Vector2(pos.x, pos.y - MOVE_TILE_HEIGHT));
-					chpt1->pointerMap[PlayerY][PlayerX] = nullptr;
-					chpt1->pointerMap[PlayerY - 1][PlayerX] = this;
+					chpt1->pointerMap1[PlayerY][PlayerX] = nullptr;
+					chpt1->pointerMap1[PlayerY - 1][PlayerX] = this;
 
 					chpt1->MapInfo1[PlayerY][PlayerX] = 0;
 					chpt1->MapInfo1[PlayerY - 1][PlayerX] = 2;
@@ -148,14 +153,45 @@ namespace ya
 					Hp++;
 					return;
 				case 3:
-					static_cast<Monster*>(chpt1->pointerMap[PlayerY - 1][PlayerX])->Hit(dir) /* 몬스터 내부에 공격받는 함수 만들고 */;
+					static_cast<Monster*>(chpt1->pointerMap1[PlayerY - 1][PlayerX])->Hit(_dir) /* 몬스터 내부에 공격받는 함수 만들고 */;
 					break;
 				case 4:
-					static_cast<Rock*>(chpt1->pointerMap[PlayerY - 1][PlayerX])->RockHit(dir);
+					static_cast<Rock*>(chpt1->pointerMap1[PlayerY - 1][PlayerX])->RockHit(_dir);
 					break;
 				default:
 					break;
 				}				
+			}
+
+			if (Chapter2* chpt2 = dynamic_cast<Chapter2*>(scene))
+			{
+				int PlayerY = int(pos.y - chpt2->LeftTop.y) / MOVE_TILE_HEIGHT;
+				int PlayerX = int(pos.x - chpt2->LeftTop.x) / MOVE_TILE_WIDTH;
+
+				switch (chpt2->MapInfo2[PlayerY - 1][PlayerX])
+				{
+				case 0:
+					//캐릭터 이동시키고 맵정보 2개 갱신
+					tr->SetPosition(Vector2(pos.x, pos.y - MOVE_TILE_HEIGHT));
+					chpt2->pointerMap2[PlayerY][PlayerX] = nullptr;
+					chpt2->pointerMap2[PlayerY - 1][PlayerX] = this;
+
+					chpt2->MapInfo2[PlayerY][PlayerX] = 0;
+					chpt2->MapInfo2[PlayerY - 1][PlayerX] = 2;
+
+					break;
+				case 1:
+					Hp++;
+					return;
+				case 3:
+					static_cast<Monster*>(chpt2->pointerMap2[PlayerY - 1][PlayerX])->Hit(dir); /* 몬스터 내부에 공격받는 함수 만들고 */
+					break;
+				case 4:
+					static_cast<Rock*>(chpt2->pointerMap2[PlayerY - 1][PlayerX])->RockHit(_dir);
+					break;
+				default:
+					break;
+				}
 			}
 			sound->Play(false);
 		}
@@ -172,8 +208,8 @@ namespace ya
 				case 0:
 					//캐릭터 이동시키고 맵정보 2개 갱신
 					tr->SetPosition(Vector2(pos.x - MOVE_TILE_WIDTH, pos.y));
-					chpt1->pointerMap[PlayerY][PlayerX] = nullptr;
-					chpt1->pointerMap[PlayerY][PlayerX - 1] = this;
+					chpt1->pointerMap1[PlayerY][PlayerX] = nullptr;
+					chpt1->pointerMap1[PlayerY][PlayerX - 1] = this;
 
 					chpt1->MapInfo1[PlayerY][PlayerX] = 0;
 					chpt1->MapInfo1[PlayerY][PlayerX - 1] = 2;
@@ -182,15 +218,46 @@ namespace ya
 				case 1:
 					return;
 				case 3:
-					static_cast<Monster*>(chpt1->pointerMap[PlayerY][PlayerX - 1])->Hit(dir) /* 몬스터 내부에 공격받는 함수 만들고 */;
+					static_cast<Monster*>(chpt1->pointerMap1[PlayerY][PlayerX - 1])->Hit(_dir) /* 몬스터 내부에 공격받는 함수 만들고 */;
 					break;
 				case 4:
-					static_cast<Rock*>(chpt1->pointerMap[PlayerY][PlayerX - 1])->RockHit(dir);
+					static_cast<Rock*>(chpt1->pointerMap1[PlayerY][PlayerX - 1])->RockHit(_dir);
 					break;
 				default:
 					break;
 				}
 			}
+
+			if (Chapter2* chpt2 = dynamic_cast<Chapter2*>(scene))
+			{
+				int PlayerY = int(pos.y - chpt2->LeftTop.y) / MOVE_TILE_HEIGHT;
+				int PlayerX = int(pos.x - chpt2->LeftTop.x) / MOVE_TILE_WIDTH;
+
+				switch (chpt2->MapInfo2[PlayerY][PlayerX - 1])
+				{
+				case 0:
+					//캐릭터 이동시키고 맵정보 2개 갱신
+					tr->SetPosition(Vector2(pos.x - MOVE_TILE_WIDTH, pos.y));
+					chpt2->pointerMap2[PlayerY][PlayerX] = nullptr;
+					chpt2->pointerMap2[PlayerY][PlayerX - 1] = this;
+
+					chpt2->MapInfo2[PlayerY][PlayerX] = 0;
+					chpt2->MapInfo2[PlayerY][PlayerX - 1] = 2;
+
+					break;
+				case 1:
+					return;
+				case 3:
+					static_cast<Monster*>(chpt2->pointerMap2[PlayerY][PlayerX - 1])->Hit(_dir) /* 몬스터 내부에 공격받는 함수 만들고 */;
+					break;
+				case 4:
+					static_cast<Rock*>(chpt2->pointerMap2[PlayerY][PlayerX - 1])->RockHit(_dir);
+					break;
+				default:
+					break;
+				}
+			}
+
 			sound->Play(false);
 		}
 		else if (_dir == 1 && Input::GetKeyUp(eKeyCode::S))
@@ -206,8 +273,8 @@ namespace ya
 				case 0:
 					//캐릭터 이동시키고 맵정보 2개 갱신
 					tr->SetPosition(Vector2(pos.x, pos.y + MOVE_TILE_HEIGHT));
-					chpt1->pointerMap[PlayerY][PlayerX] = nullptr;
-					chpt1->pointerMap[PlayerY + 1][PlayerX] = this;
+					chpt1->pointerMap1[PlayerY][PlayerX] = nullptr;
+					chpt1->pointerMap1[PlayerY + 1][PlayerX] = this;
 
 					chpt1->MapInfo1[PlayerY][PlayerX] = 0;
 					chpt1->MapInfo1[PlayerY + 1][PlayerX] = 2;
@@ -216,15 +283,46 @@ namespace ya
 				case 1:
 					return;
 				case 3:
-					static_cast<Monster*>(chpt1->pointerMap[PlayerY + 1][PlayerX])->Hit(dir) /* 몬스터 내부에 공격받는 함수 만들고 */;
+					static_cast<Monster*>(chpt1->pointerMap1[PlayerY + 1][PlayerX])->Hit(_dir) /* 몬스터 내부에 공격받는 함수 만들고 */;
 					break;
 				case 4:
-					static_cast<Rock*>(chpt1->pointerMap[PlayerY + 1][PlayerX])->RockHit(dir);
+					static_cast<Rock*>(chpt1->pointerMap1[PlayerY + 1][PlayerX])->RockHit(_dir);
 					break;
 				default:
 					break;
 				}
 			}
+
+			if (Chapter2* chpt2 = dynamic_cast<Chapter2*>(scene))
+			{
+				int PlayerY = int(pos.y - chpt2->LeftTop.y) / MOVE_TILE_HEIGHT;
+				int PlayerX = int(pos.x - chpt2->LeftTop.x) / MOVE_TILE_WIDTH;
+
+				switch (chpt2->MapInfo2[PlayerY + 1][PlayerX])
+				{
+				case 0:
+					//캐릭터 이동시키고 맵정보 2개 갱신
+					tr->SetPosition(Vector2(pos.x, pos.y + MOVE_TILE_HEIGHT));
+					chpt2->pointerMap2[PlayerY][PlayerX] = nullptr;
+					chpt2->pointerMap2[PlayerY + 1][PlayerX] = this;
+
+					chpt2->MapInfo2[PlayerY][PlayerX] = 0;
+					chpt2->MapInfo2[PlayerY + 1][PlayerX] = 2;
+
+					break;
+				case 1:
+					return;
+				case 3:
+					static_cast<Monster*>(chpt2->pointerMap2[PlayerY + 1][PlayerX])->Hit(_dir) /* 몬스터 내부에 공격받는 함수 만들고 */;
+					break;
+				case 4:
+					static_cast<Rock*>(chpt2->pointerMap2[PlayerY + 1][PlayerX])->RockHit(_dir);
+					break;
+				default:
+					break;
+				}
+			}
+
 			sound->Play(false);
 		}
 		else if (_dir == 3 && Input::GetKeyUp(eKeyCode::D))
@@ -240,8 +338,8 @@ namespace ya
 				case 0:
 					//캐릭터 이동시키고 맵정보 2개 갱신
 					tr->SetPosition(Vector2(pos.x + MOVE_TILE_WIDTH, pos.y));
-					chpt1->pointerMap[PlayerY][PlayerX] = nullptr;
-					chpt1->pointerMap[PlayerY][PlayerX + 1] = this;
+					chpt1->pointerMap1[PlayerY][PlayerX] = nullptr;
+					chpt1->pointerMap1[PlayerY][PlayerX + 1] = this;
 
 					chpt1->MapInfo1[PlayerY][PlayerX] = 0;
 					chpt1->MapInfo1[PlayerY][PlayerX + 1] = 2;
@@ -250,15 +348,46 @@ namespace ya
 				case 1:
 					return;
 				case 3:
-					static_cast<Monster*>(chpt1->pointerMap[PlayerY][PlayerX + 1])->Hit(dir) /* 몬스터 내부에 공격받는 함수 만들고 */;
+					static_cast<Monster*>(chpt1->pointerMap1[PlayerY][PlayerX + 1])->Hit(_dir) /* 몬스터 내부에 공격받는 함수 만들고 */;
 					break;
 				case 4:
-					static_cast<Rock*>(chpt1->pointerMap[PlayerY][PlayerX + 1])->RockHit(dir);
+					static_cast<Rock*>(chpt1->pointerMap1[PlayerY][PlayerX + 1])->RockHit(_dir);
 					break;
 				default:
 					break;
 				}
 			}
+
+			if (Chapter2* chpt2 = dynamic_cast<Chapter2*>(scene))
+			{
+				int PlayerY = int(pos.y - chpt2->LeftTop.y) / MOVE_TILE_HEIGHT;
+				int PlayerX = int(pos.x - chpt2->LeftTop.x) / MOVE_TILE_WIDTH;
+
+				switch (chpt2->MapInfo2[PlayerY][PlayerX + 1])
+				{
+				case 0:
+					//캐릭터 이동시키고 맵정보 2개 갱신
+					tr->SetPosition(Vector2(pos.x + MOVE_TILE_WIDTH, pos.y));
+					chpt2->pointerMap2[PlayerY][PlayerX] = nullptr;
+					chpt2->pointerMap2[PlayerY][PlayerX + 1] = this;
+
+					chpt2->MapInfo2[PlayerY][PlayerX] = 0;
+					chpt2->MapInfo2[PlayerY][PlayerX + 1] = 2;
+
+					break;
+				case 1:
+					return;
+				case 3:
+					static_cast<Monster*>(chpt2->pointerMap2[PlayerY][PlayerX + 1])->Hit(_dir) /* 몬스터 내부에 공격받는 함수 만들고 */;
+					break;
+				case 4:
+					static_cast<Rock*>(chpt2->pointerMap2[PlayerY][PlayerX + 1])->RockHit(_dir);
+					break;
+				default:
+					break;
+				}
+			}
+
 			sound->Play(false);
 		}
 
@@ -282,6 +411,10 @@ namespace ya
 
 	void Player::Attack()
 	{
+		//Layer& layer = scene->GetLayer(eLayerType::Monster);
+		//GameObject* obj = layer.GetGameObjects().front();
+		//dynamic_cast<Monster*>(obj)->Hit(/*dir*/);
+
 
 		// Attack 로직
 		Scene* scene = SceneManager::GetActiveScene();
@@ -296,13 +429,6 @@ namespace ya
 			
 			
 		}
-
-
-		//Layer& layer = scene->GetLayer(eLayerType::Monster);
-		//GameObject* obj = layer.GetGameObjects().front();
-		//dynamic_cast<Monster*>(obj)->Hit(/*dir*/);
-
-
 
 		Animator* animator = GetComponent<Animator>();
 
