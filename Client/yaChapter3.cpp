@@ -42,6 +42,10 @@ namespace ya
 	ya::Chapter3::Chapter3()
 		: LeftTop(Vector2(281.0f + 72 / 2, 43.0f + 68 / 2))
 	{
+		pointerMap3[9][10] =
+		{
+			NULL,
+		};
 	}
 
 	ya::Chapter3::~Chapter3()
@@ -136,8 +140,10 @@ namespace ya
 
 		// player 생성
 		Player* player = object::Instantiate<Player>(eLayerType::Player); // 플레이어 생성
+		
 		tr = player->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 8, LeftTop.y + MOVE_TILE_HEIGHT * 3)); // 플레이어 시작위치
+		pointerMap3[3][8] = player;
 
 		at = player->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"player_rightidle", L"..\\Resources\\Texture\\player\\player_idle\\right_idle", Vector2(0.0f, 10.0f));
@@ -160,6 +166,7 @@ namespace ya
 		Monster* monster1 = object::Instantiate<Monster>(eLayerType::Monster);
 		tr = monster1->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 5, LeftTop.y + MOVE_TILE_HEIGHT * 5));
+		pointerMap3[5][5] = monster1;
 
 		at = monster1->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));
@@ -174,6 +181,7 @@ namespace ya
 		Monster* monster2 = object::Instantiate<Monster>(eLayerType::Monster);
 		tr = monster2->GetComponent<Transform>();
 		tr->SetPosition(Vector2(LeftTop.x + MOVE_TILE_WIDTH * 6, LeftTop.y + MOVE_TILE_HEIGHT * 7));
+		pointerMap3[7][6] = monster2;
 
 		at = monster2->AddComponent<Animator>();
 		at->CreateAnimationFolder(L"Monster_RightIdle", L"..\\Resources\\Texture\\obstacle\\undead_idle\\right_idle", Vector2(0.0f, -10.0f));

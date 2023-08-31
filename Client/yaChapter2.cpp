@@ -403,19 +403,19 @@ namespace ya
 	{
 		Scene::Render(hdc);
 
-		int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
-		for (size_t y = 0; y < maxRow; y++)
-		{
-			MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 + 18, NULL);      //      라인(선) 시작
-			LineTo(hdc, 1280, TILE_HEIGHT * y * 4 + 18);        //          라인(선) 끝
-		}
+		//int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
+		//for (size_t y = 0; y < maxRow; y++)
+		//{
+		//	MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 + 18, NULL);      //      라인(선) 시작
+		//	LineTo(hdc, 1280, TILE_HEIGHT * y * 4 + 18);        //          라인(선) 끝
+		//}
 
-		int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;
-		for (size_t x = 0; x < maxColumn; x++)
-		{
-			MoveToEx(hdc, TILE_WIDTH * x * 4 + 30, 0, NULL);      //      라인(선) 시작
-			LineTo(hdc, TILE_WIDTH * x * 4 + 30, 720);        //          라인(선) 끝
-		}
+		//int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;
+		//for (size_t x = 0; x < maxColumn; x++)
+		//{
+		//	MoveToEx(hdc, TILE_WIDTH * x * 4 + 30, 0, NULL);      //      라인(선) 시작
+		//	LineTo(hdc, TILE_WIDTH * x * 4 + 30, 720);        //          라인(선) 끝
+		//}
 
 
 	

@@ -14,9 +14,10 @@ namespace ya
 		virtual void Render(HDC hdc);
 
 		static int MapInfo3[9][10];
+		GameObject* pointerMap3[9][10];
+		math::Vector2 LeftTop;
 
 	private:
-		math::Vector2 LeftTop;
 
 	};
 }
