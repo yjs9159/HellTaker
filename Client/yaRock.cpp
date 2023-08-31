@@ -277,6 +277,39 @@ namespace ya
 			}
 		}
 
+		if (Chapter8* chpt8 = dynamic_cast<Chapter8*>(scene))
+		{
+			int MonsterY = int(pos.y - chpt8->LeftTop.y) / MOVE_TILE_HEIGHT;
+			int MonsterX = int(pos.x - chpt8->LeftTop.x) / MOVE_TILE_WIDTH;
+			chpt8->pointerMap8[MonsterY - 1][MonsterX];
+
+			switch (_dir)
+			{
+			case 0:
+				if (chpt8->MapInfo8[MonsterY - 1][MonsterX] == 0)
+					RockMove();
+				break;
+
+			case 1:
+				if (chpt8->MapInfo8[MonsterY + 1][MonsterX] == 0)
+					RockMove();
+				break;
+
+			case 2:
+				if (chpt8->MapInfo8[MonsterY][MonsterX - 1] == 0)
+					RockMove();
+				break;
+
+			case 3:
+				if (chpt8->MapInfo8[MonsterY][MonsterX + 1] == 0)
+					RockMove();
+				break;
+
+			default:
+				break;
+			}
+		}
+
 	}
 
 	void Rock::RockMove()
@@ -599,6 +632,52 @@ namespace ya
 				chpt7->MapInfo7[posY][posX] = 0;
 				chpt7->pointerMap7[posY][posX + 1] = this;
 				chpt7->pointerMap7[posY][posX] = nullptr;
+
+				tr->SetPosition(Vector2(pos.x + MOVE_TILE_WIDTH, pos.y));
+				break;
+
+			default:
+				break;
+			}
+		}
+
+		if (Chapter8* chpt8 = dynamic_cast<Chapter8*>(scene))
+		{
+			int posY = int(pos.y - chpt8->LeftTop.y) / MOVE_TILE_HEIGHT;
+			int posX = int(pos.x - chpt8->LeftTop.x) / MOVE_TILE_WIDTH;
+
+			switch (dir)
+			{
+			case 0:
+				chpt8->MapInfo8[posY - 1][posX] = 4;
+				chpt8->MapInfo8[posY][posX] = 0;
+				chpt8->pointerMap8[posY - 1][posX] = this;
+				chpt8->pointerMap8[posY][posX] = nullptr;
+
+				tr->SetPosition(Vector2(pos.x, pos.y - MOVE_TILE_HEIGHT));
+				break;
+
+			case 1:
+				chpt8->MapInfo8[posY + 1][posX] = 4;
+				chpt8->MapInfo8[posY][posX] = 0;
+				chpt8->pointerMap8[posY + 1][posX] = this;
+				chpt8->pointerMap8[posY][posX] = nullptr;
+
+				tr->SetPosition(Vector2(pos.x, pos.y + MOVE_TILE_HEIGHT));
+				break;
+			case 2:
+				chpt8->MapInfo8[posY][posX - 1] = 4;
+				chpt8->MapInfo8[posY][posX] = 0;
+				chpt8->pointerMap8[posY][posX - 1] = this;
+				chpt8->pointerMap8[posY][posX] = nullptr;
+
+				tr->SetPosition(Vector2(pos.x - MOVE_TILE_WIDTH, pos.y));
+				break;
+			case 3:
+				chpt8->MapInfo8[posY][posX + 1] = 4;
+				chpt8->MapInfo8[posY][posX] = 0;
+				chpt8->pointerMap8[posY][posX + 1] = this;
+				chpt8->pointerMap8[posY][posX] = nullptr;
 
 				tr->SetPosition(Vector2(pos.x + MOVE_TILE_WIDTH, pos.y));
 				break;
