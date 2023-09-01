@@ -118,15 +118,11 @@ namespace ya
 	void Player::Move(int _dir)
 	{
 		dir = _dir;
+
 		Sound* sound = Resources::Load<Sound>(L"Move", L"..\\Resources\\Sound\\character_move_01.wav");
 
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-
-		Animator* at = GetComponent<Animator>();
-		at->CreateAnimationFolder(L"Player_Right_Attack", L"..\\Resources\\Texture\\player\\player_attack\\right_attack");
-		at->CreateAnimationFolder(L"Player_Left_Attack", L"..\\Resources\\Texture\\player\\player_attack\\left_attack");
-		at->CreateAnimationFolder(L"Player_Idle", L"..\\Resources\\Texture\\player\\player_Idle\\right_Idle");
 
 		// 0 => 바닥
 		// 1 => wall
@@ -140,6 +136,11 @@ namespace ya
 
 			if (Chapter1* chpt1 = dynamic_cast<Chapter1*>(scene))
 			{
+
+				//Animator* at = GetComponent<Animator>();
+				//at->CreateAnimationFolder(L"Player_Right_Attack", L"..\\Resources\\Texture\\player\\player_attack\\right_attack");
+				//at->CreateAnimationFolder(L"Player_Left_Attack", L"..\\Resources\\Texture\\player\\player_attack\\left_attack");
+
 				int PlayerY = int(pos.y - chpt1->LeftTop.y) / MOVE_TILE_HEIGHT;
 				int PlayerX = int(pos.x - chpt1->LeftTop.x) / MOVE_TILE_WIDTH;
 
@@ -166,7 +167,7 @@ namespace ya
 					break;
 				default:
 					break;
-				}				
+				}	
 			}
 
 			if (Chapter2* chpt2 = dynamic_cast<Chapter2*>(scene))
@@ -385,7 +386,6 @@ namespace ya
 					break;
 				}
 			}
-
 			sound->Play(false);
 		}
 		else if (_dir == 2 && Input::GetKeyUp(eKeyCode::A))
@@ -1144,25 +1144,7 @@ namespace ya
 
 	void Player::Attack()
 	{
-		//Layer& layer = scene->GetLayer(eLayerType::Monster);
-		//GameObject* obj = layer.GetGameObjects().front();
-		//dynamic_cast<Monster*>(obj)->Hit(/*dir*/);
-
-
-		// Attack 로직
-		Scene* scene = SceneManager::GetActiveScene();
-		std::wstring Now = scene->GetName();
-		
-		Transform* tr = GetComponent<Transform>();
-		Vector2 pos = tr->GetPosition();
-
-		if (Now == L"Chapter1")
-		{
-			static_cast<Chapter1*>(scene)->MapInfo1 ;
-			
-			
-		}
-
+		// Attack 로직		
 		Animator* animator = GetComponent<Animator>();
 
 		if (animator->IsActiveAnimationComplete())

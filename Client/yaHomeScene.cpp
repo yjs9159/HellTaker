@@ -74,9 +74,9 @@ namespace ya
 		at->SetScale(Vector2(0.8f, 0.8f));
 		at->SetAffectedCamera(true);
 
-		Collider* col = player->AddComponent<Collider>();
-		col->SetSize(Vector2(100.0f, 110.0f));
-		col->SetOffset(Vector2(0.0f, 0.0f));
+		//Collider* col = player->AddComponent<Collider>();
+		//col->SetSize(Vector2(100.0f, 110.0f));
+		//col->SetOffset(Vector2(0.0f, 0.0f));
 
 
 		// cerberus 첫번째 Npc 생성 
@@ -90,8 +90,8 @@ namespace ya
 		at_cerberus1->PlayAnimation(L"cerberus1", true);
 		at_cerberus1->SetScale(Vector2(0.8f, 0.8f));
 
-		col = cerberus1->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = cerberus1->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign 1
@@ -119,8 +119,8 @@ namespace ya
 		at_cerberus2->PlayAnimation(L"cerberus2", true);
 		at_cerberus2->SetScale(Vector2(0.8f, 0.8f));
 
-		col = cerberus2->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = cerberus2->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign 2
@@ -149,8 +149,8 @@ namespace ya
 		at_cerberus3->PlayAnimation(L"cerberus3", true);
 		at_cerberus3->SetScale(Vector2(0.8f, 0.8f));
 
-		col = cerberus3->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = cerberus3->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign 3
@@ -179,8 +179,8 @@ namespace ya
 		at_azazel->PlayAnimation(L"azazel", true);
 		at_azazel->SetScale(Vector2(0.8f, 0.8f));
 
-		col = azazel->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = azazel->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign 4
@@ -211,8 +211,8 @@ namespace ya
 		at_judgement->PlayAnimation(L"judgement", true);
 		at_judgement->SetScale(Vector2(0.8f, 0.8f));
 
-		col = judgement->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = judgement->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign 5
@@ -240,8 +240,8 @@ namespace ya
 		at_zdrada->PlayAnimation(L"zdrada", true);
 		at_zdrada->SetScale(Vector2(0.8f, 0.8f));
 
-		col = zdrada->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = zdrada->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign 6
@@ -269,8 +269,8 @@ namespace ya
 		at_malina->PlayAnimation(L"malina", true);
 		at_malina->SetScale(Vector2(0.8f, 0.8f));
 
-		col = malina->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = malina->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign 7
@@ -298,8 +298,8 @@ namespace ya
 		at_pandemonica->PlayAnimation(L"pandemonica", true);
 		at_pandemonica->SetScale(Vector2(0.8f, 0.8f));
 
-		col = pandemonica->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = pandemonica->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign 8
@@ -327,8 +327,8 @@ namespace ya
 		at_justice->PlayAnimation(L"justice", true);
 		at_justice->SetScale(Vector2(0.8f, 0.8f));
 
-		col = justice->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = justice->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign 9
@@ -356,8 +356,8 @@ namespace ya
 		at_lucyh->PlayAnimation(L"lucyh", true);
 		at_lucyh->SetScale(Vector2(0.8f, 0.8f));
 
-		col = lucyh->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = lucyh->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign 10
@@ -385,8 +385,8 @@ namespace ya
 		at_modeus->PlayAnimation(L"modeus", true);
 		at_modeus->SetScale(Vector2(0.8f, 0.8f));
 
-		col = modeus->AddComponent<Collider>();
-		col->SetSize(Vector2(80.0f, 80.0f));
+		//col = modeus->AddComponent<Collider>();
+		//col->SetSize(Vector2(80.0f, 80.0f));
 
 
 		// Npc LoveSign 11
@@ -456,19 +456,19 @@ namespace ya
 	{
 		Scene::Render(hdc);
 
-		int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
-		for (size_t y = 0; y < maxRow; y++)
-		{
-			MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 - 20, NULL);      //      라인(선) 시작
-			LineTo(hdc, 1280, TILE_HEIGHT * y * 4 - 20);        //          라인(선) 끝
-		}
+		//int maxRow = 720 / (TILE_HEIGHT * 3) + 1;
+		//for (size_t y = 0; y < maxRow; y++)
+		//{
+		//	MoveToEx(hdc, 0, TILE_HEIGHT * y * 4 - 20, NULL);      //      라인(선) 시작
+		//	LineTo(hdc, 1280, TILE_HEIGHT * y * 4 - 20);        //          라인(선) 끝
+		//}
 
-		int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;
-		for (size_t x = 0; x < maxColumn; x++)
-		{
-			MoveToEx(hdc, TILE_WIDTH * x * 4 - 30, 0, NULL);      //      라인(선) 시작
-			LineTo(hdc, TILE_WIDTH * x * 4 - 30, 720);        //          라인(선) 끝
-		}
+		//int maxColumn = 1280 / (TILE_WIDTH * 3) + 1;
+		//for (size_t x = 0; x < maxColumn; x++)
+		//{
+		//	MoveToEx(hdc, TILE_WIDTH * x * 4 - 30, 0, NULL);      //      라인(선) 시작
+		//	LineTo(hdc, TILE_WIDTH * x * 4 - 30, 720);        //          라인(선) 끝
+		//}
 
 		
 	}
